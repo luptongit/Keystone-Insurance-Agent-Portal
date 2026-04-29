@@ -3,6 +3,7 @@
 
 const express = require('express');
 const path = require('path');
+const customerDb = require('./db/customers');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -43,12 +44,22 @@ app.get('/', (req, res) => {
 });
 
 // Customers list
-app.get('/customers', (req, res) => {
-  res.render('pages/customers', {
-    pageTitle: 'Customers',
-    activeNav: 'customers',
-    pageCSS: 'customers',
-  });
+app.get('/customers', async (req, res, next) => {
+  try {
+    const [alerts, groups] = await Promise.all([
+      customerDb.getAlerts(),
+      customerDb.getTableCustomers(),
+    ]);
+    res.render('pages/customers', {
+      pageTitle: 'Customers',
+      activeNav: 'customers',
+      pageCSS: 'customers',
+      alerts,
+      groups,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.get('/customers/:customerId', (req, res) => {
