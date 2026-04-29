@@ -1,0 +1,278 @@
+<%- include('../partials/head') %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar') %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Wednesday · April 29</div>
+          <h1 class="greeting-title">Good morning, <em><%= user.name.split(' ')[0] %>.</em></h1>
+          <div class="greeting-sub">You have 8 items in your action queue and 3 renewals closing this week.</div>
+        </div>
+        <div class="quick-actions">
+          <a class="btn" href="/claims">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg>
+            File FNOL
+          </a>
+          <a class="btn" href="/endorsements">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+            Endorse policy
+          </a>
+          <a class="btn" href="/customers">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+            Add customer
+          </a>
+        </div>
+      </div>
+
+      <!-- DATA 360 MORNING BRIEF -->
+      <div class="morning-brief">
+        <div class="morning-brief-head">
+          <div class="morning-brief-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="morning-brief-title">Data 360 morning brief — overnight signals across your book</div>
+          <span class="morning-brief-meta">Refreshed 6:14 AM CT</span>
+        </div>
+        <div class="morning-brief-body">
+          <div class="brief-item">
+            <span class="brief-num">3</span>
+            <div class="brief-desc"><strong>Competing quote signals</strong> detected on active policies — Ramirez bundle is highest priority (renews May 2)</div>
+          </div>
+          <div class="brief-item">
+            <span class="brief-num">7</span>
+            <div class="brief-desc"><strong>Life event triggers</strong> flagged — including new teen driver (Patel), home purchase (Walsh), and marriage (Okonkwo)</div>
+          </div>
+          <div class="brief-item">
+            <span class="brief-num">2</span>
+            <div class="brief-desc"><strong>Undisclosed risk changes</strong> on existing policies — new violations or vehicles detected via Driving Behavior 360</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-label">Production MTD</div>
+          <div class="kpi-value">$184,720</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 12.4%</span><span class="kpi-delta-label">vs last month</span></div>
+          <svg class="kpi-spark" viewBox="0 0 100 22" preserveAspectRatio="none"><polyline points="0,16 12,14 24,15 36,11 48,12 60,8 72,9 84,5 100,6" fill="none" stroke="#3B6D11" stroke-width="1.2"/></svg>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Quote-to-bind</div>
+          <div class="kpi-value">38.2%</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 2.1pt</span><span class="kpi-delta-label">30-day</span></div>
+          <svg class="kpi-spark" viewBox="0 0 100 22" preserveAspectRatio="none"><polyline points="0,12 12,13 24,11 36,12 48,10 60,9 72,11 84,8 100,7" fill="none" stroke="#3B6D11" stroke-width="1.2"/></svg>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Predicted retention</div>
+          <div class="kpi-value">91.4%</div>
+          <div class="kpi-meta"><span class="kpi-delta down">↓ 0.6pt</span><span class="kpi-delta-label">12mo forecast</span></div>
+          <svg class="kpi-spark" viewBox="0 0 100 22" preserveAspectRatio="none"><polyline points="0,6 12,7 24,8 36,7 48,9 60,10 72,9 84,11 100,12" fill="none" stroke="#A32D2D" stroke-width="1.2"/></svg>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Active policies</div>
+          <div class="kpi-value">1,247</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 18</span><span class="kpi-delta-label">this month</span></div>
+          <svg class="kpi-spark" viewBox="0 0 100 22" preserveAspectRatio="none"><polyline points="0,18 12,17 24,16 36,15 48,13 60,12 72,10 84,9 100,7" fill="none" stroke="#3B6D11" stroke-width="1.2"/></svg>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Cross-sell index</div>
+          <div class="kpi-value">2.4</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 0.3</span><span class="kpi-delta-label">policies/HH</span></div>
+          <svg class="kpi-spark" viewBox="0 0 100 22" preserveAspectRatio="none"><polyline points="0,18 12,16 24,14 36,13 48,11 60,9 72,7 84,5 100,3" fill="none" stroke="#3B6D11" stroke-width="1.2"/></svg>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="grid-main">
+
+        <!-- LEFT: ACTION QUEUE -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title-row">
+              <span class="panel-title">Action queue</span>
+              <span class="panel-title-meta">prioritized by</span>
+              <span class="d360-pill">Data 360</span>
+            </div>
+            <a class="panel-link" href="#">View all →</a>
+          </div>
+
+          <div class="queue-tabs">
+            <div class="queue-tab active">All <span class="queue-tab-count">8</span></div>
+            <div class="queue-tab">Renewals <span class="queue-tab-count">3</span></div>
+            <div class="queue-tab">Claims <span class="queue-tab-count">2</span></div>
+            <div class="queue-tab">Underwriting <span class="queue-tab-count">2</span></div>
+            <div class="queue-tab">Billing <span class="queue-tab-count">1</span></div>
+          </div>
+
+          <div>
+            <a class="queue-item" href="/customers/ramirez-household">
+              <div class="queue-priority high"></div>
+              <div>
+                <div class="queue-title">Renewal at risk — Ramirez household (auto + home)</div>
+                <div class="queue-sub">Premium increase 18.4% · competing quote signal · expires May 2</div>
+              </div>
+              <span class="queue-tag renewal">Renewal</span>
+              <span class="queue-time">3d</span>
+            </a>
+            <a class="queue-item" href="/claims">
+              <div class="queue-priority high"></div>
+              <div>
+                <div class="queue-title">FNOL needs photos — Westbrook collision claim</div>
+                <div class="queue-sub">Claim #CLM-2026-44871 · adjuster Rita Park awaiting upload</div>
+              </div>
+              <span class="queue-tag claim">Claim</span>
+              <span class="queue-time">5h</span>
+            </a>
+            <a class="queue-item" href="/underwriting-hub">
+              <div class="queue-priority med"></div>
+              <div>
+                <div class="queue-title">UW referral — Crestline Bakery commercial package</div>
+                <div class="queue-sub">$48K premium · awaiting underwriter response on fire suppression</div>
+              </div>
+              <span class="queue-tag policy">UW</span>
+              <span class="queue-time">1d</span>
+            </a>
+            <a class="queue-item" href="/sales-pipeline">
+              <div class="queue-priority med"></div>
+              <div>
+                <div class="queue-title">Term life follow-up — Patel family (cross-sell)</div>
+                <div class="queue-sub">Quoted $750K 20-year term · client requested call this afternoon</div>
+              </div>
+              <span class="queue-tag lead">Lead</span>
+              <span class="queue-time">2h</span>
+            </a>
+            <a class="queue-item" href="/billing">
+              <div class="queue-priority med"></div>
+              <div>
+                <div class="queue-title">NSF on autopay — Donovan auto policy</div>
+                <div class="queue-sub">Policy POL-AU-882103 · grace period ends May 6</div>
+              </div>
+              <span class="queue-tag policy">Billing</span>
+              <span class="queue-time">1d</span>
+            </a>
+            <a class="queue-item" href="/endorsements">
+              <div class="queue-priority low"></div>
+              <div>
+                <div class="queue-title">Endorsement pending signature — Olsen home policy</div>
+                <div class="queue-sub">Added detached garage · DocuSign sent April 27</div>
+              </div>
+              <span class="queue-tag policy">Policy</span>
+              <span class="queue-time">2d</span>
+            </a>
+            <a class="queue-item" href="/renewals">
+              <div class="queue-priority low"></div>
+              <div>
+                <div class="queue-title">Renewal review — Yamamoto umbrella ($2M)</div>
+                <div class="queue-sub">Auto-renews May 15 · client unchanged · standard re-quote ready</div>
+              </div>
+              <span class="queue-tag renewal">Renewal</span>
+              <span class="queue-time">4d</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT STACK -->
+        <div class="right-stack">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Book of business</span>
+                <span class="panel-title-meta">by line</span>
+              </div>
+              <a class="panel-link" href="/book-of-business">Open →</a>
+            </div>
+            <div class="book-grid">
+              <div class="book-cell"><div class="book-line">Personal auto</div><div class="book-count">512</div><div class="book-premium">$684K WP</div></div>
+              <div class="book-cell"><div class="book-line">Homeowners</div><div class="book-count">348</div><div class="book-premium">$521K WP</div></div>
+              <div class="book-cell"><div class="book-line">Commercial</div><div class="book-count">142</div><div class="book-premium">$612K WP</div></div>
+              <div class="book-cell"><div class="book-line">Life & financial</div><div class="book-count">89</div><div class="book-premium">$148K AP</div></div>
+              <div class="book-cell"><div class="book-line">Umbrella</div><div class="book-count">94</div><div class="book-premium">$71K WP</div></div>
+              <div class="book-cell"><div class="book-line">Specialty</div><div class="book-count">62</div><div class="book-premium">$94K WP</div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Renewing this week</span>
+                <span class="panel-title-meta">3 policies</span>
+              </div>
+              <a class="panel-link" href="/renewals">All renewals →</a>
+            </div>
+            <div>
+              <div class="renewal-item">
+                <div>
+                  <div class="renewal-name">Ramirez household</div>
+                  <div class="renewal-detail">Auto + home bundle · since 2019</div>
+                </div>
+                <div class="renewal-status">
+                  <div class="renewal-days urgent">3 days</div>
+                  <div class="renewal-premium">$3,840/yr</div>
+                </div>
+              </div>
+              <div class="renewal-item">
+                <div>
+                  <div class="renewal-name">Crestline Bakery LLC</div>
+                  <div class="renewal-detail">Commercial package · BOP + WC</div>
+                </div>
+                <div class="renewal-status">
+                  <div class="renewal-days soon">5 days</div>
+                  <div class="renewal-premium">$48,200/yr</div>
+                </div>
+              </div>
+              <div class="renewal-item">
+                <div>
+                  <div class="renewal-name">Yamamoto, K.</div>
+                  <div class="renewal-detail">Personal umbrella · $2M limit</div>
+                </div>
+                <div class="renewal-status">
+                  <div class="renewal-days">7 days</div>
+                  <div class="renewal-premium">$640/yr</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">From the carrier</span></div>
+              <a class="panel-link" href="#">Archive →</a>
+            </div>
+            <div>
+              <div class="announce-item">
+                <div class="announce-tag">Product update</div>
+                <div class="announce-title">New cyber liability product live in TX, CA, FL</div>
+                <div class="announce-meta">Effective May 1 · appetite expanded to small commercial</div>
+              </div>
+              <div class="announce-item">
+                <div class="announce-tag">Rate change</div>
+                <div class="announce-title">Personal auto rate revision — TX</div>
+                <div class="announce-meta">Avg +4.2% · effective new business May 15, renewals June 1</div>
+              </div>
+              <div class="announce-item">
+                <div class="announce-tag">Training</div>
+                <div class="announce-title">Q2 commercial UW office hours</div>
+                <div class="announce-meta">Thursday 2pm CT · register through Training & Licensing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

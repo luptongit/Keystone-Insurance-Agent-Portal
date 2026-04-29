@@ -1,0 +1,558 @@
+<%- include('../partials/head', { pageCSS: 'quote-flow' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Sell' },
+        { label: 'New quote — Patel family' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/></svg>
+          Save draft
+        </button>
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </button>
+      `
+    }) %>
+
+    <!-- PROGRESS RAIL -->
+    <div class="progress-rail">
+      <div class="step done">
+        <div class="step-num">✓</div>
+        <span class="step-label">Start</span>
+      </div>
+      <div class="step-divider done"></div>
+      <div class="step done">
+        <div class="step-num">✓</div>
+        <span class="step-label">Auto rated</span>
+      </div>
+      <div class="step-divider done"></div>
+      <div class="step current">
+        <div class="step-num">3</div>
+        <span class="step-label">Bridge to home</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <span class="step-label">Review & bind</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- DATA 360 STRIP -->
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Pre-fill from 6 sources reduced 47 questions to 4.</div>
+          <div class="d360-strip-sub">MVR, CLUE, VIN database, public records, prior carrier history, and household profile — fetched in real time, harmonized via Data 360.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">6</div><div class="d360-strip-stat-label">Sources</div></div>
+          <div><div class="d360-strip-stat-num">87%</div><div class="d360-strip-stat-label">Pre-filled</div></div>
+          <div><div class="d360-strip-stat-num">2.4s</div><div class="d360-strip-stat-label">Total fetch</div></div>
+        </div>
+      </div>
+
+      <!-- ============== STAGE 1: START ============== -->
+      <div class="stage">
+        <div class="stage-header">
+          <div>
+            <div class="stage-eyebrow">Stage 1 · Complete</div>
+            <h2 class="stage-title">Started with <em>just an email.</em></h2>
+            <div class="stage-sub">Data 360 unified everything else from authoritative sources.</div>
+          </div>
+        </div>
+
+        <div class="start-card">
+          <div class="card-section">
+            <div class="card-section-title">Customer</div>
+            <div class="field-grid">
+              <div>
+                <label class="field-label">Email or phone</label>
+                <input class="field-input" value="ravi.patel@gmail.com" />
+                <div class="field-hint">Primary identifier · single source of input</div>
+              </div>
+              <div>
+                <label class="field-label">Customer name</label>
+                <input class="field-input prefilled" value="Ravi & Priya Patel" />
+                <div class="field-hint prefill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  Pre-filled · Data 360 household profile
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Address</label>
+                <input class="field-input prefilled" value="2848 Hillcrest Dr, Fort Worth TX 76109" />
+                <div class="field-hint prefill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  Pre-filled · USPS address verification
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Date of birth · primary</label>
+                <input class="field-input prefilled" value="03/14/1987" />
+                <div class="field-hint prefill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  Pre-filled · MVR · DL # T7204****
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">Lines of business</div>
+            <div class="lob-row">
+              <div class="lob-card selected">
+                <div class="lob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1M15 18v-1M15 18a1 1 0 001 1h2a1 1 0 001-1v-5"/></svg></div>
+                <div class="lob-label">Auto</div>
+                <div class="lob-check">Selected</div>
+              </div>
+              <div class="lob-card selected">
+                <div class="lob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
+                <div class="lob-label">Home</div>
+                <div class="lob-check">Selected</div>
+              </div>
+              <div class="lob-card">
+                <div class="lob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+                <div class="lob-label">Life</div>
+              </div>
+              <div class="lob-card">
+                <div class="lob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v2M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10H2z"/></svg></div>
+                <div class="lob-label">Umbrella</div>
+              </div>
+              <div class="lob-card">
+                <div class="lob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+                <div class="lob-label">Commercial</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== STAGE 2: AUTO RATED ============== -->
+      <div class="stage">
+        <div class="stage-header">
+          <div>
+            <div class="stage-eyebrow">Stage 2 · Complete</div>
+            <h2 class="stage-title">Auto quote rated in <em>2.4 seconds.</em></h2>
+            <div class="stage-sub">Two vehicles + two drivers pulled, rated, and tiered automatically.</div>
+          </div>
+        </div>
+
+        <div class="rating-banner">
+          <div class="rating-banner-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="rating-banner-text">
+            <div class="rating-strong">Clean MVR · 2 drivers · 0 violations · 0 prior claims (5 yr CLUE)</div>
+            <div class="rating-meta">Both vehicles VIN-verified · garaged at home address · ~12,400 mi/yr combined</div>
+          </div>
+        </div>
+
+        <div class="start-card">
+          <div class="card-section">
+            <div class="card-section-title">Vehicles · pre-filled from VIN database</div>
+            <div class="vehicle-list">
+              <div class="vehicle-card">
+                <div class="vehicle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1M15 18v-1M15 18a1 1 0 001 1h2a1 1 0 001-1v-5"/></svg>
+                </div>
+                <div>
+                  <div class="vehicle-name">2023 Honda Pilot Touring AWD</div>
+                  <div class="vehicle-detail">
+                    <span>VIN 5FNYF6H6***********</span><span>Lienholder: Honda Financial</span><span>Anti-theft, lane assist, AEB</span>
+                  </div>
+                </div>
+                <span class="vehicle-source">VIN db</span>
+              </div>
+              <div class="vehicle-card">
+                <div class="vehicle-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1"/></svg>
+                </div>
+                <div>
+                  <div class="vehicle-name">2020 Tesla Model 3 Long Range</div>
+                  <div class="vehicle-detail">
+                    <span>VIN 5YJ3E1EB***********</span><span>Owned · paid off 2023</span><span>Autopilot, AEB, blind spot</span>
+                  </div>
+                </div>
+                <span class="vehicle-source">VIN db</span>
+              </div>
+              <div class="add-row">+ Add another vehicle manually</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER COMPARE -->
+        <div class="compare-grid" style="margin-top: 24px;">
+          <div class="quote-card">
+            <div class="quote-tier">
+              <div class="tier-name">Standard</div>
+              <div class="tier-tagline">State minimum + collision</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$148</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$1,776/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Bodily injury</span><span class="coverage-val">$50K / $100K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Property damage</span><span class="coverage-val">$50K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Comp / collision</span><span class="coverage-val">$1K ded</span></div>
+              <div class="coverage-line"><span class="coverage-name">Uninsured motorist</span><span class="coverage-val">$50K / $100K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Roadside</span><span class="coverage-val" style="color: var(--text-faint);">—</span></div>
+              <div class="coverage-line"><span class="coverage-name">Rental reimb.</span><span class="coverage-val" style="color: var(--text-faint);">—</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn" style="width: 100%;">Select Standard</button>
+            </div>
+          </div>
+
+          <div class="quote-card recommended">
+            <div class="quote-tier">
+              <div class="tier-name">Better</div>
+              <div class="tier-tagline">Higher limits, lower deductibles</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$184</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$2,208/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Bodily injury</span><span class="coverage-val">$250K / $500K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Property damage</span><span class="coverage-val">$100K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Comp / collision</span><span class="coverage-val">$500 ded</span></div>
+              <div class="coverage-line"><span class="coverage-name">Uninsured motorist</span><span class="coverage-val">$250K / $500K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Roadside</span><span class="coverage-val">Included</span></div>
+              <div class="coverage-line"><span class="coverage-name">Rental reimb.</span><span class="coverage-val">$45/day</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn btn-primary" style="width: 100%;">Selected</button>
+              <div class="tier-savings">Best fit for income tier + 2 vehicles</div>
+            </div>
+          </div>
+
+          <div class="quote-card">
+            <div class="quote-tier">
+              <div class="tier-name">Best</div>
+              <div class="tier-tagline">Premium protection + perks</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$224</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$2,688/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Bodily injury</span><span class="coverage-val">$500K / $1M</span></div>
+              <div class="coverage-line"><span class="coverage-name">Property damage</span><span class="coverage-val">$250K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Comp / collision</span><span class="coverage-val">$250 ded</span></div>
+              <div class="coverage-line"><span class="coverage-name">Uninsured motorist</span><span class="coverage-val">$500K / $1M</span></div>
+              <div class="coverage-line"><span class="coverage-name">Roadside</span><span class="coverage-val">Premium</span></div>
+              <div class="coverage-line"><span class="coverage-name">Rental reimb.</span><span class="coverage-val">$75/day</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn" style="width: 100%;">Select Best</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOUNTS -->
+        <div class="discount-row">
+          <div class="discount-title">Discounts auto-applied</div>
+          <div class="discount-sub">$487/yr saved on the Better tier · all eligibility verified through Data 360</div>
+          <div class="discount-grid">
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Multi-vehicle</span>
+              <span class="discount-pill-amt">−$112</span>
+            </div>
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Safe driver</span>
+              <span class="discount-pill-amt">−$148</span>
+            </div>
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Anti-theft</span>
+              <span class="discount-pill-amt">−$48</span>
+            </div>
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Paperless</span>
+              <span class="discount-pill-amt">−$24</span>
+            </div>
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Pay-in-full</span>
+              <span class="discount-pill-amt">−$88</span>
+            </div>
+            <div class="discount-pill">
+              <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="discount-pill-name">Defensive driving</span>
+              <span class="discount-pill-amt">−$67</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== STAGE 3: BRIDGE TO HOME ============== -->
+      <div class="stage">
+        <div class="stage-header">
+          <div>
+            <div class="stage-eyebrow">Stage 3 · In progress</div>
+            <h2 class="stage-title">Bridge to <em>home</em> — most fields carry over.</h2>
+            <div class="stage-sub">23 fields bridged via Data 360 unified profile · property data fetched.</div>
+          </div>
+        </div>
+
+        <div class="bridge-banner">
+          <div class="bridge-flow">
+            <div class="bridge-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14"/></svg>
+              Auto bound
+            </div>
+            <span class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <div class="bridge-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+              Home quoting
+            </div>
+          </div>
+          <div class="bridge-text">
+            <div class="bridge-strong">23 fields bridged · 8 property attributes fetched · 3 questions remaining</div>
+            <div class="bridge-detail">Address, household, ownership, build year, square footage, construction class — all carried via Data 360 unified profile.</div>
+          </div>
+        </div>
+
+        <div class="start-card">
+          <div class="card-section">
+            <div class="card-section-title">Property — pre-filled from county records + replacement cost provider</div>
+            <div class="property-card">
+              <div class="property-photo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10M9 20v-6h6v6"/></svg>
+              </div>
+              <div>
+                <div class="property-addr">2848 Hillcrest Dr, Fort Worth TX 76109</div>
+                <div class="property-meta">
+                  <span>Built 2014</span><span>2,840 sqft</span><span>Brick veneer</span><span>Composition shingle</span><span>$612K replacement cost</span><span>Owner-occupied</span>
+                </div>
+              </div>
+              <span class="property-source">8 attrs from D360</span>
+            </div>
+          </div>
+
+          <div class="card-section">
+            <div class="card-section-title">Remaining questions (3)</div>
+            <div class="field-grid cols-3">
+              <div>
+                <label class="field-label">Pool / spa</label>
+                <select class="field-select">
+                  <option>None</option>
+                  <option>In-ground pool</option>
+                  <option>Above-ground pool</option>
+                  <option>Hot tub / spa</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label">Dog breed (if any)</label>
+                <select class="field-select">
+                  <option>None</option>
+                  <option>Standard breeds</option>
+                  <option>Restricted breeds</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label">Burglar alarm</label>
+                <select class="field-select">
+                  <option>Central station monitored</option>
+                  <option>Local alarm only</option>
+                  <option>None</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOME TIER COMPARE -->
+        <div class="compare-grid" style="margin-top: 24px;">
+          <div class="quote-card">
+            <div class="quote-tier">
+              <div class="tier-name">HO-3 Standard</div>
+              <div class="tier-tagline">Named perils, ACV contents</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$118</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$1,416/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Dwelling</span><span class="coverage-val">$612K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Personal property</span><span class="coverage-val">$306K (ACV)</span></div>
+              <div class="coverage-line"><span class="coverage-name">Liability</span><span class="coverage-val">$300K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Deductible</span><span class="coverage-val">$2,500</span></div>
+              <div class="coverage-line"><span class="coverage-name">Water backup</span><span class="coverage-val" style="color: var(--text-faint);">—</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn" style="width: 100%;">Select Standard</button>
+            </div>
+          </div>
+
+          <div class="quote-card recommended">
+            <div class="quote-tier">
+              <div class="tier-name">HO-3 Better</div>
+              <div class="tier-tagline">RC contents, water backup</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$152</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$1,824/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Dwelling</span><span class="coverage-val">$612K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Personal property</span><span class="coverage-val">$459K (RC)</span></div>
+              <div class="coverage-line"><span class="coverage-name">Liability</span><span class="coverage-val">$500K</span></div>
+              <div class="coverage-line"><span class="coverage-name">Deductible</span><span class="coverage-val">$1,500</span></div>
+              <div class="coverage-line"><span class="coverage-name">Water backup</span><span class="coverage-val">$10K</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn btn-primary" style="width: 100%;">Selected</button>
+              <div class="tier-savings">Matches auto Better tier — bundle eligible</div>
+            </div>
+          </div>
+
+          <div class="quote-card">
+            <div class="quote-tier">
+              <div class="tier-name">HO-5 Best</div>
+              <div class="tier-tagline">Open perils, full RC, jewelry rider</div>
+            </div>
+            <div class="tier-price-row">
+              <span class="tier-price-monthly">$198</span><span class="tier-price-suffix">/mo</span>
+              <div class="tier-price-annual">$2,376/yr</div>
+            </div>
+            <div class="tier-coverages">
+              <div class="coverage-line"><span class="coverage-name">Dwelling</span><span class="coverage-val">$735K (125%)</span></div>
+              <div class="coverage-line"><span class="coverage-name">Personal property</span><span class="coverage-val">$551K (RC)</span></div>
+              <div class="coverage-line"><span class="coverage-name">Liability</span><span class="coverage-val">$1M</span></div>
+              <div class="coverage-line"><span class="coverage-name">Deductible</span><span class="coverage-val">$1,000</span></div>
+              <div class="coverage-line"><span class="coverage-name">Water backup</span><span class="coverage-val">$25K</span></div>
+            </div>
+            <div class="tier-cta">
+              <button class="btn" style="width: 100%;">Select Best</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== STAGE 4: REVIEW & BIND ============== -->
+      <div class="stage">
+        <div class="stage-header">
+          <div>
+            <div class="stage-eyebrow">Stage 4 · Ready to bind</div>
+            <h2 class="stage-title">Review & bind <em>both policies.</em></h2>
+            <div class="stage-sub">Effective date May 1, 2026 · 5-day cancellation period</div>
+          </div>
+        </div>
+
+        <div class="bind-card">
+          <div class="bind-summary">
+            <div>
+              <div class="bind-summary-eyebrow">Auto + Home bundle</div>
+              <div class="bind-summary-title">Patel family — Better tier on both</div>
+              <div class="bind-summary-sub">Bundle discount applied · 12% off combined premium</div>
+            </div>
+            <div class="bind-summary-total">
+              <div class="bind-total-label">Total premium</div>
+              <div class="bind-total-amt">$336<span style="font-size: 16px; opacity: 0.6;">/mo</span></div>
+              <div class="bind-total-period">$4,032/year · annual or monthly</div>
+            </div>
+          </div>
+
+          <div class="bind-content">
+            <div class="bind-policies">
+              <div class="bind-policy">
+                <div class="bind-policy-head">
+                  <div class="bind-policy-icon auto">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14"/></svg>
+                  </div>
+                  <div>
+                    <div class="bind-policy-name">Personal auto · Better</div>
+                    <div class="bind-policy-detail">2 vehicles · 2 drivers</div>
+                  </div>
+                  <div class="bind-policy-prem">$184/mo</div>
+                </div>
+              </div>
+              <div class="bind-policy">
+                <div class="bind-policy-head">
+                  <div class="bind-policy-icon home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+                  </div>
+                  <div>
+                    <div class="bind-policy-name">Homeowners · HO-3 Better</div>
+                    <div class="bind-policy-detail">$612K dwelling · $1,500 ded</div>
+                  </div>
+                  <div class="bind-policy-prem">$152/mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-section-title">Pre-bind checklist</div>
+            <div class="bind-checklist">
+              <div class="bind-check-item">
+                <div class="bind-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div>
+                  <div class="bind-check-name">UW eligibility verified</div>
+                  <div class="bind-check-detail">Both policies cleared standard appetite · no UW referral required</div>
+                </div>
+              </div>
+              <div class="bind-check-item">
+                <div class="bind-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div>
+                  <div class="bind-check-name">Compliance disclosures generated</div>
+                  <div class="bind-check-detail">TX-required forms attached · DocuSign envelope ready</div>
+                </div>
+              </div>
+              <div class="bind-check-item">
+                <div class="bind-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div>
+                  <div class="bind-check-name">Lienholder notified — Honda Financial</div>
+                  <div class="bind-check-detail">2023 Honda Pilot · auto interest letter queued</div>
+                </div>
+              </div>
+              <div class="bind-check-item pending">
+                <div class="bind-check-icon pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/></svg></div>
+                <div>
+                  <div class="bind-check-name">Customer e-signature pending</div>
+                  <div class="bind-check-detail">Sent to ravi.patel@gmail.com · expires May 8</div>
+                </div>
+              </div>
+              <div class="bind-check-item pending">
+                <div class="bind-check-icon pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/></svg></div>
+                <div>
+                  <div class="bind-check-name">First payment authorization</div>
+                  <div class="bind-check-detail">$336 due May 1 · Visa ending 4117 saved on file</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bind-actions">
+              <div class="bind-meta">2 policies · effective May 1 · est. $0.04 sec to bind</div>
+              <div class="bind-actions-buttons">
+                <button class="btn">Save & send to customer</button>
+                <button class="btn btn-success">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+                  Bind both policies
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-footer">
+        <div>Quote ID: QTE-2026-04-29-PATEL · Saved 4 minutes ago</div>
+        <div>Powered by Keystone Quote Engine 4.2</div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

@@ -1,0 +1,192 @@
+/* ============================================================
+   Renewals — page-specific styles
+   ============================================================ */
+
+/* Board + sidebar layout */
+.renewals-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.renewals-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+/* Table container */
+.renewals-table {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Table header row */
+.renewals-table-header {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 0.6fr 0.5fr 0.6fr 0.7fr 0.5fr;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--limestone);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Time horizon groups */
+.renewals-group {
+  border-bottom: 1px solid var(--border);
+}
+.renewals-group:last-child { border-bottom: none; }
+
+.renewals-group-label {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--granite);
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.renewals-group-count {
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Individual renewal row */
+.renewal-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 0.6fr 0.5fr 0.6fr 0.7fr 0.5fr;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.1s;
+  color: inherit;
+  text-decoration: none;
+}
+.renewal-row:hover { background: var(--paper); }
+.renewal-row:last-child { border-bottom: none; }
+
+.renewal-row.at-risk {
+  border-left: 3px solid var(--red);
+}
+
+/* Customer name column */
+.renewal-row-customer {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--granite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.renewal-row-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* Premium columns */
+.renewal-row-premium {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+/* Change column */
+.renewal-row-change {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+}
+.renewal-row-change.up { color: var(--red); }
+.renewal-row-change.flat { color: var(--green); }
+
+/* Date column */
+.renewal-row-date {
+  font-size: 12px;
+  color: var(--granite);
+  font-family: 'JetBrains Mono', monospace;
+}
+.renewal-row-date.urgent { color: var(--red); font-weight: 500; }
+.renewal-row-date.soon { color: var(--amber); font-weight: 500; }
+
+/* Retention score */
+.retention-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.retention-score::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.retention-score.high { background: var(--green-bg); color: var(--green); }
+.retention-score.high::before { background: var(--green); }
+.retention-score.med { background: var(--amber-bg); color: var(--amber); }
+.retention-score.med::before { background: var(--amber); }
+.retention-score.low { background: var(--red-bg); color: var(--red); }
+.retention-score.low::before { background: var(--red); }
+
+/* Status badges */
+.renewal-status-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.renewal-status-badge.auto-renew { background: var(--green-bg); color: var(--green); }
+.renewal-status-badge.review { background: var(--amber-bg); color: var(--amber); }
+.renewal-status-badge.at-risk { background: var(--red-bg); color: var(--red); }
+
+/* Action column */
+.renewal-row-action .btn {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+/* Policy type badges (duplicated from sales-pipeline.css since page-specific CSS loads independently) */
+.rnw-line {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  background: var(--limestone);
+  color: var(--granite-soft);
+  display: inline-block;
+}
+.rnw-line + .rnw-line { margin-left: 3px; }
+
+.rnw-line.auto { background: #E6F1FB; color: var(--keystone-blue); }
+.rnw-line.home { background: #EAF3DE; color: var(--green); }
+.rnw-line.commercial { background: var(--limestone); color: var(--granite); }
+.rnw-line.life { background: #FAEEDA; color: var(--bronze); }
+.rnw-line.umbrella { background: #EEEDFE; color: #534AB7; }
+.rnw-line.bundle { background: #E6F1FB; color: var(--keystone-blue); }

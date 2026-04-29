@@ -1,0 +1,344 @@
+<%- include('../partials/head') %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Grow' },
+        { label: 'Agent 360 — Maya Chen' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Schedule 1:1
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export report
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="entity-header">
+        <div class="entity-avatar agent">MC</div>
+        <div>
+          <div class="entity-name-row">
+            <h1 class="entity-name">Maya Chen</h1>
+            <span class="badge tier">Producer · Tier 2</span>
+            <span class="badge region">North TX region</span>
+          </div>
+          <div class="entity-meta">
+            <span class="entity-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+              Harborlight Agency · Fort Worth, TX
+            </span>
+            <span class="entity-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Joined March 2021 · 5.1 years
+            </span>
+            <span class="entity-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/></svg>
+              P&C, Life, & Health licensed · TX, OK, NM
+            </span>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div><div class="header-stat-label">Book size</div><div class="header-stat-value">1,247</div><div class="header-stat-sub">policies · 4 lines</div></div>
+          <div><div class="header-stat-label">YTD production</div><div class="header-stat-value">$2.21M</div><div class="header-stat-sub">written premium</div></div>
+          <div><div class="header-stat-label">Peer rank</div><div class="header-stat-value">82nd</div><div class="header-stat-sub">percentile · region</div></div>
+        </div>
+      </div>
+
+      <div class="d360-hero">
+        <div class="d360-hero-mark"><div class="d360-hero-mark-inner"></div></div>
+        <div class="d360-hero-text">
+          <div class="d360-hero-eyebrow">Powered by Data 360</div>
+          <div class="d360-hero-title">Your Agent 360 unifies every signal about how you work — and surfaces what's working.</div>
+          <div class="d360-hero-sub">Performance metrics, behavioral patterns, peer benchmarks, and coaching recommendations — all assembled in real time from 12 internal systems and Tableau Semantics for consistent metric definitions.</div>
+        </div>
+        <div class="d360-hero-stats">
+          <div><div class="d360-hero-stat-num">12</div><div class="d360-hero-stat-label">Sources</div></div>
+          <div><div class="d360-hero-stat-num">94</div><div class="d360-hero-stat-label">Signals</div></div>
+          <div><div class="d360-hero-stat-num">live</div><div class="d360-hero-stat-label">Updated</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">Overview</div>
+        <div class="tab">Performance</div>
+        <div class="tab">Coaching</div>
+        <div class="tab">Goals & growth</div>
+        <div class="tab">Compensation</div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Quote-to-bind</div>
+          <div class="kpi-value">38.2<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 2.1pt</span><span class="kpi-delta-label">vs peers: 31.4%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">Predicted</span></div>
+          <div class="kpi-label">Retention forecast</div>
+          <div class="kpi-value">91.4<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta down">↓ 0.6pt</span><span class="kpi-delta-label">12-month outlook</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Cross-sell index</div>
+          <div class="kpi-value">2.4<span class="kpi-value-suffix"> pol/HH</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 0.3</span><span class="kpi-delta-label">peer median: 1.8</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Lead response time</div>
+          <div class="kpi-value">14<span class="kpi-value-suffix"> min</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ faster</span><span class="kpi-delta-label">peers: 47 min</span></div>
+        </div>
+      </div>
+
+      <div class="grid-360">
+
+        <div class="col-stack">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Your next best actions</span>
+                <span class="panel-title-meta">predicted impact this week</span>
+              </div>
+              <span class="d360-pill">Data 360 + Agentforce</span>
+            </div>
+
+            <a class="nba-item" href="/customers/ramirez-household">
+              <div class="nba-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+              </div>
+              <div>
+                <div class="nba-title">Call Carlos Ramirez before noon</div>
+                <div class="nba-detail">Highest-value at-risk renewal · 7yr client · State Farm shopping signal · history of responding to morning calls</div>
+              </div>
+              <div>
+                <div class="nba-impact">+$3,840</div>
+                <div class="nba-impact-label">Retention</div>
+              </div>
+            </a>
+
+            <a class="nba-item" href="/customers/ramirez-household">
+              <div class="nba-icon green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1"/></svg>
+              </div>
+              <div>
+                <div class="nba-title">Add Sofia Ramirez to auto policy</div>
+                <div class="nba-detail">Teen driver life event detected · 94% conversion likelihood · 3-min self-service flow available</div>
+              </div>
+              <div>
+                <div class="nba-impact">+$680</div>
+                <div class="nba-impact-label">Premium</div>
+              </div>
+            </a>
+
+            <a class="nba-item" href="/sales-pipeline">
+              <div class="nba-icon bronze">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <div class="nba-title">Re-engage 4 dormant life leads</div>
+                <div class="nba-detail">Quoted &gt;30 days ago, never bound · seasonal pattern shows tax-season life conversions peak this week · sequence ready</div>
+              </div>
+              <div>
+                <div class="nba-impact">+$1,840</div>
+                <div class="nba-impact-label">Avg APE</div>
+              </div>
+            </a>
+
+            <a class="nba-item" href="/marketing-studio">
+              <div class="nba-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L4 7l8 5 8-5-8-5zM4 17l8 5 8-5M4 12l8 5 8-5"/></svg>
+              </div>
+              <div>
+                <div class="nba-title">Bundle audit — 47 mono-line auto households</div>
+                <div class="nba-detail">Property data shows owned homes · home X-sell hit rate is 23% above peers in your region · campaign templated</div>
+              </div>
+              <div>
+                <div class="nba-impact">+$48K</div>
+                <div class="nba-impact-label">Pipeline</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Production · 12-month trend</span>
+                <span class="panel-title-meta">written premium vs peer median</span>
+              </div>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+
+            <div class="perf-chart">
+              <div class="chart-legend">
+                <div class="legend-item"><span class="legend-dot" style="background: var(--keystone-blue);"></span>Maya</div>
+                <div class="legend-item"><span class="legend-dot" style="background: rgba(91, 79, 207, 0.25);"></span>Peer median (Tier 2, North TX)</div>
+              </div>
+              <div class="perf-bars">
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 38%;"></div><div class="perf-bar" style="height: 42%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 41%;"></div><div class="perf-bar" style="height: 44%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 44%;"></div><div class="perf-bar" style="height: 51%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 43%;"></div><div class="perf-bar" style="height: 48%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 47%;"></div><div class="perf-bar" style="height: 56%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 46%;"></div><div class="perf-bar" style="height: 58%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 48%;"></div><div class="perf-bar" style="height: 62%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 51%;"></div><div class="perf-bar" style="height: 65%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 53%;"></div><div class="perf-bar" style="height: 71%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 54%;"></div><div class="perf-bar" style="height: 74%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 56%;"></div><div class="perf-bar" style="height: 80%;"></div></div>
+                <div class="perf-bar-col"><div class="perf-bar peer" style="height: 58%;"></div><div class="perf-bar" style="height: 92%;"></div></div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; margin-top: 6px;">
+                <div class="perf-bar-month">May</div><div class="perf-bar-month">Jun</div><div class="perf-bar-month">Jul</div>
+                <div class="perf-bar-month">Aug</div><div class="perf-bar-month">Sep</div><div class="perf-bar-month">Oct</div>
+                <div class="perf-bar-month">Nov</div><div class="perf-bar-month">Dec</div><div class="perf-bar-month">Jan</div>
+                <div class="perf-bar-month">Feb</div><div class="perf-bar-month">Mar</div><div class="perf-bar-month">Apr</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Book composition</span>
+                <span class="panel-title-meta">by line</span>
+              </div>
+              <span class="d360-pill">Data 360 unified</span>
+            </div>
+            <div class="composition-grid">
+              <div class="composition-cell"><div class="composition-bar auto"></div><div><div class="composition-line">Personal auto</div><div class="composition-meta">512 pol · $684K WP · 41%</div></div></div>
+              <div class="composition-cell"><div class="composition-bar home"></div><div><div class="composition-line">Homeowners</div><div class="composition-meta">348 pol · $521K WP · 24%</div></div></div>
+              <div class="composition-cell"><div class="composition-bar commercial"></div><div><div class="composition-line">Commercial</div><div class="composition-meta">142 pol · $612K WP · 28%</div></div></div>
+              <div class="composition-cell"><div class="composition-bar life"></div><div><div class="composition-line">Life & financial</div><div class="composition-meta">89 pol · $148K AP · 7%</div></div></div>
+              <div class="composition-cell"><div class="composition-bar umbrella"></div><div><div class="composition-line">Umbrella</div><div class="composition-meta">94 pol · $71K WP · 3%</div></div></div>
+              <div class="composition-cell"><div class="composition-bar specialty"></div><div><div class="composition-line">Specialty</div><div class="composition-meta">62 pol · $94K WP · 4%</div></div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-stack">
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Peer benchmark</span>
+              <span class="d360-pill">Cross-org</span>
+            </div>
+            <div>
+              <div class="benchmark-row">
+                <div class="benchmark-head"><span class="benchmark-label">Quote-to-bind ratio</span><span class="benchmark-percentile">Top 18%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 82%;"></div><div class="benchmark-marker" style="left: 82%;"></div></div>
+                <div class="benchmark-meta"><span>You: 38.2%</span><span>Peer median: 31.4%</span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-head"><span class="benchmark-label">Cross-sell rate</span><span class="benchmark-percentile">Top 24%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 76%;"></div><div class="benchmark-marker" style="left: 76%;"></div></div>
+                <div class="benchmark-meta"><span>You: 2.4 pol/HH</span><span>Peer median: 1.8</span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-head"><span class="benchmark-label">Retention (12mo)</span><span class="benchmark-percentile middle">Top 42%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 58%;"></div><div class="benchmark-marker" style="left: 58%;"></div></div>
+                <div class="benchmark-meta"><span>You: 91.4%</span><span>Peer median: 92.1%</span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-head"><span class="benchmark-label">Lead response speed</span><span class="benchmark-percentile">Top 8%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 92%;"></div><div class="benchmark-marker" style="left: 92%;"></div></div>
+                <div class="benchmark-meta"><span>You: 14 min</span><span>Peer median: 47 min</span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-head"><span class="benchmark-label">Life attach rate</span><span class="benchmark-percentile below">Bottom 38%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill below" style="width: 38%;"></div><div class="benchmark-marker" style="left: 38%;"></div></div>
+                <div class="benchmark-meta"><span>You: 7.1%</span><span>Peer median: 11.4%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Coaching insights</span></div>
+              <span class="d360-pill">Agentforce</span>
+            </div>
+            <div>
+              <div class="coaching-card">
+                <div class="coaching-head">
+                  <div class="coaching-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg></div>
+                  <div class="coaching-title">You convert 2.4× faster after telematics quotes</div>
+                </div>
+                <div class="coaching-detail">When you mention the UBI program, your quote-to-bind jumps from 31% to 74%. Suggest including it in the Patel quote — they fit the profile.</div>
+                <span class="coaching-source">Pattern detected · last 90 days</span>
+              </div>
+              <div class="coaching-card">
+                <div class="coaching-head">
+                  <div class="coaching-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                  <div class="coaching-title">Mornings are your strongest binding window</div>
+                </div>
+                <div class="coaching-detail">71% of your monthly binds happen 8–11 AM. Block prospecting calls then; defer admin to afternoons.</div>
+                <span class="coaching-source">Behavioral pattern · 12-month</span>
+              </div>
+              <div class="coaching-card">
+                <div class="coaching-head">
+                  <div class="coaching-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+                  <div class="coaching-title">Life attach is your biggest growth lever</div>
+                </div>
+                <div class="coaching-detail">38 households in your book have new children or marriages this year — none have been quoted life. Templated journey ready in Marketing Studio.</div>
+                <span class="coaching-source">Predicted opportunity</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Product strengths</span>
+              <span class="d360-pill">D360 inferred</span>
+            </div>
+            <div class="skill-list">
+              <div class="skill-row"><div><div class="skill-name">Personal auto</div><div class="skill-bar"><div class="skill-fill green" style="width: 92%;"></div></div></div><span class="skill-score">92</span></div>
+              <div class="skill-row"><div><div class="skill-name">Homeowners</div><div class="skill-bar"><div class="skill-fill green" style="width: 86%;"></div></div></div><span class="skill-score">86</span></div>
+              <div class="skill-row"><div><div class="skill-name">Small commercial (BOP)</div><div class="skill-bar"><div class="skill-fill" style="width: 71%;"></div></div></div><span class="skill-score">71</span></div>
+              <div class="skill-row"><div><div class="skill-name">Personal umbrella</div><div class="skill-bar"><div class="skill-fill" style="width: 68%;"></div></div></div><span class="skill-score">68</span></div>
+              <div class="skill-row"><div><div class="skill-name">Term life</div><div class="skill-bar"><div class="skill-fill amber" style="width: 42%;"></div></div></div><span class="skill-score">42</span></div>
+              <div class="skill-row"><div><div class="skill-name">Commercial package</div><div class="skill-bar"><div class="skill-fill amber" style="width: 38%;"></div></div></div><span class="skill-score">38</span></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Carrier signals for you</span></div>
+              <span class="d360-pill">Real-time</span>
+            </div>
+            <div>
+              <div class="insight-item">
+                <div class="insight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
+                <div>
+                  <div class="insight-title">TX auto rate increase favorable to your book</div>
+                  <div class="insight-detail">Your average customer profile is 0.9× the rate impact — competitive advantage on May renewals.</div>
+                  <div class="insight-meta">Rate intelligence · refreshed today</div>
+                </div>
+              </div>
+              <div class="insight-item">
+                <div class="insight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                <div>
+                  <div class="insight-title">New cyber product live in TX, CA, FL</div>
+                  <div class="insight-detail">14 commercial accounts in your book fit the new appetite — pre-qualified list available.</div>
+                  <div class="insight-meta">Product launch · effective May 1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

@@ -1,0 +1,295 @@
+/* ============================================================
+   Sales pipeline — page-specific styles
+   ============================================================ */
+
+/* Board + sidebar layout */
+.pipeline-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Kanban board */
+.pipeline-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  min-width: 0;
+}
+
+.pipeline-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pipeline-col-header {
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: var(--limestone);
+  border: 1px solid var(--border);
+}
+
+.pipeline-col-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.pipeline-col-name {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--granite);
+}
+
+.pipeline-col-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.pipeline-col-total {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.pipeline-col.won .pipeline-col-header {
+  background: var(--green-bg);
+  border-color: rgba(59, 109, 17, 0.15);
+}
+
+.pipeline-col.won .pipeline-col-name { color: var(--green); }
+
+/* Deal cards */
+.pipeline-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pipeline-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 2px 8px rgba(44, 44, 42, 0.06);
+}
+
+.pipeline-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pipeline-card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--granite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pipeline-card-age {
+  font-size: 10px;
+  color: var(--text-faint);
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pipeline-card-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.pipeline-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pipeline-card-line {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  background: var(--limestone);
+  color: var(--granite-soft);
+}
+
+.pipeline-card-line.auto { background: #E6F1FB; color: var(--keystone-blue); }
+.pipeline-card-line.home { background: #EAF3DE; color: var(--green); }
+.pipeline-card-line.commercial { background: var(--limestone); color: var(--granite); }
+.pipeline-card-line.life { background: #FAEEDA; color: var(--bronze); }
+.pipeline-card-line.umbrella { background: #EEEDFE; color: #534AB7; }
+.pipeline-card-line.bundle { background: #E6F1FB; color: var(--keystone-blue); }
+
+.pipeline-card-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pipeline-card-premium {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+/* D360 deal score */
+.deal-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.deal-score::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.deal-score.high { background: var(--green-bg); color: var(--green); }
+.deal-score.high::before { background: var(--green); }
+
+.deal-score.med { background: var(--amber-bg); color: var(--amber); }
+.deal-score.med::before { background: var(--amber); }
+
+.deal-score.low { background: var(--red-bg); color: var(--red); }
+.deal-score.low::before { background: var(--red); }
+
+/* At-risk treatment */
+.pipeline-card.at-risk {
+  border-left: 3px solid var(--red);
+}
+
+.at-risk-flag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--red);
+  font-weight: 500;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.at-risk-flag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* Won treatment */
+.pipeline-card.won {
+  border-left: 3px solid var(--green);
+  background: rgba(234, 243, 222, 0.3);
+}
+
+.won-flag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--green);
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* Pipeline intelligence sidebar */
+.pipeline-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.intel-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.intel-item:last-child { border-bottom: none; }
+
+.intel-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  background: var(--d360-bg);
+  color: var(--d360-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.intel-icon svg { width: 13px; height: 13px; stroke-width: 1.8; }
+.intel-icon.warn { background: var(--red-bg); color: var(--red); }
+.intel-icon.success { background: var(--green-bg); color: var(--green); }
+
+.intel-text { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+.intel-text strong { font-weight: 500; color: var(--granite); }
+.intel-meta {
+  font-size: 10px;
+  color: var(--d360-deep);
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Pipeline summary row at bottom of board */
+.pipeline-summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pipeline-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pipeline-summary-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.pipeline-summary-dot.green { background: var(--green); }
+.pipeline-summary-dot.amber { background: var(--amber); }
+.pipeline-summary-dot.red { background: var(--red); }

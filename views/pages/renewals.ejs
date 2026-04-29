@@ -1,0 +1,558 @@
+<%- include('../partials/head', { pageCSS: 'renewals' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Service' },
+        { label: 'Renewals' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Service · April 2026</div>
+          <h1 class="greeting-title">Renewal <em>management</em></h1>
+          <div class="greeting-sub">42 policies renewing in the next 60 days — $187K in annual premium at risk.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Renewing next 30d</div>
+          <div class="kpi-value">23</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">$94.2K annual premium</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Retention rate (12mo)</div>
+          <div class="kpi-value">88.2<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta down">↓ 2.8pt</span><span class="kpi-delta-label">peer avg: 91.0%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">Predicted</span></div>
+          <div class="kpi-label">At-risk renewals</div>
+          <div class="kpi-value">5</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">flagged by retention model</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg premium change</div>
+          <div class="kpi-value">+6.8<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta down">↑ 2.1pt</span><span class="kpi-delta-label">vs last quarter</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Retention scoring combines payment behavior, shopping signals, premium sensitivity, and tenure into a single risk score.</div>
+          <div class="d360-strip-sub">Each renewal is scored against 8 churn indicators — policies with scores below 70 renew at half the rate of those above 85.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">8</div><div class="d360-strip-stat-label">Signals</div></div>
+          <div><div class="d360-strip-stat-num">42</div><div class="d360-strip-stat-label">Scored</div></div>
+          <div><div class="d360-strip-stat-num">live</div><div class="d360-strip-stat-label">Updated</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All renewals <span class="tab-count">42</span></div>
+        <div class="tab">This week <span class="tab-count">3</span></div>
+        <div class="tab">At risk <span class="tab-count">5</span></div>
+        <div class="tab">Auto-renew <span class="tab-count">28</span></div>
+        <div class="tab">Requires review <span class="tab-count">9</span></div>
+      </div>
+
+      <div class="renewals-layout">
+
+        <div class="renewals-table">
+
+          <div class="renewals-table-header">
+            <span>Customer</span>
+            <span>Policy</span>
+            <span>Current</span>
+            <span>Renewal</span>
+            <span>Change</span>
+            <span>Date</span>
+            <span>Retention</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- THIS WEEK -->
+          <div class="renewals-group">
+            <div class="renewals-group-label">This week <span class="renewals-group-count">3 policies · $52,680/yr</span></div>
+
+            <a class="renewal-row at-risk" href="/customers/ramirez-household">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Ramirez household</div>
+                <div class="renewal-row-detail">Carlos & Elena · since 2019</div>
+              </div>
+              <div>
+                <span class="rnw-line auto">Auto</span>
+                <span class="rnw-line home">Home</span>
+              </div>
+              <div class="renewal-row-premium">$3,240/yr</div>
+              <div class="renewal-row-premium">$3,840/yr</div>
+              <div class="renewal-row-change up">+18.4%</div>
+              <div class="renewal-row-date urgent">May 2</div>
+              <div><span class="retention-score low">62</span></div>
+              <div><span class="renewal-status-badge at-risk">At risk</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Crestline Bakery LLC</div>
+                <div class="renewal-row-detail">Commercial package · BOP + WC</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$46,100/yr</div>
+              <div class="renewal-row-premium">$48,200/yr</div>
+              <div class="renewal-row-change up">+4.6%</div>
+              <div class="renewal-row-date soon">May 4</div>
+              <div><span class="retention-score med">74</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Yamamoto, K.</div>
+                <div class="renewal-row-detail">Personal umbrella · $2M limit</div>
+              </div>
+              <div><span class="rnw-line umbrella">Umbrella</span></div>
+              <div class="renewal-row-premium">$620/yr</div>
+              <div class="renewal-row-premium">$640/yr</div>
+              <div class="renewal-row-change up">+3.2%</div>
+              <div class="renewal-row-date soon">May 6</div>
+              <div><span class="retention-score high">91</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- NEXT 2 WEEKS -->
+          <div class="renewals-group">
+            <div class="renewals-group-label">Next 2 weeks <span class="renewals-group-count">6 policies · $18,940/yr</span></div>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Henderson, T.</div>
+                <div class="renewal-row-detail">Good driver · teen add pending</div>
+              </div>
+              <div><span class="rnw-line auto">Auto</span></div>
+              <div class="renewal-row-premium">$1,580/yr</div>
+              <div class="renewal-row-premium">$1,640/yr</div>
+              <div class="renewal-row-change up">+3.8%</div>
+              <div class="renewal-row-date">May 9</div>
+              <div><span class="retention-score high">87</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Patel household</div>
+                <div class="renewal-row-detail">Recently re-quoted · bundled</div>
+              </div>
+              <div>
+                <span class="rnw-line auto">Auto</span>
+                <span class="rnw-line home">Home</span>
+              </div>
+              <div class="renewal-row-premium">$3,880/yr</div>
+              <div class="renewal-row-premium">$4,032/yr</div>
+              <div class="renewal-row-change up">+3.9%</div>
+              <div class="renewal-row-date">May 11</div>
+              <div><span class="retention-score high">89</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Greenfield Dental</div>
+                <div class="renewal-row-detail">BOP + Prof liability · cyber add</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$12,400/yr</div>
+              <div class="renewal-row-premium">$13,100/yr</div>
+              <div class="renewal-row-change up">+5.6%</div>
+              <div class="renewal-row-date">May 12</div>
+              <div><span class="retention-score med">71</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Olsen, R.</div>
+                <div class="renewal-row-detail">Garage endorsement processed</div>
+              </div>
+              <div><span class="rnw-line home">Home</span></div>
+              <div class="renewal-row-premium">$2,340/yr</div>
+              <div class="renewal-row-premium">$2,480/yr</div>
+              <div class="renewal-row-change up">+6.0%</div>
+              <div class="renewal-row-date">May 13</div>
+              <div><span class="retention-score high">83</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Donovan, M.</div>
+                <div class="renewal-row-detail">Boat purchase · umbrella review</div>
+              </div>
+              <div><span class="rnw-line umbrella">Umbrella</span></div>
+              <div class="renewal-row-premium">$360/yr</div>
+              <div class="renewal-row-premium">$380/yr</div>
+              <div class="renewal-row-change up">+5.6%</div>
+              <div class="renewal-row-date">May 15</div>
+              <div><span class="retention-score high">88</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row at-risk" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Kim, S.</div>
+                <div class="renewal-row-detail">2 claims in 24mo · Progressive signal</div>
+              </div>
+              <div><span class="rnw-line auto">Auto</span></div>
+              <div class="renewal-row-premium">$1,420/yr</div>
+              <div class="renewal-row-premium">$1,540/yr</div>
+              <div class="renewal-row-change up">+8.5%</div>
+              <div class="renewal-row-date">May 15</div>
+              <div><span class="retention-score low">58</span></div>
+              <div><span class="renewal-status-badge at-risk">At risk</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+          </div>
+
+          <!-- 30 DAYS -->
+          <div class="renewals-group">
+            <div class="renewals-group-label">30 days <span class="renewals-group-count">8 policies · $22,580/yr</span></div>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Walsh family</div>
+                <div class="renewal-row-detail">First-time homebuyer · new policy</div>
+              </div>
+              <div><span class="rnw-line home">Home</span></div>
+              <div class="renewal-row-premium">$2,100/yr</div>
+              <div class="renewal-row-premium">$2,220/yr</div>
+              <div class="renewal-row-change up">+5.7%</div>
+              <div class="renewal-row-date">May 19</div>
+              <div><span class="retention-score high">84</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Reeves household</div>
+                <div class="renewal-row-detail">Recently bound · bundle discount</div>
+              </div>
+              <div>
+                <span class="rnw-line auto">Auto</span>
+                <span class="rnw-line home">Home</span>
+              </div>
+              <div class="renewal-row-premium">$3,280/yr</div>
+              <div class="renewal-row-premium">$3,480/yr</div>
+              <div class="renewal-row-change up">+6.1%</div>
+              <div class="renewal-row-date">May 22</div>
+              <div><span class="retention-score high">90</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Nguyen Construction</div>
+                <div class="renewal-row-detail">Workers comp audit due · 22 emp</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$26,800/yr</div>
+              <div class="renewal-row-premium">$28,400/yr</div>
+              <div class="renewal-row-change up">+6.0%</div>
+              <div class="renewal-row-date">May 24</div>
+              <div><span class="retention-score med">76</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Torres, A.</div>
+                <div class="renewal-row-detail">Clean record · rate hold</div>
+              </div>
+              <div><span class="rnw-line auto">Auto</span></div>
+              <div class="renewal-row-premium">$1,180/yr</div>
+              <div class="renewal-row-premium">$1,180/yr</div>
+              <div class="renewal-row-change flat">0.0%</div>
+              <div class="renewal-row-date">May 25</div>
+              <div><span class="retention-score high">93</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row at-risk" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Blackwood Properties</div>
+                <div class="renewal-row-detail">3-property portfolio · Nationwide signal</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$8,200/yr</div>
+              <div class="renewal-row-premium">$8,900/yr</div>
+              <div class="renewal-row-change up">+8.5%</div>
+              <div class="renewal-row-date">May 26</div>
+              <div><span class="retention-score low">64</span></div>
+              <div><span class="renewal-status-badge at-risk">At risk</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Okonkwo, A.</div>
+                <div class="renewal-row-detail">Level term · no change</div>
+              </div>
+              <div><span class="rnw-line life">Life</span></div>
+              <div class="renewal-row-premium">$840/yr</div>
+              <div class="renewal-row-premium">$840/yr</div>
+              <div class="renewal-row-change flat">0.0%</div>
+              <div class="renewal-row-date">May 27</div>
+              <div><span class="retention-score high">95</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Park, J.</div>
+                <div class="renewal-row-detail">Closing May 8 · 2,400 sq ft</div>
+              </div>
+              <div><span class="rnw-line home">Home</span></div>
+              <div class="renewal-row-premium">$1,880/yr</div>
+              <div class="renewal-row-premium">$1,960/yr</div>
+              <div class="renewal-row-change up">+4.3%</div>
+              <div class="renewal-row-date">May 28</div>
+              <div><span class="retention-score high">86</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Mercer & Sons</div>
+                <div class="renewal-row-detail">Expanding to second location</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$4,400/yr</div>
+              <div class="renewal-row-premium">$4,600/yr</div>
+              <div class="renewal-row-change up">+4.5%</div>
+              <div class="renewal-row-date">May 29</div>
+              <div><span class="retention-score med">78</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+          </div>
+
+          <!-- 60 DAYS -->
+          <div class="renewals-group">
+            <div class="renewals-group-label">60 days <span class="renewals-group-count">5 policies · $93,400/yr</span></div>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Westbrook, D.</div>
+                <div class="renewal-row-detail">Active collision claim pending</div>
+              </div>
+              <div><span class="rnw-line auto">Auto</span></div>
+              <div class="renewal-row-premium">$2,040/yr</div>
+              <div class="renewal-row-premium">$2,180/yr</div>
+              <div class="renewal-row-change up">+6.9%</div>
+              <div class="renewal-row-date">Jun 8</div>
+              <div><span class="retention-score med">79</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Lin household</div>
+                <div class="renewal-row-detail">Roof replacement per inspection</div>
+              </div>
+              <div>
+                <span class="rnw-line auto">Auto</span>
+                <span class="rnw-line home">Home</span>
+              </div>
+              <div class="renewal-row-premium">$4,200/yr</div>
+              <div class="renewal-row-premium">$4,480/yr</div>
+              <div class="renewal-row-change up">+6.7%</div>
+              <div class="renewal-row-date">Jun 14</div>
+              <div><span class="retention-score med">72</span></div>
+              <div><span class="renewal-status-badge review">Review</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row at-risk" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Martinez Auto Group</div>
+                <div class="renewal-row-detail">Largest commercial · fleet negotiation</div>
+              </div>
+              <div><span class="rnw-line commercial">Commercial</span></div>
+              <div class="renewal-row-premium">$38,900/yr</div>
+              <div class="renewal-row-premium">$42,600/yr</div>
+              <div class="renewal-row-change up">+9.5%</div>
+              <div class="renewal-row-date">Jun 18</div>
+              <div><span class="retention-score low">66</span></div>
+              <div><span class="renewal-status-badge at-risk">At risk</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row at-risk" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Chen, L.</div>
+                <div class="renewal-row-detail">Investment property · Allstate quote</div>
+              </div>
+              <div><span class="rnw-line home">Home</span></div>
+              <div class="renewal-row-premium">$3,000/yr</div>
+              <div class="renewal-row-premium">$3,200/yr</div>
+              <div class="renewal-row-change up">+6.7%</div>
+              <div class="renewal-row-date">Jun 22</div>
+              <div><span class="retention-score low">61</span></div>
+              <div><span class="renewal-status-badge at-risk">At risk</span></div>
+              <div class="renewal-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="renewal-row" href="/customers">
+              <div class="renewal-row-name">
+                <div class="renewal-row-customer">Dawson, K.</div>
+                <div class="renewal-row-detail">Auto+home+umbrella · long-term</div>
+              </div>
+              <div><span class="rnw-line bundle">Bundle</span></div>
+              <div class="renewal-row-premium">$2,800/yr</div>
+              <div class="renewal-row-premium">$2,940/yr</div>
+              <div class="renewal-row-change up">+5.0%</div>
+              <div class="renewal-row-date">Jun 28</div>
+              <div><span class="retention-score high">85</span></div>
+              <div><span class="renewal-status-badge auto-renew">Auto-renew</span></div>
+              <div class="renewal-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- RETENTION INTELLIGENCE SIDEBAR -->
+        <div class="renewals-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Retention intelligence</span>
+              </div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Ramirez household</strong> has a competing State Farm quote $660 below renewal premium. 7-year client with 5 policies — a bundle re-rate with loyalty discount would close the gap to $180.</div>
+                <div class="intel-meta">Shopping signal · detected April 27</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Kim, S.</strong> retention score dropped 14 points after second claim. Progressive quote signal detected — consider proactive outreach before May 15 renewal.</div>
+                <div class="intel-meta">Behavioral churn model · updated today</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Blackwood Properties</strong> is shopping 3-property portfolio with Nationwide. Premium sensitivity modeling suggests a 4.2% rate hold on the package would retain — still profitable at 22% combined ratio margin.</div>
+                <div class="intel-meta">Premium sensitivity model · 3 sources</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>12 auto-renew policies</strong> have retention scores above 85 and require no intervention. Together they represent $28.4K in annual premium on stable trajectories.</div>
+                <div class="intel-meta">Retention model · book-level summary</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Retention by line</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Personal auto</span><span class="benchmark-percentile">89.4%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 89%;"></div></div>
+                <div class="benchmark-meta"><span>You: 89.4%</span><span>Peers: 91.2%</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Homeowners</span><span class="benchmark-percentile">91.8%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 92%;"></div></div>
+                <div class="benchmark-meta"><span>You: 91.8%</span><span>Peers: 90.6%</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Commercial</span><span class="benchmark-percentile middle">84.1%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 84%;"></div></div>
+                <div class="benchmark-meta"><span>You: 84.1%</span><span>Peers: 88.7%</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Life & umbrella</span><span class="benchmark-percentile">96.2%</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 96%;"></div></div>
+                <div class="benchmark-meta"><span>You: 96.2%</span><span>Peers: 94.8%</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="pipeline-summary">
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot green"></span> 12 policies score 85+</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot amber"></span> 8 policies score 65–84</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot red"></span> 5 policies at risk</div>
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

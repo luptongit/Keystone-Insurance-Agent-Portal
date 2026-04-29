@@ -1,0 +1,45 @@
+<%
+// Topbar variants:
+//   - Default: search input + notifications + new quote
+//   - With breadcrumb: pass `breadcrumb` array of { label, href }
+// Pages can also pass `topbarActions` HTML to override default right side.
+const _breadcrumb = locals.breadcrumb || null;
+const _topbarActions = locals.topbarActions || null;
+%>
+<div class="topbar">
+  <% if (_breadcrumb) { %>
+    <div class="breadcrumb">
+      <% _breadcrumb.forEach((crumb, i) => { %>
+        <% if (i > 0) { %><span class="crumb-sep">›</span><% } %>
+        <% if (crumb.href && i < _breadcrumb.length - 1) { %>
+          <a href="<%= crumb.href %>"><%= crumb.label %></a>
+        <% } else { %>
+          <span class="crumb-current"><%= crumb.label %></span>
+        <% } %>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="search">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="search-input" placeholder="Search customers, policies, claims, quotes…" />
+      <span class="search-kbd">⌘K</span>
+    </div>
+  <% } %>
+
+  <div class="topbar-actions">
+    <% if (_topbarActions) { %>
+      <%- _topbarActions %>
+    <% } else { %>
+      <button class="icon-btn" title="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg>
+      </button>
+      <button class="icon-btn" title="Messages">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </button>
+      <a class="btn btn-primary" href="/quote/new">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+        New quote
+      </a>
+    <% } %>
+  </div>
+</div>

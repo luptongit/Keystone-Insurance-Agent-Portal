@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keystone — Platform map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --keystone-blue: #0C447C;
+    --arch-blue: #185FA5;
+    --granite: #2C2C2A;
+    --limestone: #F1EFE8;
+    --paper: #FAFAF6;
+    --bronze: #BA7517;
+    --text-muted: #6B6A65;
+    --border: rgba(44, 44, 42, 0.10);
+    --d360: #5B4FCF;
+    --d360-deep: #3D339B;
+    --d360-bg: #F0EEFB;
+    --d360-border: #C9C3F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--granite);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+  }
+  a { color: inherit; text-decoration: none; }
+  .topbar {
+    padding: 16px 32px; background: #fff; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand svg { width: 22px; height: 22px; }
+  .brand-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 18px; font-weight: 400; letter-spacing: -0.2px; color: var(--granite); }
+  .topbar-spacer { flex: 1; }
+  .topbar-link { color: var(--text-muted); font-size: 13px; font-weight: 500; }
+  .topbar-link:hover { color: var(--granite); }
+  .btn {
+    padding: 8px 14px; border-radius: 4px; font-family: inherit; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--keystone-blue); background: var(--keystone-blue); color: var(--limestone);
+  }
+  .btn:hover { background: #0a3a6a; }
+
+  .hero {
+    padding: 80px 48px 64px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--paper) 0%, #fff 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bronze); font-weight: 500; margin-bottom: 18px;
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 56px; font-weight: 400; line-height: 1.1;
+    letter-spacing: -1.2px; max-width: 780px; margin: 0 auto 18px;
+  }
+  .hero-title em { font-style: italic; color: var(--keystone-blue); }
+  .hero-sub {
+    font-size: 17px; color: var(--text-muted); line-height: 1.6;
+    max-width: 620px; margin: 0 auto 32px;
+  }
+  .hero-cta { display: flex; gap: 12px; justify-content: center; }
+
+  .grid {
+    max-width: 1280px; margin: 0 auto; padding: 64px 48px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .category {
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 28px; transition: border-color 0.15s, transform 0.15s;
+    display: block; cursor: pointer;
+  }
+  .category:hover { border-color: var(--granite); transform: translateY(-2px); }
+  .category-icon {
+    width: 36px; height: 36px; border-radius: 7px;
+    background: var(--limestone); color: var(--keystone-blue);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .category-icon svg { width: 18px; height: 18px; stroke-width: 1.7; }
+  .category-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 22px; font-weight: 400; letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+  .category-desc { color: var(--text-muted); font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+  .category-list { list-style: none; padding: 0; margin: 0; }
+  .category-list li {
+    padding: 6px 0;
+    font-size: 13px; color: var(--granite);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .category-list li:first-child { border-top: none; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--bronze); flex-shrink: 0; }
+
+  .d360-section {
+    background: linear-gradient(135deg, var(--d360-deep) 0%, var(--d360) 100%);
+    color: #fff;
+    padding: 64px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .d360-section::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(255, 184, 77, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .d360-section-content { max-width: 720px; margin: 0 auto; position: relative; }
+  .d360-section-eyebrow {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #FFB84D; font-weight: 500; margin-bottom: 16px;
+  }
+  .d360-section-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 40px; font-weight: 400; letter-spacing: -0.8px;
+    line-height: 1.15; margin-bottom: 18px;
+  }
+  .d360-section-sub {
+    font-size: 16px; line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78); margin-bottom: 32px;
+  }
+  .d360-stats { display: flex; gap: 64px; justify-content: center; }
+  .d360-stat-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 38px; font-weight: 400; }
+  .d360-stat-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); margin-top: 6px; font-weight: 500; }
+
+  footer {
+    padding: 48px 48px 64px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  footer p { margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,100 30,20 90,20 120,100" fill="#185FA5"/>
+      <polygon points="30,20 60,20 60,100 0,100" fill="#0C447C"/>
+    </svg>
+    <span class="brand-name">Keystone</span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <a class="topbar-link" href="#categories">Capabilities</a>
+  <a class="topbar-link" href="#data360">Data 360</a>
+  <a class="topbar-link" href="/login">Sign in</a>
+  <a class="btn" href="/">Open portal</a>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">Enterprise agent platform</div>
+  <h1 class="hero-title">The center of your <em>distribution.</em></h1>
+  <p class="hero-sub">One platform for quoting, servicing, claims, sales, and growth — built for the way modern agents actually work, and powered by a unified Data 360 foundation.</p>
+  <div class="hero-cta">
+    <a class="btn" href="/">Explore the demo →</a>
+  </div>
+</section>
+
+<section class="grid" id="categories">
+
+  <a class="category" href="/">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+    </div>
+    <h3 class="category-title">Home</h3>
+    <p class="category-desc">The producer's daily command center. Action queue, KPIs, renewals, and the morning brief.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Personalized dashboard</li>
+      <li><span class="dot"></span>Data 360 morning brief</li>
+      <li><span class="dot"></span>Prioritized action queue</li>
+      <li><span class="dot"></span>Book of business at a glance</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/customers">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+    </div>
+    <h3 class="category-title">Customer 360</h3>
+    <p class="category-desc">Unified household view. Every policy, claim, payment, and signal in one place.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Household & policy hierarchy</li>
+      <li><span class="dot"></span>Activity timeline across systems</li>
+      <li><span class="dot"></span>Retention & cross-sell scoring</li>
+      <li><span class="dot"></span>Data 360 provenance panel</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/quote/new">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </div>
+    <h3 class="category-title">Quote & bind</h3>
+    <p class="category-desc">Multi-line quoting with intelligent pre-fill, tier comparison, and one-click bridge.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Pre-fill from MVR, CLUE, VIN, public records</li>
+      <li><span class="dot"></span>Good / Better / Best tier compare</li>
+      <li><span class="dot"></span>Bridge across lines (auto → home → life)</li>
+      <li><span class="dot"></span>Auto-applied discount engine</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/policies">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+    </div>
+    <h3 class="category-title">Service & policy</h3>
+    <p class="category-desc">Endorsements, billing, renewals — all the day-to-day servicing flows in one console.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Self-service endorsements</li>
+      <li><span class="dot"></span>Renewal management</li>
+      <li><span class="dot"></span>Billing & autopay</li>
+      <li><span class="dot"></span>Document & ID card generation</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/claims">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+    </div>
+    <h3 class="category-title">Claims (FNOL)</h3>
+    <p class="category-desc">First notice of loss with photo upload, automatic triage, and adjuster routing.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Mobile-first FNOL flow</li>
+      <li><span class="dot"></span>Photo & document capture</li>
+      <li><span class="dot"></span>Severity & fraud triage</li>
+      <li><span class="dot"></span>Adjuster handoff & status</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/agent-360">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+    </div>
+    <h3 class="category-title">Agent 360 & growth</h3>
+    <p class="category-desc">Performance, peer benchmarks, coaching, and AI-suggested next best actions.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Production trends & benchmarks</li>
+      <li><span class="dot"></span>Agentforce coaching insights</li>
+      <li><span class="dot"></span>Predicted retention & cross-sell</li>
+      <li><span class="dot"></span>Compensation transparency</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/marketing-studio">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <h3 class="category-title">Marketing studio</h3>
+    <p class="category-desc">Compliant, agent-branded campaigns powered by household-level segments.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Pre-approved templates</li>
+      <li><span class="dot"></span>Life event triggers</li>
+      <li><span class="dot"></span>Multi-channel (email, SMS, social)</li>
+      <li><span class="dot"></span>Compliance review built in</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/underwriting-hub">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+    </div>
+    <h3 class="category-title">Underwriting hub</h3>
+    <p class="category-desc">UW referrals, appetite guidance, and direct messaging to commercial underwriters.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Appetite & eligibility guidance</li>
+      <li><span class="dot"></span>UW referral & messaging</li>
+      <li><span class="dot"></span>Risk inspection scheduling</li>
+      <li><span class="dot"></span>Document collaboration</li>
+    </ul>
+  </a>
+
+  <a class="category" href="/training">
+    <div class="category-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    </div>
+    <h3 class="category-title">Training & enablement</h3>
+    <p class="category-desc">Carrier knowledge base, licensing tracking, and product training all in one place.</p>
+    <ul class="category-list">
+      <li><span class="dot"></span>Searchable carrier knowledge</li>
+      <li><span class="dot"></span>License & CE tracking</li>
+      <li><span class="dot"></span>Product launch training</li>
+      <li><span class="dot"></span>Office hours & expert access</li>
+    </ul>
+  </a>
+
+</section>
+
+<section class="d360-section" id="data360">
+  <div class="d360-section-content">
+    <div class="d360-section-eyebrow">The foundation</div>
+    <h2 class="d360-section-title">Every screen, powered by Data 360.</h2>
+    <p class="d360-section-sub">Keystone runs on Salesforce Data 360 — your unified customer, household, and producer profiles, harmonized across policy admin, billing, claims, marketing, and external data providers in real time. Zero copy, fully governed.</p>
+    <div class="d360-stats">
+      <div><div class="d360-stat-num">14</div><div class="d360-stat-label">Connected sources</div></div>
+      <div><div class="d360-stat-num">247</div><div class="d360-stat-label">Avg attributes</div></div>
+      <div><div class="d360-stat-num">&lt;2s</div><div class="d360-stat-label">Profile refresh</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Keystone Enterprise · Demo build for carrier evaluation</p>
+  <p>SOC 2 Type II · Powered by Salesforce Data 360 + Agentforce</p>
+</footer>
+
+</body>
+</html>
