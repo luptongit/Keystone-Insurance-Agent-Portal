@@ -1,3 +1,13 @@
+<%
+  const { customer: c, policies: pols, members, events, factors, opportunities } = profile;
+  const iconSvg = {
+    auto: '<path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1M15 18v-1M15 18a1 1 0 001 1h2a1 1 0 001-1v-5"/>',
+    home: '<path d="M3 12l9-9 9 9M5 10v10h14V10"/>',
+    umbrella: '<path d="M12 2v2M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10H2zM12 12v8a2 2 0 11-4 0"/>',
+    life: '<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>',
+    commercial: '<path d="M3 21h18M3 7l9-4 9 4M5 7v14M19 7v14M9 21v-4h6v4M9 11h0M15 11h0"/>',
+  };
+%>
 <%- include('../partials/head') %>
 <div class="app">
   <%- include('../partials/sidebar') %>
@@ -6,7 +16,7 @@
     <%- include('../partials/topbar', {
       breadcrumb: [
         { label: 'Customers', href: '/customers' },
-        { label: 'Ramirez household' }
+        { label: c.name }
       ],
       topbarActions: `
         <button class="icon-btn" title="More">
@@ -31,32 +41,38 @@
 
       <!-- ENTITY HEADER -->
       <div class="entity-header">
-        <div class="entity-avatar customer">RM</div>
+        <div class="entity-avatar customer"><%= c.initials %></div>
         <div>
           <div class="entity-name-row">
-            <h1 class="entity-name">Ramirez household</h1>
-            <span class="badge gold">Gold tier</span>
-            <span class="badge tenure">7-year client</span>
+            <h1 class="entity-name"><%= c.name %></h1>
+            <% if (c.tier) { %><span class="badge gold"><%= c.tier %> tier</span><% } %>
+            <span class="badge tenure"><%= c.tenure_display %>-year client</span>
           </div>
           <div class="entity-meta">
+            <% if (c.location) { %>
             <span class="entity-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Fort Worth, TX 76109
+              <%= c.location %>
             </span>
+            <% } %>
+            <% if (c.member_count) { %>
             <span class="entity-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
-              4 household members
+              <%= c.member_count %> household members
             </span>
+            <% } %>
+            <% if (c.client_since) { %>
             <span class="entity-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              Client since March 2019
+              Client since <%= c.client_since %>
             </span>
+            <% } %>
           </div>
         </div>
         <div class="header-stats">
-          <div><div class="header-stat-label">Total premium</div><div class="header-stat-value">$5,420</div><div class="header-stat-sub">annualized</div></div>
-          <div><div class="header-stat-label">Active policies</div><div class="header-stat-value">5</div><div class="header-stat-sub">across 4 lines</div></div>
-          <div><div class="header-stat-label">Lifetime value</div><div class="header-stat-value">$38.2K</div><div class="header-stat-sub">7-year cumulative</div></div>
+          <div><div class="header-stat-label">Total premium</div><div class="header-stat-value">$<%= pols.reduce((s, p) => s + p.premium, 0).toLocaleString() %></div><div class="header-stat-sub">annualized</div></div>
+          <div><div class="header-stat-label">Active policies</div><div class="header-stat-value"><%= pols.length %></div><div class="header-stat-sub">across <%= [...new Set(pols.map(p => p.line_type))].length %> lines</div></div>
+          <% if (c.lifetime_value) { %><div><div class="header-stat-label">Lifetime value</div><div class="header-stat-value"><%= c.lifetime_value %></div><div class="header-stat-sub"><%= c.tenure_display %> cumulative</div></div><% } %>
         </div>
       </div>
 
@@ -78,7 +94,7 @@
       <!-- TABS -->
       <div class="tabs">
         <div class="tab active">Overview</div>
-        <div class="tab">Policies <span class="tab-count">5</span></div>
+        <div class="tab">Policies <span class="tab-count"><%= pols.length %></span></div>
         <div class="tab">Claims <span class="tab-count">2</span></div>
         <div class="tab">Billing</div>
         <div class="tab">Documents <span class="tab-count">28</span></div>
@@ -95,138 +111,57 @@
             <div class="panel-header">
               <div>
                 <span class="panel-title">Active policies</span>
-                <span class="panel-title-meta">5 policies · auto, home, life, umbrella</span>
+                <span class="panel-title-meta"><%= pols.length %> policies · <%= [...new Set(pols.map(p => p.line_type))].join(', ') %></span>
               </div>
               <a class="panel-link" href="/policies">View all →</a>
             </div>
 
-            <div class="policy-row">
-              <div class="policy-icon auto">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1M15 18v-1M15 18a1 1 0 001 1h2a1 1 0 001-1v-5"/></svg>
+            <% pols.forEach(pol => { %>
+              <div class="policy-row">
+                <div class="policy-icon <%= pol.line_type %>">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><%- iconSvg[pol.line_type] || iconSvg.auto %></svg>
+                </div>
+                <div>
+                  <div class="policy-title"><%= pol.title %></div>
+                  <div class="policy-sub"><%= pol.subtitle %></div>
+                </div>
+                <div class="policy-num"><%= pol.policy_number %></div>
+                <div>
+                  <div class="policy-premium">$<%= pol.premium.toLocaleString() %>/yr</div>
+                  <div class="policy-premium-sub"><%= pol.payment_freq %></div>
+                </div>
+                <span class="status <%= pol.status %>"><%= pol.status_label %></span>
               </div>
-              <div>
-                <div class="policy-title">Personal auto — 2 vehicles</div>
-                <div class="policy-sub">2022 Honda CR-V · 2019 Toyota Camry · Carlos & Elena Ramirez</div>
-              </div>
-              <div class="policy-num">POL-AU-771422</div>
-              <div>
-                <div class="policy-premium">$1,840/yr</div>
-                <div class="policy-premium-sub">monthly autopay</div>
-              </div>
-              <span class="status renewal">Renews 5d</span>
-            </div>
-
-            <div class="policy-row">
-              <div class="policy-icon home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
-              </div>
-              <div>
-                <div class="policy-title">Homeowners — HO-3 standard</div>
-                <div class="policy-sub">3,420 sqft · built 2008 · $485K dwelling · $50K personal property</div>
-              </div>
-              <div class="policy-num">POL-HO-441208</div>
-              <div>
-                <div class="policy-premium">$2,000/yr</div>
-                <div class="policy-premium-sub">$500 deductible</div>
-              </div>
-              <span class="status renewal">Renews 5d</span>
-            </div>
-
-            <div class="policy-row">
-              <div class="policy-icon umbrella">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v2M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10H2zM12 12v8a2 2 0 11-4 0"/></svg>
-              </div>
-              <div>
-                <div class="policy-title">Personal umbrella — $2M limit</div>
-                <div class="policy-sub">Excess liability above auto and home · added July 2022</div>
-              </div>
-              <div class="policy-num">POL-UM-090714</div>
-              <div>
-                <div class="policy-premium">$340/yr</div>
-                <div class="policy-premium-sub">annual pay</div>
-              </div>
-              <span class="status active">Active</span>
-            </div>
-
-            <div class="policy-row">
-              <div class="policy-icon life">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              </div>
-              <div>
-                <div class="policy-title">Term life — Carlos Ramirez</div>
-                <div class="policy-sub">$500K · 20-year term · issued 2021 · standard non-tobacco</div>
-              </div>
-              <div class="policy-num">POL-LF-220103</div>
-              <div>
-                <div class="policy-premium">$640/yr</div>
-                <div class="policy-premium-sub">quarterly</div>
-              </div>
-              <span class="status active">Active</span>
-            </div>
-
-            <div class="policy-row">
-              <div class="policy-icon life">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              </div>
-              <div>
-                <div class="policy-title">Term life — Elena Ramirez</div>
-                <div class="policy-sub">$400K · 20-year term · issued 2021 · standard non-tobacco</div>
-              </div>
-              <div class="policy-num">POL-LF-220104</div>
-              <div>
-                <div class="policy-premium">$600/yr</div>
-                <div class="policy-premium-sub">quarterly</div>
-              </div>
-              <span class="status active">Active</span>
-            </div>
+            <% }) %>
           </div>
 
           <!-- HOUSEHOLD -->
+          <% if (members.length) { %>
           <div class="panel">
             <div class="panel-header">
               <div>
                 <span class="panel-title">Household</span>
-                <span class="panel-title-meta">4 members</span>
+                <span class="panel-title-meta"><%= members.length %> members</span>
               </div>
               <a class="panel-link" href="#">Manage →</a>
             </div>
             <div class="household-grid">
-              <div class="member">
-                <div class="member-avatar a">CR</div>
-                <div>
-                  <div class="member-name">Carlos Ramirez</div>
-                  <div class="member-relationship">Primary · age 44</div>
-                  <div class="member-detail">DL · Driver · Insured (life)</div>
+              <% members.forEach(m => { %>
+                <div class="member">
+                  <div class="member-avatar <%= m.avatar_class %>"><%= m.initials %></div>
+                  <div>
+                    <div class="member-name"><%= m.name %></div>
+                    <div class="member-relationship"><%= m.relationship %></div>
+                    <div class="member-detail"><%= m.detail %></div>
+                  </div>
                 </div>
-              </div>
-              <div class="member">
-                <div class="member-avatar b">ER</div>
-                <div>
-                  <div class="member-name">Elena Ramirez</div>
-                  <div class="member-relationship">Spouse · age 42</div>
-                  <div class="member-detail">DL · Driver · Insured (life)</div>
-                </div>
-              </div>
-              <div class="member">
-                <div class="member-avatar c">SR</div>
-                <div>
-                  <div class="member-name">Sofia Ramirez</div>
-                  <div class="member-relationship">Daughter · age 17</div>
-                  <div class="member-detail">Permit · Eligible to add</div>
-                </div>
-              </div>
-              <div class="member">
-                <div class="member-avatar d">DR</div>
-                <div>
-                  <div class="member-name">Diego Ramirez</div>
-                  <div class="member-relationship">Son · age 14</div>
-                  <div class="member-detail">Dependent</div>
-                </div>
-              </div>
+              <% }) %>
             </div>
           </div>
+          <% } %>
 
           <!-- TIMELINE -->
+          <% if (events.length) { %>
           <div class="panel">
             <div class="panel-header">
               <div>
@@ -245,67 +180,26 @@
                 <span class="filter-pill">Contact</span>
               </div>
 
-              <div class="event note">
-                <div class="event-time">2 days ago</div>
-                <div class="event-content">
-                  <div class="event-title">Internal note — competing quote received</div>
-                  <div class="event-detail">Carlos called this morning. State Farm quoted $3,180 for the auto+home bundle vs our $3,840. He sounded open to staying but wants to see if we can match. Renewal is May 2.</div>
-                  <div class="event-attribution">Maya Chen · 9:14 AM</div>
+              <% events.forEach(ev => { %>
+                <div class="event <%= ev.event_type %>">
+                  <div class="event-time"><%= ev.event_time %></div>
+                  <div class="event-content">
+                    <div class="event-title"><%= ev.title %></div>
+                    <div class="event-detail"><%= ev.detail %></div>
+                    <div class="event-attribution"><%= ev.attribution %></div>
+                  </div>
                 </div>
-              </div>
-
-              <div class="event policy">
-                <div class="event-time">2 days ago</div>
-                <div class="event-content">
-                  <div class="event-title">Renewal package generated — auto + home</div>
-                  <div class="event-detail">Renewal premiums calculated with +18.4% increase driven by territory loss trends and roof age (16yr).</div>
-                  <div class="event-attribution">System · automated</div>
-                </div>
-              </div>
-
-              <div class="event payment">
-                <div class="event-time">Apr 14</div>
-                <div class="event-content">
-                  <div class="event-title">Payment received — $153.33</div>
-                  <div class="event-detail">Auto policy monthly autopay · ACH from Wells Fargo ending 4421</div>
-                  <div class="event-attribution">System · billing</div>
-                </div>
-              </div>
-
-              <div class="event contact">
-                <div class="event-time">Apr 8</div>
-                <div class="event-content">
-                  <div class="event-title">Email opened — newsletter "Spring driving tips"</div>
-                  <div class="event-detail">Marketing campaign · Q2 personal lines newsletter</div>
-                  <div class="event-attribution">Marketing studio · automated</div>
-                </div>
-              </div>
-
-              <div class="event claim">
-                <div class="event-time">Feb 3</div>
-                <div class="event-content">
-                  <div class="event-title">Claim closed — windshield replacement</div>
-                  <div class="event-detail">Claim CLM-2025-09221 · 2022 Honda CR-V · paid $487 to Safelite · zero deductible (glass coverage)</div>
-                  <div class="event-attribution">Adjuster: J. Patterson</div>
-                </div>
-              </div>
-
-              <div class="event policy">
-                <div class="event-time">Aug 2024</div>
-                <div class="event-content">
-                  <div class="event-title">Endorsement — added 2022 Honda CR-V</div>
-                  <div class="event-detail">Replaced 2014 Honda Pilot · premium impact +$340/yr</div>
-                  <div class="event-attribution">Maya Chen · self-service</div>
-                </div>
-              </div>
+              <% }) %>
             </div>
           </div>
+          <% } %>
 
         </div>
 
         <!-- RIGHT COLUMN -->
         <div class="col-stack">
 
+          <% if (factors.length) { %>
           <div class="panel">
             <div class="panel-header">
               <span class="panel-title">Retention outlook</span>
@@ -313,73 +207,49 @@
             </div>
             <div class="ret-meter">
               <div class="ret-score-row">
-                <div class="ret-score-circle"><span class="ret-score-num">84</span></div>
+                <div class="ret-score-circle"><span class="ret-score-num"><%= c.retention_detail_score || c.retention_score || '—' %></span></div>
                 <div>
                   <div class="ret-label">Likelihood to retain</div>
-                  <div class="ret-status">Moderate risk</div>
+                  <div class="ret-status"><%= (c.retention_detail_score || c.retention_score || 0) >= 80 ? 'Low risk' : (c.retention_detail_score || c.retention_score || 0) >= 65 ? 'Moderate risk' : 'High risk' %></div>
                 </div>
               </div>
               <div class="ret-factors">
-                <div class="ret-factor"><span class="ret-factor-label">Bundle strength</span><span class="ret-factor-val pos">Strong</span></div>
-                <div class="ret-factor"><span class="ret-factor-label">Claims history</span><span class="ret-factor-val pos">Clean</span></div>
-                <div class="ret-factor"><span class="ret-factor-label">Tenure</span><span class="ret-factor-val pos">7 years</span></div>
-                <div class="ret-factor"><span class="ret-factor-label">Renewal premium change</span><span class="ret-factor-val" style="color: var(--red);">+18.4%</span></div>
-                <div class="ret-factor"><span class="ret-factor-label">Competing quote received</span><span class="ret-factor-val" style="color: var(--red);">Yes</span></div>
+                <% factors.forEach(f => { %>
+                  <div class="ret-factor">
+                    <span class="ret-factor-label"><%= f.label %></span>
+                    <span class="ret-factor-val<%= f.sentiment === 'pos' ? ' pos' : '' %>"<%= f.sentiment === 'neg' ? ' style="color: var(--red);"' : '' %>><%= f.value %></span>
+                  </div>
+                <% }) %>
               </div>
             </div>
           </div>
+          <% } %>
 
+          <% if (opportunities.length) { %>
           <div class="panel">
             <div class="panel-header">
               <div><span class="panel-title">Opportunities</span></div>
               <span class="d360-pill">Data 360 + Agentforce</span>
             </div>
 
-            <div class="opp-card">
-              <div class="opp-row">
-                <div class="opp-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1"/></svg>
+            <% opportunities.forEach(opp => { %>
+              <div class="opp-card">
+                <div class="opp-row">
+                  <div class="opp-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><%- opp.icon_svg %></svg>
+                  </div>
+                  <div class="opp-title"><%= opp.title %></div>
+                  <span class="opp-confidence"><%= opp.confidence %>%</span>
                 </div>
-                <div class="opp-title">Add Sofia to auto policy</div>
-                <span class="opp-confidence">94%</span>
-              </div>
-              <div class="opp-desc">Sofia turned 17 last month and holds a learner's permit per public records. Adding her now establishes a driving record with your carrier.</div>
-              <div class="opp-meta">
-                <span>Est. premium: +$680/yr</span>
-                <span>3 min flow</span>
-              </div>
-            </div>
-
-            <div class="opp-card">
-              <div class="opp-row">
-                <div class="opp-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v2M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10H2zM12 12v8a2 2 0 11-4 0"/></svg>
+                <div class="opp-desc"><%= opp.description %></div>
+                <div class="opp-meta">
+                  <span><%= opp.meta_left %></span>
+                  <span><%= opp.meta_right %></span>
                 </div>
-                <div class="opp-title">Increase umbrella to $3M</div>
-                <span class="opp-confidence">71%</span>
               </div>
-              <div class="opp-desc">Net worth indicators and incoming teen driver suggest $3M is more appropriate. Carlos requested revisiting at last renewal.</div>
-              <div class="opp-meta">
-                <span>Est. premium: +$120/yr</span>
-                <span>1 min flow</span>
-              </div>
-            </div>
-
-            <div class="opp-card">
-              <div class="opp-row">
-                <div class="opp-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                </div>
-                <div class="opp-title">529 college savings plan</div>
-                <span class="opp-confidence">62%</span>
-              </div>
-              <div class="opp-desc">Two children approaching college age. Family-tier financial product available through carrier financial services arm.</div>
-              <div class="opp-meta">
-                <span>Discovery call</span>
-                <span>Refer to FA</span>
-              </div>
-            </div>
+            <% }) %>
           </div>
+          <% } %>
 
           <div class="panel">
             <div class="panel-header"><span class="panel-title">Quick actions</span></div>
@@ -411,14 +281,16 @@
             </div>
           </div>
 
+          <% if (c.email || c.phone) { %>
           <div class="panel">
             <div class="panel-header"><span class="panel-title">Contact</span></div>
-            <div class="info-row"><span class="info-label">Email</span><span class="info-val"><a href="#">cramirez@gmail.com</a></span></div>
-            <div class="info-row"><span class="info-label">Mobile</span><span class="info-val">(817) 555-0188</span></div>
-            <div class="info-row"><span class="info-label">Preferred</span><span class="info-val">Text · evenings</span></div>
-            <div class="info-row"><span class="info-label">Language</span><span class="info-val">English / Spanish</span></div>
+            <% if (c.email) { %><div class="info-row"><span class="info-label">Email</span><span class="info-val"><a href="#"><%= c.email %></a></span></div><% } %>
+            <% if (c.phone) { %><div class="info-row"><span class="info-label">Mobile</span><span class="info-val"><%= c.phone %></span></div><% } %>
+            <% if (c.preferred_contact) { %><div class="info-row"><span class="info-label">Preferred</span><span class="info-val"><%= c.preferred_contact %></span></div><% } %>
+            <% if (c.language) { %><div class="info-row"><span class="info-label">Language</span><span class="info-val"><%= c.language %></span></div><% } %>
             <div class="info-row"><span class="info-label">Last contact</span><span class="info-val">2 days ago</span></div>
           </div>
+          <% } %>
 
           <!-- DATA 360 INSIDE -->
           <div class="d360-inside">

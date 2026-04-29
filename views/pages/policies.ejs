@@ -38,12 +38,12 @@
         </div>
         <div class="kpi">
           <div class="kpi-label">Pending endorsements</div>
-          <div class="kpi-value">4</div>
+          <div class="kpi-value"><%= (groups.pending_endorsements || []).length %></div>
           <div class="kpi-meta"><span class="kpi-delta-label">avg 1.8d turnaround</span></div>
         </div>
         <div class="kpi">
           <div class="kpi-label">Open claims</div>
-          <div class="kpi-value">2</div>
+          <div class="kpi-value"><%= (groups.active_claims || []).length %></div>
           <div class="kpi-meta"><span class="kpi-delta-label">1 auto · 1 property</span></div>
         </div>
         <div class="kpi">
@@ -70,8 +70,8 @@
 
       <div class="tabs">
         <div class="tab active">All active <span class="tab-count">287</span></div>
-        <div class="tab">Pending <span class="tab-count">4</span></div>
-        <div class="tab">Recently issued <span class="tab-count">8</span></div>
+        <div class="tab">Pending <span class="tab-count"><%= (groups.pending_endorsements || []).length %></span></div>
+        <div class="tab">Recently issued <span class="tab-count"><%= (groups.recently_issued || []).length %></span></div>
         <div class="tab">Cancelled <span class="tab-count">3</span></div>
       </div>
 
@@ -90,135 +90,42 @@
             <span></span>
           </div>
 
-          <!-- RECENTLY ISSUED -->
-          <div class="pol-group">
-            <div class="pol-group-label">Recently issued <span class="pol-group-count">8 policies this month</span></div>
+          <%
+            const polGroups = [
+              { key: 'recently_issued', label: 'Recently issued', sub: (groups.recently_issued || []).length + ' policies this month', href: '/customers' },
+              { key: 'pending_endorsements', label: 'Pending endorsements', sub: (groups.pending_endorsements || []).length + ' policies with open changes', href: '/endorsements' },
+              { key: 'active_claims', label: 'Active claims', sub: (groups.active_claims || []).length + ' policies with open claims', href: '/claims' },
+            ];
+          %>
 
-            <a class="pol-row" href="/customers">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Reeves household</div>
-                <div class="pol-row-detail">Auto + home bundle · new-to-book</div>
+          <% polGroups.forEach(g => { %>
+            <% const rows = groups[g.key] || []; %>
+            <% if (rows.length) { %>
+              <div class="pol-group">
+                <div class="pol-group-label"><%= g.label %> <span class="pol-group-count"><%= g.sub %></span></div>
+
+                <% rows.forEach(row => { %>
+                  <a class="pol-row<%= row.row_style ? ' ' + row.row_style : '' %>" href="<%= row.row_style === 'pending' ? '/endorsements' : row.row_style === 'claim' ? '/claims' : '/customers/' + row.slug %>">
+                    <div class="pol-row-name">
+                      <div class="pol-row-customer"><%= row.customer_name %></div>
+                      <div class="pol-row-detail"><%= row.detail %></div>
+                    </div>
+                    <div class="pol-row-num"><%= row.policy_number %></div>
+                    <div>
+                      <% row.lines.forEach(line => { %>
+                        <span class="pol-line <%= line %>"><%= line.charAt(0).toUpperCase() + line.slice(1) %></span>
+                      <% }) %>
+                    </div>
+                    <div class="pol-row-premium">$<%= row.premium.toLocaleString() %>/yr</div>
+                    <div class="pol-row-date"><%= row.effective_date %></div>
+                    <div class="pol-row-date"><%= row.expiration_date %></div>
+                    <div><span class="pol-status-badge <%= row.status %>"><%= row.status.charAt(0).toUpperCase() + row.status.slice(1) %></span></div>
+                    <div class="pol-row-action"><button class="btn"><%= row.row_style === 'pending' || row.row_style === 'claim' ? 'Review' : 'View' %></button></div>
+                  </a>
+                <% }) %>
               </div>
-              <div class="pol-row-num">HBL-2026-04182</div>
-              <div>
-                <span class="pol-line auto">Auto</span>
-                <span class="pol-line home">Home</span>
-              </div>
-              <div class="pol-row-premium">$3,480/yr</div>
-              <div class="pol-row-date">Apr 22</div>
-              <div class="pol-row-date">Apr 22, 2027</div>
-              <div><span class="pol-status-badge active">Active</span></div>
-              <div class="pol-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="pol-row" href="/customers">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Park, J.</div>
-                <div class="pol-row-detail">Renters → homeowners conversion</div>
-              </div>
-              <div class="pol-row-num">HOM-2026-04156</div>
-              <div><span class="pol-line home">Home</span></div>
-              <div class="pol-row-premium">$1,890/yr</div>
-              <div class="pol-row-date">Apr 18</div>
-              <div class="pol-row-date">Apr 18, 2027</div>
-              <div><span class="pol-status-badge active">Active</span></div>
-              <div class="pol-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="pol-row" href="/customers">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Donovan, M.</div>
-                <div class="pol-row-detail">Umbrella upsell $1M → $2M</div>
-              </div>
-              <div class="pol-row-num">UMB-2026-04098</div>
-              <div><span class="pol-line umbrella">Umbrella</span></div>
-              <div class="pol-row-premium">$380/yr</div>
-              <div class="pol-row-date">Apr 15</div>
-              <div class="pol-row-date">Apr 15, 2027</div>
-              <div><span class="pol-status-badge active">Active</span></div>
-              <div class="pol-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
-
-          <!-- PENDING ENDORSEMENTS -->
-          <div class="pol-group">
-            <div class="pol-group-label">Pending endorsements <span class="pol-group-count">4 policies with open changes</span></div>
-
-            <a class="pol-row pending" href="/endorsements">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Henderson, T.</div>
-                <div class="pol-row-detail">Teen driver add · pending UW review</div>
-              </div>
-              <div class="pol-row-num">AUT-2022-08341</div>
-              <div><span class="pol-line auto">Auto</span></div>
-              <div class="pol-row-premium">$1,580/yr</div>
-              <div class="pol-row-date">Aug 12, 2022</div>
-              <div class="pol-row-date">Aug 12, 2026</div>
-              <div><span class="pol-status-badge pending">Pending</span></div>
-              <div class="pol-row-action"><button class="btn">Review</button></div>
-            </a>
-
-            <a class="pol-row pending" href="/endorsements">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Olsen, R.</div>
-                <div class="pol-row-detail">Garage addition · coverage increase</div>
-              </div>
-              <div class="pol-row-num">HOM-2023-02187</div>
-              <div><span class="pol-line home">Home</span></div>
-              <div class="pol-row-premium">$2,340/yr</div>
-              <div class="pol-row-date">Feb 8, 2023</div>
-              <div class="pol-row-date">Feb 8, 2027</div>
-              <div><span class="pol-status-badge pending">Pending</span></div>
-              <div class="pol-row-action"><button class="btn">Review</button></div>
-            </a>
-
-            <a class="pol-row pending" href="/endorsements">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Crestline Bakery LLC</div>
-                <div class="pol-row-detail">Cyber liability add-on</div>
-              </div>
-              <div class="pol-row-num">BOP-2020-06442</div>
-              <div><span class="pol-line commercial">Commercial</span></div>
-              <div class="pol-row-premium">$46,100/yr</div>
-              <div class="pol-row-date">Jun 1, 2020</div>
-              <div class="pol-row-date">Jun 1, 2026</div>
-              <div><span class="pol-status-badge pending">Pending</span></div>
-              <div class="pol-row-action"><button class="btn">Review</button></div>
-            </a>
-          </div>
-
-          <!-- ACTIVE CLAIMS -->
-          <div class="pol-group">
-            <div class="pol-group-label">Active claims <span class="pol-group-count">2 policies with open claims</span></div>
-
-            <a class="pol-row claim" href="/claims">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Westbrook, D.</div>
-                <div class="pol-row-detail">Collision claim · rear-end accident Apr 14</div>
-              </div>
-              <div class="pol-row-num">AUT-2024-03089</div>
-              <div><span class="pol-line auto">Auto</span></div>
-              <div class="pol-row-premium">$2,040/yr</div>
-              <div class="pol-row-date">Mar 1, 2024</div>
-              <div class="pol-row-date">Mar 1, 2027</div>
-              <div><span class="pol-status-badge claim">Claim</span></div>
-              <div class="pol-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="pol-row claim" href="/claims">
-              <div class="pol-row-name">
-                <div class="pol-row-customer">Lin household</div>
-                <div class="pol-row-detail">Roof damage · hail event Mar 28</div>
-              </div>
-              <div class="pol-row-num">HOM-2021-11254</div>
-              <div><span class="pol-line home">Home</span></div>
-              <div class="pol-row-premium">$4,200/yr</div>
-              <div class="pol-row-date">Nov 15, 2021</div>
-              <div class="pol-row-date">Nov 15, 2026</div>
-              <div><span class="pol-status-badge claim">Claim</span></div>
-              <div class="pol-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
+            <% } %>
+          <% }) %>
 
         </div>
 
@@ -258,7 +165,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
               </div>
               <div>
-                <div class="intel-text"><strong>8 new policies bound this month</strong> — $14.2K in new annual premium. Reeves bundle was your largest new-to-book write of the quarter.</div>
+                <div class="intel-text"><strong><%= (groups.recently_issued || []).length %> new policies bound this month</strong> — $14.2K in new annual premium. Reeves bundle was your largest new-to-book write of the quarter.</div>
                 <div class="intel-meta">Production tracking · MTD</div>
               </div>
             </div>
@@ -274,11 +181,11 @@
                 <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
               </div>
               <div class="benchmark-row" style="padding: 8px 0;">
-                <div class="benchmark-head"><span class="benchmark-label">Pending endorsement</span><span class="benchmark-percentile middle">4</span></div>
+                <div class="benchmark-head"><span class="benchmark-label">Pending endorsement</span><span class="benchmark-percentile middle"><%= (groups.pending_endorsements || []).length %></span></div>
                 <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 5%;"></div></div>
               </div>
               <div class="benchmark-row" style="padding: 8px 0;">
-                <div class="benchmark-head"><span class="benchmark-label">Active claim</span><span class="benchmark-percentile middle">2</span></div>
+                <div class="benchmark-head"><span class="benchmark-label">Active claim</span><span class="benchmark-percentile middle"><%= (groups.active_claims || []).length %></span></div>
                 <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 3%;"></div></div>
               </div>
               <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">

@@ -4,6 +4,9 @@
 const express = require('express');
 const path = require('path');
 const customerDb = require('./db/customers');
+const customer360Db = require('./db/customer360');
+const policyDb = require('./db/policies');
+const renewalDb = require('./db/renewals');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -62,12 +65,23 @@ app.get('/customers', async (req, res, next) => {
   }
 });
 
-app.get('/customers/:customerId', (req, res) => {
-  res.render('pages/customer-360', {
-    pageTitle: 'Customer 360',
-    activeNav: 'customers',
-    customerId: req.params.customerId,
-  });
+app.get('/customers/:customerId', async (req, res, next) => {
+  try {
+    const profile = await customer360Db.getFullProfile(req.params.customerId);
+    if (!profile) {
+      return res.status(404).render('pages/coming-soon', {
+        pageTitle: 'Not found', activeNav: '', label: 'Customer not found', notFound: true,
+      });
+    }
+    res.render('pages/customer-360', {
+      pageTitle: 'Customer 360',
+      activeNav: 'customers',
+      customerId: req.params.customerId,
+      profile,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Quote flow
@@ -96,12 +110,18 @@ app.get('/sales-pipeline', (req, res) => {
 });
 
 // Renewals
-app.get('/renewals', (req, res) => {
-  res.render('pages/renewals', {
-    pageTitle: 'Renewals',
-    activeNav: 'renewals',
-    pageCSS: 'renewals',
-  });
+app.get('/renewals', async (req, res, next) => {
+  try {
+    const groups = await renewalDb.getRenewalRows();
+    res.render('pages/renewals', {
+      pageTitle: 'Renewals',
+      activeNav: 'renewals',
+      pageCSS: 'renewals',
+      groups,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Platform map (the marketing-style overview)
@@ -128,12 +148,18 @@ app.get('/leads', (req, res) => {
 });
 
 // Policies
-app.get('/policies', (req, res) => {
-  res.render('pages/policies', {
-    pageTitle: 'Policies',
-    activeNav: 'policies',
-    pageCSS: 'policies',
-  });
+app.get('/policies', async (req, res, next) => {
+  try {
+    const groups = await policyDb.getPolicyPageRows();
+    res.render('pages/policies', {
+      pageTitle: 'Policies',
+      activeNav: 'policies',
+      pageCSS: 'policies',
+      groups,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Endorsements
