@@ -1,0 +1,610 @@
+<%- include('../partials/head', { pageCSS: 'customers' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Customers' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add customer
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Portfolio · April 2026</div>
+          <h1 class="greeting-title">Your <em>customers</em></h1>
+          <div class="greeting-sub">184 households · $2.14M total premium · 7 need attention this week.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Total households</div>
+          <div class="kpi-value">184</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 3</span><span class="kpi-delta-label">new this month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Needs attention</div>
+          <div class="kpi-value">7</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">at-risk, claims, or overdue</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg lines per HH</div>
+          <div class="kpi-value">1.56</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">target: 2.0+</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg lifetime value</div>
+          <div class="kpi-value">$18.4<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 8%</span><span class="kpi-delta-label">YoY</span></div>
+        </div>
+      </div>
+
+      <!-- NEEDS ATTENTION — highlight cards -->
+      <div class="cust-attention-header">
+        <div class="cust-attention-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          Needs attention
+        </div>
+        <div class="cust-attention-sub">Customers with open actions, at-risk signals, or time-sensitive items</div>
+      </div>
+
+      <div class="cust-attention-grid">
+
+        <a class="cust-card urgent" href="/customers/ramirez-household">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">RM</div>
+            <div>
+              <div class="cust-card-name">Ramirez household</div>
+              <div class="cust-card-meta">5 policies · $8,640/yr · 7yr client</div>
+            </div>
+            <span class="cust-card-flag at-risk">At risk</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal warn">Competing State Farm quote — $660 below renewal</div>
+            <div class="cust-card-signal warn">Renewal in 3 days · +18.4% premium increase</div>
+            <div class="cust-card-signal">Retention score dropped to 62</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge auto">Auto</span>
+            <span class="cust-card-badge home">Home</span>
+            <span class="cust-card-badge umbrella">Umbrella</span>
+            <span class="cust-card-badge life">Life</span>
+            <span class="cust-card-action">Review now →</span>
+          </div>
+        </a>
+
+        <a class="cust-card urgent" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">KS</div>
+            <div>
+              <div class="cust-card-name">Kim, S.</div>
+              <div class="cust-card-meta">1 policy · $1,420/yr · 3yr client</div>
+            </div>
+            <span class="cust-card-flag at-risk">At risk</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal warn">2 claims in 24 months — retention score 58</div>
+            <div class="cust-card-signal warn">Progressive shopping signal detected</div>
+            <div class="cust-card-signal">Payment 30 days past due · renewal May 15</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge auto">Auto</span>
+            <span class="cust-card-action">Contact now →</span>
+          </div>
+        </a>
+
+        <a class="cust-card" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">GD</div>
+            <div>
+              <div class="cust-card-name">Greenfield Dental</div>
+              <div class="cust-card-meta">2 policies · $12,400/yr · 3yr client</div>
+            </div>
+            <span class="cust-card-flag claim">Claim</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal warn">New FNOL — water damage from burst pipe</div>
+            <div class="cust-card-signal">High severity · $24K reserve · office closed 2 days</div>
+            <div class="cust-card-signal">Business interruption coverage applies</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge commercial">Commercial</span>
+            <span class="cust-card-action">Review FNOL →</span>
+          </div>
+        </a>
+
+        <a class="cust-card" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">BP</div>
+            <div>
+              <div class="cust-card-name">Blackwood Properties</div>
+              <div class="cust-card-meta">3 properties · $8,200/yr · 4yr client</div>
+            </div>
+            <span class="cust-card-flag at-risk">At risk</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal warn">Shopping portfolio with Nationwide</div>
+            <div class="cust-card-signal">Liability claim in legal review · $35K reserve</div>
+            <div class="cust-card-signal">Payment 14 days past due · $4,100 balance</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge commercial">Commercial</span>
+            <span class="cust-card-action">Review →</span>
+          </div>
+        </a>
+
+        <a class="cust-card" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">WD</div>
+            <div>
+              <div class="cust-card-name">Westbrook, D.</div>
+              <div class="cust-card-meta">1 policy · $2,040/yr · 2yr client</div>
+            </div>
+            <span class="cust-card-flag claim">Claim</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal">New FNOL — rear-end collision Apr 26</div>
+            <div class="cust-card-signal">Medium severity · $8,400 reserve</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge auto">Auto</span>
+            <span class="cust-card-action">Review FNOL →</span>
+          </div>
+        </a>
+
+        <a class="cust-card" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">HT</div>
+            <div>
+              <div class="cust-card-name">Henderson, T.</div>
+              <div class="cust-card-meta">1 policy · $1,580/yr · 4yr client</div>
+            </div>
+            <span class="cust-card-flag pending">Pending</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal">Teen driver endorsement in UW review — 3 days</div>
+            <div class="cust-card-signal">67% longer than avg turnaround</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge auto">Auto</span>
+            <span class="cust-card-action">Follow up →</span>
+          </div>
+        </a>
+
+        <a class="cust-card" href="/customers">
+          <div class="cust-card-top">
+            <div class="cust-card-avatar">CL</div>
+            <div>
+              <div class="cust-card-name">Chen, L.</div>
+              <div class="cust-card-meta">1 policy · $3,000/yr · 2yr client</div>
+            </div>
+            <span class="cust-card-flag at-risk">At risk</span>
+          </div>
+          <div class="cust-card-signals">
+            <div class="cust-card-signal warn">Investment property deal stalled 8 days</div>
+            <div class="cust-card-signal">Competing Allstate quote received</div>
+          </div>
+          <div class="cust-card-footer">
+            <span class="cust-card-badge home">Home</span>
+            <span class="cust-card-action">Re-quote →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- FULL CUSTOMER LIST -->
+      <div class="tabs" style="margin-top: 28px;">
+        <div class="tab active">All customers <span class="tab-count">184</span></div>
+        <div class="tab">Personal <span class="tab-count">142</span></div>
+        <div class="tab">Commercial <span class="tab-count">32</span></div>
+        <div class="tab">Recently active <span class="tab-count">18</span></div>
+      </div>
+
+      <div class="cust-layout">
+
+        <div class="cust-table">
+
+          <div class="cust-table-header">
+            <span>Customer</span>
+            <span>Lines</span>
+            <span>Total premium</span>
+            <span>Policies</span>
+            <span>Tenure</span>
+            <span>Retention</span>
+            <span>Signals</span>
+            <span></span>
+          </div>
+
+          <!-- TOP ACCOUNTS -->
+          <div class="cust-group">
+            <div class="cust-group-label">Top accounts <span class="cust-group-count">by annual premium</span></div>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">CB</div>
+                <div>
+                  <div class="cust-row-customer">Crestline Bakery LLC</div>
+                  <div class="cust-row-detail">Commercial package · BOP + WC + cyber pending</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line commercial">Commercial</span>
+              </div>
+              <div class="cust-row-premium">$46,100/yr</div>
+              <div class="cust-row-num">2</div>
+              <div class="cust-row-num">6yr</div>
+              <div><span class="retention-score med">74</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot amber" title="Cyber add-on pending"></span>
+                <span class="cust-signal-dot blue" title="Renewal May 4"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">MA</div>
+                <div>
+                  <div class="cust-row-customer">Martinez Auto Group</div>
+                  <div class="cust-row-detail">Commercial fleet · 14 vehicles · multi-location</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line commercial">Commercial</span>
+              </div>
+              <div class="cust-row-premium">$42,600/yr</div>
+              <div class="cust-row-num">3</div>
+              <div class="cust-row-num">5yr</div>
+              <div><span class="retention-score low">66</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot red" title="At-risk renewal"></span>
+                <span class="cust-signal-dot amber" title="Claim pending settlement"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">NC</div>
+                <div>
+                  <div class="cust-row-customer">Nguyen Construction</div>
+                  <div class="cust-row-detail">GL + workers comp · 22 employees · fleet of 8</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line commercial">Commercial</span>
+              </div>
+              <div class="cust-row-premium">$28,400/yr</div>
+              <div class="cust-row-num">2</div>
+              <div class="cust-row-num">4yr</div>
+              <div><span class="retention-score med">76</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot amber" title="WC claim in review"></span>
+                <span class="cust-signal-dot blue" title="UW submission pending"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- PERSONAL LINES -->
+          <div class="cust-group">
+            <div class="cust-group-label">Personal lines <span class="cust-group-count">recently active</span></div>
+
+            <a class="cust-row" href="/customers/ramirez-household">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar highlight">RM</div>
+                <div>
+                  <div class="cust-row-customer">Ramirez household</div>
+                  <div class="cust-row-detail">Carlos & Elena · 4 members · gold tier</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line auto">Auto</span>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$8,640/yr</div>
+              <div class="cust-row-num">5</div>
+              <div class="cust-row-num">7yr</div>
+              <div><span class="retention-score low">62</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot red" title="Competing quote"></span>
+                <span class="cust-signal-dot red" title="Renewal in 3 days"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn btn-primary">View 360</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">LH</div>
+                <div>
+                  <div class="cust-row-customer">Lin household</div>
+                  <div class="cust-row-detail">Roof replacement per inspection · hail claim</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line auto">Auto</span>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$4,200/yr</div>
+              <div class="cust-row-num">2</div>
+              <div class="cust-row-num">5yr</div>
+              <div><span class="retention-score med">72</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot amber" title="Claim in review"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">PH</div>
+                <div>
+                  <div class="cust-row-customer">Patel household</div>
+                  <div class="cust-row-detail">Recently re-quoted · bundled · auto-pay</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line auto">Auto</span>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$3,880/yr</div>
+              <div class="cust-row-num">3</div>
+              <div class="cust-row-num">6yr</div>
+              <div><span class="retention-score high">89</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="Healthy"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar new">RH</div>
+                <div>
+                  <div class="cust-row-customer">Reeves household</div>
+                  <div class="cust-row-detail">New-to-book · auto+home bundle · referred by Donovan</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line auto">Auto</span>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$3,480/yr</div>
+              <div class="cust-row-num">2</div>
+              <div class="cust-row-num">1mo</div>
+              <div><span class="retention-score high">90</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="New client"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">DK</div>
+                <div>
+                  <div class="cust-row-customer">Dawson, K.</div>
+                  <div class="cust-row-detail">Auto+home+umbrella · 8-year client · top referrer</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line bundle">Bundle</span>
+              </div>
+              <div class="cust-row-premium">$2,800/yr</div>
+              <div class="cust-row-num">3</div>
+              <div class="cust-row-num">8yr</div>
+              <div><span class="retention-score high">85</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="Healthy"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">DM</div>
+                <div>
+                  <div class="cust-row-customer">Donovan, M.</div>
+                  <div class="cust-row-detail">Umbrella upsell just completed · boat purchase</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line umbrella">Umbrella</span>
+              </div>
+              <div class="cust-row-premium">$2,420/yr</div>
+              <div class="cust-row-num">2</div>
+              <div class="cust-row-num">5yr</div>
+              <div><span class="retention-score high">88</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="Healthy"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">OR</div>
+                <div>
+                  <div class="cust-row-customer">Olsen, R.</div>
+                  <div class="cust-row-detail">Garage endorsement recently processed</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$2,340/yr</div>
+              <div class="cust-row-num">1</div>
+              <div class="cust-row-num">3yr</div>
+              <div><span class="retention-score high">83</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="Healthy"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">WF</div>
+                <div>
+                  <div class="cust-row-customer">Walsh family</div>
+                  <div class="cust-row-detail">First-time homebuyer · prospect in pipeline</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$2,100/yr</div>
+              <div class="cust-row-num">1</div>
+              <div class="cust-row-num">1yr</div>
+              <div><span class="retention-score high">84</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot blue" title="Pipeline deal"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">PJ</div>
+                <div>
+                  <div class="cust-row-customer">Park, J.</div>
+                  <div class="cust-row-detail">Renters → homeowners conversion · closing May 8</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line home">Home</span>
+              </div>
+              <div class="cust-row-premium">$1,890/yr</div>
+              <div class="cust-row-num">1</div>
+              <div class="cust-row-num">2yr</div>
+              <div><span class="retention-score high">86</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot blue" title="Home closing soon"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="cust-row" href="/customers">
+              <div class="cust-row-name">
+                <div class="cust-row-avatar">YK</div>
+                <div>
+                  <div class="cust-row-customer">Yamamoto, K.</div>
+                  <div class="cust-row-detail">Personal umbrella · $2M limit · renews May 6</div>
+                </div>
+              </div>
+              <div>
+                <span class="cust-line umbrella">Umbrella</span>
+              </div>
+              <div class="cust-row-premium">$620/yr</div>
+              <div class="cust-row-num">1</div>
+              <div class="cust-row-num">4yr</div>
+              <div><span class="retention-score high">91</span></div>
+              <div class="cust-row-signals">
+                <span class="cust-signal-dot green" title="Auto-renew"></span>
+              </div>
+              <div class="cust-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- CUSTOMER INTELLIGENCE SIDEBAR -->
+        <div class="cust-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Customer intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>3 accounts are at-risk</strong> this week: Ramirez (competing quote), Kim (claims + shopping), and Blackwood (Nationwide signal). Combined premium at risk: $13,260/yr.</div>
+                <div class="intel-meta">Retention model · real-time scoring</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Reeves household onboarded</strong> smoothly — auto-pay enrolled, ID cards generated, first bill paid. Referral credit applied to Donovan account.</div>
+                <div class="intel-meta">New client health check · 7 days post-bind</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>68 single-line households</strong> have cross-sell scores above 70. Prioritize the 22 with active life events — they convert at 3.2× the baseline rate.</div>
+                <div class="intel-meta">Cross-sell model · book-level analysis</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Park closing on home May 8.</strong> Homeowners quote is pre-filled from MLS data. Bind before closing to capture the premium — lender requires proof of insurance.</div>
+                <div class="intel-meta">Life event · time-sensitive</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Portfolio health</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Healthy (85+)</span><span class="benchmark-percentile">142 HH</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>77% of book</span><span>$1.62M premium</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Monitor (65–84)</span><span class="benchmark-percentile middle">28 HH</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 20%;"></div></div>
+                <div class="benchmark-meta"><span>15% of book</span><span>$380K premium</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">At risk (<65)</span><span class="benchmark-percentile" style="color: var(--red);">14 HH</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 10%;background:var(--red);"></div></div>
+                <div class="benchmark-meta"><span>8% of book</span><span>$140K premium</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

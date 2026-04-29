@@ -42,10 +42,13 @@ app.get('/', (req, res) => {
   });
 });
 
-// Customer 360 — currently a single hardcoded household
+// Customers list
 app.get('/customers', (req, res) => {
-  // For now, redirect straight to the demo household
-  res.redirect('/customers/ramirez-household');
+  res.render('pages/customers', {
+    pageTitle: 'Customers',
+    activeNav: 'customers',
+    pageCSS: 'customers',
+  });
 });
 
 app.get('/customers/:customerId', (req, res) => {
