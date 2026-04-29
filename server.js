@@ -7,6 +7,9 @@ const customerDb = require('./db/customers');
 const customer360Db = require('./db/customer360');
 const policyDb = require('./db/policies');
 const renewalDb = require('./db/renewals');
+const dashboardDb = require('./db/dashboard');
+const pipelineDb = require('./db/pipeline');
+const bookDb = require('./db/book');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -39,11 +42,21 @@ app.get('/login', (req, res) => {
 });
 
 // Home / dashboard
-app.get('/', (req, res) => {
-  res.render('pages/dashboard', {
-    pageTitle: 'Home',
-    activeNav: 'home',
-  });
+app.get('/', async (req, res, next) => {
+  try {
+    const [queue, renewingThisWeek] = await Promise.all([
+      dashboardDb.getActionQueue(),
+      dashboardDb.getRenewingThisWeek(),
+    ]);
+    res.render('pages/dashboard', {
+      pageTitle: 'Home',
+      activeNav: 'home',
+      queue,
+      renewingThisWeek,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Customers list
@@ -101,12 +114,18 @@ app.get('/agent-360', (req, res) => {
 });
 
 // Sales pipeline
-app.get('/sales-pipeline', (req, res) => {
-  res.render('pages/sales-pipeline', {
-    pageTitle: 'Sales pipeline',
-    activeNav: 'pipeline',
-    pageCSS: 'sales-pipeline',
-  });
+app.get('/sales-pipeline', async (req, res, next) => {
+  try {
+    const stages = await pipelineDb.getPipelineDeals();
+    res.render('pages/sales-pipeline', {
+      pageTitle: 'Sales pipeline',
+      activeNav: 'pipeline',
+      pageCSS: 'sales-pipeline',
+      stages,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Renewals
@@ -130,12 +149,18 @@ app.get('/platform-map', (req, res) => {
 });
 
 // Book of business
-app.get('/book-of-business', (req, res) => {
-  res.render('pages/book-of-business', {
-    pageTitle: 'Book of business',
-    activeNav: 'book',
-    pageCSS: 'book-of-business',
-  });
+app.get('/book-of-business', async (req, res, next) => {
+  try {
+    const groups = await bookDb.getBookRows();
+    res.render('pages/book-of-business', {
+      pageTitle: 'Book of business',
+      activeNav: 'book',
+      pageCSS: 'book-of-business',
+      groups,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Leads

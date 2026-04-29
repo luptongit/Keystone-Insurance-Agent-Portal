@@ -68,253 +68,64 @@
         </div>
       </div>
 
+      <%
+        const allDeals = [].concat(...Object.values(stages));
+        const atRiskCount = allDeals.filter(d => d.is_at_risk).length;
+        const wonCount = (stages.won || []).length;
+      %>
       <div class="tabs">
-        <div class="tab active">All deals <span class="tab-count">12</span></div>
+        <div class="tab active">All deals <span class="tab-count"><%= allDeals.length %></span></div>
         <div class="tab">This week <span class="tab-count">4</span></div>
-        <div class="tab">At risk <span class="tab-count">2</span></div>
-        <div class="tab">Won (MTD)</div>
+        <div class="tab">At risk <span class="tab-count"><%= atRiskCount %></span></div>
+        <div class="tab">Won (MTD) <span class="tab-count"><%= wonCount %></span></div>
       </div>
 
       <div class="pipeline-layout">
 
         <div class="pipeline-board">
 
-          <!-- PROSPECT -->
-          <div class="pipeline-col">
-            <div class="pipeline-col-header">
-              <div class="pipeline-col-header-top">
-                <span class="pipeline-col-name">Prospect</span>
-                <span class="pipeline-col-count">2</span>
+          <%
+            const stageMeta = [
+              { key: 'prospect', label: 'Prospect' },
+              { key: 'quoted',   label: 'Quoted' },
+              { key: 'proposal', label: 'Proposal' },
+              { key: 'negotiation', label: 'Negotiation' },
+              { key: 'won',      label: 'Won' },
+            ];
+          %>
+
+          <% stageMeta.forEach(sm => { %>
+            <% const deals = stages[sm.key] || []; %>
+            <% const colTotal = deals.reduce((s, d) => s + d.premium, 0); %>
+            <div class="pipeline-col<%= sm.key === 'won' ? ' won' : '' %>">
+              <div class="pipeline-col-header">
+                <div class="pipeline-col-header-top">
+                  <span class="pipeline-col-name"><%= sm.label %></span>
+                  <span class="pipeline-col-count"><%= deals.length %></span>
+                </div>
+                <div class="pipeline-col-total">$<%= colTotal.toLocaleString() %>/yr<%= sm.key === 'won' ? ' · April' : '' %></div>
               </div>
-              <div class="pipeline-col-total">$5,500/yr est</div>
+
+              <% deals.forEach(d => { %>
+                <a class="pipeline-card<%= d.is_at_risk ? ' at-risk' : '' %><%= d.is_won ? ' won' : '' %>" href="/customers/<%= d.slug %>">
+                  <div class="pipeline-card-top">
+                    <span class="pipeline-card-name"><%= d.customer_name %></span>
+                    <span class="pipeline-card-age"><%= d.age_label %></span>
+                  </div>
+                  <div class="pipeline-card-detail"><%= d.detail %></div>
+                  <div class="pipeline-card-footer">
+                    <span class="pipeline-card-line <%= d.line_type %>"><%= d.line_type.charAt(0).toUpperCase() + d.line_type.slice(1) %></span>
+                    <div class="pipeline-card-right">
+                      <span class="pipeline-card-premium">$<%= d.premium.toLocaleString() %>/yr</span>
+                      <span class="deal-score <%= d.deal_score >= 75 ? 'high' : d.deal_score >= 65 ? 'med' : 'low' %>"><%= d.deal_score %></span>
+                    </div>
+                  </div>
+                  <% if (d.is_at_risk) { %><div class="at-risk-flag"><%= d.at_risk_label %></div><% } %>
+                  <% if (d.is_won) { %><div class="won-flag"><%= d.won_label %></div><% } %>
+                </a>
+              <% }) %>
             </div>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Walsh family</span>
-                <span class="pipeline-card-age">6d</span>
-              </div>
-              <div class="pipeline-card-detail">Home purchase life event detected · first-time buyer · pre-qualified</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line home">Home</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$2,400/yr</span>
-                  <span class="deal-score med">72</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Okonkwo, A.</span>
-                <span class="pipeline-card-age">3d</span>
-              </div>
-              <div class="pipeline-card-detail">Marriage trigger · personal lines bundle opportunity · auto+home+umbrella</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line bundle">Bundle</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$3,100/yr</span>
-                  <span class="deal-score med">68</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- QUOTED -->
-          <div class="pipeline-col">
-            <div class="pipeline-col-header">
-              <div class="pipeline-col-header-top">
-                <span class="pipeline-col-name">Quoted</span>
-                <span class="pipeline-col-count">4</span>
-              </div>
-              <div class="pipeline-col-total">$8,910/yr</div>
-            </div>
-
-            <a class="pipeline-card" href="/quote/new">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Patel family</span>
-                <span class="pipeline-card-age">12d</span>
-              </div>
-              <div class="pipeline-card-detail">Term life cross-sell · $750K 20-year · client requested afternoon call</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line life">Life</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$1,180/yr</span>
-                  <span class="deal-score high">81</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Crestline Bakery</span>
-                <span class="pipeline-card-age">8d</span>
-              </div>
-              <div class="pipeline-card-detail">Cyber liability add-on · new TX product · existing BOP client</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line commercial">Commercial</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$4,200/yr</span>
-                  <span class="deal-score med">74</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Henderson, T.</span>
-                <span class="pipeline-card-age">5d</span>
-              </div>
-              <div class="pipeline-card-detail">Teen driver add · parent is existing auto policyholder · good driver discount eligible</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line auto">Auto</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$1,640/yr</span>
-                  <span class="deal-score med">65</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Park, J.</span>
-                <span class="pipeline-card-age">4d</span>
-              </div>
-              <div class="pipeline-card-detail">Renters → homeowners conversion · closing on property May 8</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line home">Home</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$1,890/yr</span>
-                  <span class="deal-score high">78</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- PROPOSAL -->
-          <div class="pipeline-col">
-            <div class="pipeline-col-header">
-              <div class="pipeline-col-header-top">
-                <span class="pipeline-col-name">Proposal</span>
-                <span class="pipeline-col-count">3</span>
-              </div>
-              <div class="pipeline-col-total">$30,880/yr</div>
-            </div>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Nguyen Construction</span>
-                <span class="pipeline-card-age">14d</span>
-              </div>
-              <div class="pipeline-card-detail">Commercial GL + workers comp · 22 employees · fleet of 8 vehicles</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line commercial">Commercial</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$28,400/yr</span>
-                  <span class="deal-score high">83</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Donovan, M.</span>
-                <span class="pipeline-card-age">7d</span>
-              </div>
-              <div class="pipeline-card-detail">Umbrella upsell $1M → $2M · triggered by new boat purchase</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line umbrella">Umbrella</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$380/yr</span>
-                  <span class="deal-score high">88</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Yamamoto, K.</span>
-                <span class="pipeline-card-age">9d</span>
-              </div>
-              <div class="pipeline-card-detail">Umbrella renewal + life cross-sell · existing client · renews May 15</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line bundle">Bundle</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$2,100/yr</span>
-                  <span class="deal-score med">71</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- NEGOTIATION -->
-          <div class="pipeline-col">
-            <div class="pipeline-col-header">
-              <div class="pipeline-col-header-top">
-                <span class="pipeline-col-name">Negotiation</span>
-                <span class="pipeline-col-count">2</span>
-              </div>
-              <div class="pipeline-col-total">$45,800/yr</div>
-            </div>
-
-            <a class="pipeline-card" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Martinez Auto Group</span>
-                <span class="pipeline-card-age">18d</span>
-              </div>
-              <div class="pipeline-card-detail">Commercial fleet · 14 vehicles · multi-location · awaiting loss runs from prior carrier</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line commercial">Commercial</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$42,600/yr</span>
-                  <span class="deal-score high">76</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="pipeline-card at-risk" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Chen, L.</span>
-                <span class="pipeline-card-age">22d</span>
-              </div>
-              <div class="pipeline-card-detail">Investment property package · duplex · stalled on price — competing Allstate quote received</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line home">Home</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$3,200/yr</span>
-                  <span class="deal-score low">62</span>
-                </div>
-              </div>
-              <div class="at-risk-flag">At risk · stalled 8 days</div>
-            </a>
-          </div>
-
-          <!-- WON -->
-          <div class="pipeline-col won">
-            <div class="pipeline-col-header">
-              <div class="pipeline-col-header-top">
-                <span class="pipeline-col-name">Won</span>
-                <span class="pipeline-col-count">1</span>
-              </div>
-              <div class="pipeline-col-total">$3,480/yr · April</div>
-            </div>
-
-            <a class="pipeline-card won" href="/customers">
-              <div class="pipeline-card-top">
-                <span class="pipeline-card-name">Reeves household</span>
-                <span class="pipeline-card-age">Bound</span>
-              </div>
-              <div class="pipeline-card-detail">Auto + home bundle · new-to-book · referred by Donovan</div>
-              <div class="pipeline-card-footer">
-                <span class="pipeline-card-line bundle">Bundle</span>
-                <div class="pipeline-card-right">
-                  <span class="pipeline-card-premium">$3,480/yr</span>
-                  <span class="deal-score high">94</span>
-                </div>
-              </div>
-              <div class="won-flag">Bound April 22</div>
-            </a>
-          </div>
+          <% }) %>
 
         </div>
 

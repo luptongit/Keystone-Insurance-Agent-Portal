@@ -89,258 +89,43 @@
             <span></span>
           </div>
 
-          <!-- PERSONAL AUTO -->
-          <div class="bob-group">
-            <div class="bob-group-label">Personal auto <span class="bob-group-count">112 policies · $892K annual premium</span></div>
+          <%
+            const bobGroups = [
+              { key: 'personal_auto', label: 'Personal auto', sub: '112 policies · $892K annual premium' },
+              { key: 'homeowners', label: 'Homeowners', sub: '86 policies · $524K annual premium' },
+              { key: 'commercial', label: 'Commercial', sub: '64 policies · $548K annual premium' },
+              { key: 'life_umbrella', label: 'Life & umbrella', sub: '25 policies · $176K annual premium' },
+            ];
+          %>
 
-            <a class="bob-row" href="/customers/ramirez-household">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Ramirez household</div>
-                <div class="bob-row-detail">Carlos & Elena · 5 policies</div>
-              </div>
-              <div>
-                <span class="bob-line auto">Auto</span>
-                <span class="bob-line home">Home</span>
-              </div>
-              <div class="bob-row-premium">$8,640/yr</div>
-              <div class="bob-row-num">5</div>
-              <div class="bob-row-num">7yr</div>
-              <div class="bob-row-score"><span class="retention-score high">92</span></div>
-              <div><span class="retention-score low">62</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
+          <% bobGroups.forEach(g => { %>
+            <% const rows = groups[g.key] || []; %>
+            <% if (rows.length) { %>
+              <div class="bob-group">
+                <div class="bob-group-label"><%= g.label %> <span class="bob-group-count"><%= g.sub %></span></div>
 
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Henderson, T.</div>
-                <div class="bob-row-detail">Good driver · teen add pending</div>
+                <% rows.forEach(row => { %>
+                  <a class="bob-row" href="/customers/<%= row.slug %>">
+                    <div class="bob-row-name">
+                      <div class="bob-row-customer"><%= row.customer_name %></div>
+                      <div class="bob-row-detail"><%= row.detail %></div>
+                    </div>
+                    <div>
+                      <% row.lines.forEach(line => { %>
+                        <span class="bob-line <%= line %>"><%= line.charAt(0).toUpperCase() + line.slice(1) %></span>
+                      <% }) %>
+                    </div>
+                    <div class="bob-row-premium">$<%= row.premium.toLocaleString() %>/yr</div>
+                    <div class="bob-row-num"><%= row.policy_count %></div>
+                    <div class="bob-row-num"><%= row.tenure_display %></div>
+                    <div class="bob-row-score"><span class="retention-score <%= row.cross_sell_score >= 80 ? 'high' : row.cross_sell_score >= 50 ? 'med' : 'low' %>"><%= row.cross_sell_score %></span></div>
+                    <div><span class="retention-score <%= row.retention_score >= 80 ? 'high' : row.retention_score >= 70 ? 'med' : 'low' %>"><%= row.retention_score %></span></div>
+                    <div class="bob-row-action"><button class="btn">View</button></div>
+                  </a>
+                <% }) %>
               </div>
-              <div><span class="bob-line auto">Auto</span></div>
-              <div class="bob-row-premium">$1,580/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">4yr</div>
-              <div class="bob-row-score"><span class="retention-score med">68</span></div>
-              <div><span class="retention-score high">87</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Kim, S.</div>
-                <div class="bob-row-detail">2 claims in 24mo · Progressive signal</div>
-              </div>
-              <div><span class="bob-line auto">Auto</span></div>
-              <div class="bob-row-premium">$1,420/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">3yr</div>
-              <div class="bob-row-score"><span class="retention-score low">42</span></div>
-              <div><span class="retention-score low">58</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Torres, A.</div>
-                <div class="bob-row-detail">Clean record · rate hold</div>
-              </div>
-              <div><span class="bob-line auto">Auto</span></div>
-              <div class="bob-row-premium">$1,180/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">5yr</div>
-              <div class="bob-row-score"><span class="retention-score med">55</span></div>
-              <div><span class="retention-score high">93</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Westbrook, D.</div>
-                <div class="bob-row-detail">Active collision claim pending</div>
-              </div>
-              <div><span class="bob-line auto">Auto</span></div>
-              <div class="bob-row-premium">$2,040/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">2yr</div>
-              <div class="bob-row-score"><span class="retention-score low">38</span></div>
-              <div><span class="retention-score med">79</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
-
-          <!-- HOMEOWNERS -->
-          <div class="bob-group">
-            <div class="bob-group-label">Homeowners <span class="bob-group-count">86 policies · $524K annual premium</span></div>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Patel household</div>
-                <div class="bob-row-detail">Recently re-quoted · bundled</div>
-              </div>
-              <div>
-                <span class="bob-line auto">Auto</span>
-                <span class="bob-line home">Home</span>
-              </div>
-              <div class="bob-row-premium">$3,880/yr</div>
-              <div class="bob-row-num">3</div>
-              <div class="bob-row-num">6yr</div>
-              <div class="bob-row-score"><span class="retention-score high">85</span></div>
-              <div><span class="retention-score high">89</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Reeves household</div>
-                <div class="bob-row-detail">New-to-book · referred by Donovan</div>
-              </div>
-              <div>
-                <span class="bob-line auto">Auto</span>
-                <span class="bob-line home">Home</span>
-              </div>
-              <div class="bob-row-premium">$3,480/yr</div>
-              <div class="bob-row-num">2</div>
-              <div class="bob-row-num">1mo</div>
-              <div class="bob-row-score"><span class="retention-score high">80</span></div>
-              <div><span class="retention-score high">90</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Olsen, R.</div>
-                <div class="bob-row-detail">Garage endorsement processed</div>
-              </div>
-              <div><span class="bob-line home">Home</span></div>
-              <div class="bob-row-premium">$2,340/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">3yr</div>
-              <div class="bob-row-score"><span class="retention-score med">52</span></div>
-              <div><span class="retention-score high">83</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Walsh family</div>
-                <div class="bob-row-detail">First-time homebuyer · new policy</div>
-              </div>
-              <div><span class="bob-line home">Home</span></div>
-              <div class="bob-row-premium">$2,100/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">1yr</div>
-              <div class="bob-row-score"><span class="retention-score low">35</span></div>
-              <div><span class="retention-score high">84</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
-
-          <!-- COMMERCIAL -->
-          <div class="bob-group">
-            <div class="bob-group-label">Commercial <span class="bob-group-count">64 policies · $548K annual premium</span></div>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Martinez Auto Group</div>
-                <div class="bob-row-detail">Fleet · 14 vehicles · multi-location</div>
-              </div>
-              <div><span class="bob-line commercial">Commercial</span></div>
-              <div class="bob-row-premium">$42,600/yr</div>
-              <div class="bob-row-num">3</div>
-              <div class="bob-row-num">5yr</div>
-              <div class="bob-row-score"><span class="retention-score med">62</span></div>
-              <div><span class="retention-score low">66</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Nguyen Construction</div>
-                <div class="bob-row-detail">GL + workers comp · 22 employees</div>
-              </div>
-              <div><span class="bob-line commercial">Commercial</span></div>
-              <div class="bob-row-premium">$28,400/yr</div>
-              <div class="bob-row-num">2</div>
-              <div class="bob-row-num">4yr</div>
-              <div class="bob-row-score"><span class="retention-score med">58</span></div>
-              <div><span class="retention-score med">76</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Crestline Bakery LLC</div>
-                <div class="bob-row-detail">BOP + WC · cyber add-on quoted</div>
-              </div>
-              <div><span class="bob-line commercial">Commercial</span></div>
-              <div class="bob-row-premium">$46,100/yr</div>
-              <div class="bob-row-num">2</div>
-              <div class="bob-row-num">6yr</div>
-              <div class="bob-row-score"><span class="retention-score med">65</span></div>
-              <div><span class="retention-score med">74</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Greenfield Dental</div>
-                <div class="bob-row-detail">BOP + prof liability · expanding</div>
-              </div>
-              <div><span class="bob-line commercial">Commercial</span></div>
-              <div class="bob-row-premium">$12,400/yr</div>
-              <div class="bob-row-num">2</div>
-              <div class="bob-row-num">3yr</div>
-              <div class="bob-row-score"><span class="retention-score med">58</span></div>
-              <div><span class="retention-score med">71</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
-
-          <!-- LIFE & UMBRELLA -->
-          <div class="bob-group">
-            <div class="bob-group-label">Life & umbrella <span class="bob-group-count">25 policies · $176K annual premium</span></div>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Okonkwo, A.</div>
-                <div class="bob-row-detail">Level term · $500K · 20yr</div>
-              </div>
-              <div><span class="bob-line life">Life</span></div>
-              <div class="bob-row-premium">$840/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">2yr</div>
-              <div class="bob-row-score"><span class="retention-score low">30</span></div>
-              <div><span class="retention-score high">95</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Yamamoto, K.</div>
-                <div class="bob-row-detail">Personal umbrella · $2M limit</div>
-              </div>
-              <div><span class="bob-line umbrella">Umbrella</span></div>
-              <div class="bob-row-premium">$620/yr</div>
-              <div class="bob-row-num">1</div>
-              <div class="bob-row-num">4yr</div>
-              <div class="bob-row-score"><span class="retention-score med">48</span></div>
-              <div><span class="retention-score high">91</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-
-            <a class="bob-row" href="/customers">
-              <div class="bob-row-name">
-                <div class="bob-row-customer">Dawson, K.</div>
-                <div class="bob-row-detail">Auto+home+umbrella · long-term</div>
-              </div>
-              <div><span class="bob-line bundle">Bundle</span></div>
-              <div class="bob-row-premium">$2,800/yr</div>
-              <div class="bob-row-num">3</div>
-              <div class="bob-row-num">8yr</div>
-              <div class="bob-row-score"><span class="retention-score high">92</span></div>
-              <div><span class="retention-score high">85</span></div>
-              <div class="bob-row-action"><button class="btn">View</button></div>
-            </a>
-          </div>
+            <% } %>
+          <% }) %>
 
         </div>
 

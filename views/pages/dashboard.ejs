@@ -104,78 +104,33 @@
             <a class="panel-link" href="#">View all →</a>
           </div>
 
+          <%
+            const tagCounts = {};
+            for (const q of queue) {
+              const k = q.tag;
+              tagCounts[k] = (tagCounts[k] || 0) + 1;
+            }
+          %>
           <div class="queue-tabs">
-            <div class="queue-tab active">All <span class="queue-tab-count">8</span></div>
-            <div class="queue-tab">Renewals <span class="queue-tab-count">3</span></div>
-            <div class="queue-tab">Claims <span class="queue-tab-count">2</span></div>
-            <div class="queue-tab">Underwriting <span class="queue-tab-count">2</span></div>
-            <div class="queue-tab">Billing <span class="queue-tab-count">1</span></div>
+            <div class="queue-tab active">All <span class="queue-tab-count"><%= queue.length %></span></div>
+            <% if (tagCounts.renewal) { %><div class="queue-tab">Renewals <span class="queue-tab-count"><%= tagCounts.renewal %></span></div><% } %>
+            <% if (tagCounts.claim) { %><div class="queue-tab">Claims <span class="queue-tab-count"><%= tagCounts.claim %></span></div><% } %>
+            <% if (tagCounts.policy) { %><div class="queue-tab">Underwriting <span class="queue-tab-count"><%= tagCounts.policy %></span></div><% } %>
+            <% if (tagCounts.lead) { %><div class="queue-tab">Leads <span class="queue-tab-count"><%= tagCounts.lead %></span></div><% } %>
           </div>
 
           <div>
-            <a class="queue-item" href="/customers/ramirez-household">
-              <div class="queue-priority high"></div>
-              <div>
-                <div class="queue-title">Renewal at risk — Ramirez household (auto + home)</div>
-                <div class="queue-sub">Premium increase 18.4% · competing quote signal · expires May 2</div>
-              </div>
-              <span class="queue-tag renewal">Renewal</span>
-              <span class="queue-time">3d</span>
-            </a>
-            <a class="queue-item" href="/claims">
-              <div class="queue-priority high"></div>
-              <div>
-                <div class="queue-title">FNOL needs photos — Westbrook collision claim</div>
-                <div class="queue-sub">Claim #CLM-2026-44871 · adjuster Rita Park awaiting upload</div>
-              </div>
-              <span class="queue-tag claim">Claim</span>
-              <span class="queue-time">5h</span>
-            </a>
-            <a class="queue-item" href="/underwriting-hub">
-              <div class="queue-priority med"></div>
-              <div>
-                <div class="queue-title">UW referral — Crestline Bakery commercial package</div>
-                <div class="queue-sub">$48K premium · awaiting underwriter response on fire suppression</div>
-              </div>
-              <span class="queue-tag policy">UW</span>
-              <span class="queue-time">1d</span>
-            </a>
-            <a class="queue-item" href="/sales-pipeline">
-              <div class="queue-priority med"></div>
-              <div>
-                <div class="queue-title">Term life follow-up — Patel family (cross-sell)</div>
-                <div class="queue-sub">Quoted $750K 20-year term · client requested call this afternoon</div>
-              </div>
-              <span class="queue-tag lead">Lead</span>
-              <span class="queue-time">2h</span>
-            </a>
-            <a class="queue-item" href="/billing">
-              <div class="queue-priority med"></div>
-              <div>
-                <div class="queue-title">NSF on autopay — Donovan auto policy</div>
-                <div class="queue-sub">Policy POL-AU-882103 · grace period ends May 6</div>
-              </div>
-              <span class="queue-tag policy">Billing</span>
-              <span class="queue-time">1d</span>
-            </a>
-            <a class="queue-item" href="/endorsements">
-              <div class="queue-priority low"></div>
-              <div>
-                <div class="queue-title">Endorsement pending signature — Olsen home policy</div>
-                <div class="queue-sub">Added detached garage · DocuSign sent April 27</div>
-              </div>
-              <span class="queue-tag policy">Policy</span>
-              <span class="queue-time">2d</span>
-            </a>
-            <a class="queue-item" href="/renewals">
-              <div class="queue-priority low"></div>
-              <div>
-                <div class="queue-title">Renewal review — Yamamoto umbrella ($2M)</div>
-                <div class="queue-sub">Auto-renews May 15 · client unchanged · standard re-quote ready</div>
-              </div>
-              <span class="queue-tag renewal">Renewal</span>
-              <span class="queue-time">4d</span>
-            </a>
+            <% queue.forEach(q => { %>
+              <a class="queue-item" href="<%= q.href %>">
+                <div class="queue-priority <%= q.priority %>"></div>
+                <div>
+                  <div class="queue-title"><%= q.title %></div>
+                  <div class="queue-sub"><%= q.subtitle %></div>
+                </div>
+                <span class="queue-tag <%= q.tag %>"><%= q.tag_label %></span>
+                <span class="queue-time"><%= q.time_label %></span>
+              </a>
+            <% }) %>
           </div>
         </div>
 
@@ -204,41 +159,22 @@
             <div class="panel-header">
               <div>
                 <span class="panel-title">Renewing this week</span>
-                <span class="panel-title-meta">3 policies</span>
+                <span class="panel-title-meta"><%= renewingThisWeek.length %> policies</span>
               </div>
               <a class="panel-link" href="/renewals">All renewals →</a>
             </div>
             <div>
-              <div class="renewal-item">
-                <div>
-                  <div class="renewal-name">Ramirez household</div>
-                  <div class="renewal-detail">Auto + home bundle · since 2019</div>
+              <% renewingThisWeek.forEach(r => { %>
+                <div class="renewal-item">
+                  <div>
+                    <div class="renewal-name"><%= r.customer_name %></div>
+                    <div class="renewal-detail"><%= r.detail %></div>
+                  </div>
+                  <div class="renewal-status">
+                    <div class="renewal-premium">$<%= r.current_premium.toLocaleString() %>/yr</div>
+                  </div>
                 </div>
-                <div class="renewal-status">
-                  <div class="renewal-days urgent">3 days</div>
-                  <div class="renewal-premium">$3,840/yr</div>
-                </div>
-              </div>
-              <div class="renewal-item">
-                <div>
-                  <div class="renewal-name">Crestline Bakery LLC</div>
-                  <div class="renewal-detail">Commercial package · BOP + WC</div>
-                </div>
-                <div class="renewal-status">
-                  <div class="renewal-days soon">5 days</div>
-                  <div class="renewal-premium">$48,200/yr</div>
-                </div>
-              </div>
-              <div class="renewal-item">
-                <div>
-                  <div class="renewal-name">Yamamoto, K.</div>
-                  <div class="renewal-detail">Personal umbrella · $2M limit</div>
-                </div>
-                <div class="renewal-status">
-                  <div class="renewal-days">7 days</div>
-                  <div class="renewal-premium">$640/yr</div>
-                </div>
-              </div>
+              <% }) %>
             </div>
           </div>
 
