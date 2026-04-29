@@ -1,0 +1,364 @@
+<%- include('../partials/head', { pageCSS: 'leads' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Sell' },
+        { label: 'Leads' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add lead
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Sell · April 2026</div>
+          <h1 class="greeting-title">Lead <em>management</em></h1>
+          <div class="greeting-sub">38 active leads — 14 scored as hot, $224K estimated pipeline value.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">New leads (30d)</div>
+          <div class="kpi-value">38</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 22%</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">Predicted</span></div>
+          <div class="kpi-label">Qualified (score 70+)</div>
+          <div class="kpi-value">14</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">36.8% qualification rate</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Conversion rate (90d)</div>
+          <div class="kpi-value">18.4<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 3.1pt</span><span class="kpi-delta-label">peer avg: 14.2%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg response time</div>
+          <div class="kpi-value">2.4<span class="kpi-value-suffix">hr</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↓ 1.8hr</span><span class="kpi-delta-label">target: under 4hr</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Lead scoring combines life-event triggers, online quoting behavior, and cross-carrier shopping signals to prioritize your outreach.</div>
+          <div class="d360-strip-sub">Leads contacted within 2 hours of a life-event trigger convert at 3.2× the rate of leads contacted after 24 hours.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">5</div><div class="d360-strip-stat-label">Signals</div></div>
+          <div><div class="d360-strip-stat-num">38</div><div class="d360-strip-stat-label">Scored</div></div>
+          <div><div class="d360-strip-stat-num">live</div><div class="d360-strip-stat-label">Updated</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All leads <span class="tab-count">38</span></div>
+        <div class="tab">Hot <span class="tab-count">14</span></div>
+        <div class="tab">Warm <span class="tab-count">16</span></div>
+        <div class="tab">Cold <span class="tab-count">8</span></div>
+        <div class="tab">Assigned to me <span class="tab-count">22</span></div>
+      </div>
+
+      <div class="leads-layout">
+
+        <div class="leads-table">
+
+          <div class="leads-table-header">
+            <span>Lead</span>
+            <span>Source</span>
+            <span>Lines</span>
+            <span>Est. premium</span>
+            <span>Score</span>
+            <span>Age</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- HOT LEADS -->
+          <div class="leads-group">
+            <div class="leads-group-label">Hot leads <span class="leads-group-count">14 leads · $142K est. premium</span></div>
+
+            <a class="lead-row hot" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Sarah Mitchell</div>
+                <div class="lead-row-detail">Home purchase closing May 12 · pre-approved mortgage</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge event">Life event</span></div>
+              <div>
+                <span class="lead-line home">Home</span>
+                <span class="lead-line auto">Auto</span>
+              </div>
+              <div class="lead-row-premium">$4,200/yr</div>
+              <div><span class="retention-score high">94</span></div>
+              <div class="lead-row-age">2d</div>
+              <div><span class="lead-status-badge new">New</span></div>
+              <div class="lead-row-action"><button class="btn btn-primary">Contact</button></div>
+            </a>
+
+            <a class="lead-row hot" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">James Thornton</div>
+                <div class="lead-row-detail">New LLC registered · commercial auto + GL needed</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge event">Life event</span></div>
+              <div><span class="lead-line commercial">Commercial</span></div>
+              <div class="lead-row-premium">$18,400/yr</div>
+              <div><span class="retention-score high">88</span></div>
+              <div class="lead-row-age">1d</div>
+              <div><span class="lead-status-badge new">New</span></div>
+              <div class="lead-row-action"><button class="btn btn-primary">Contact</button></div>
+            </a>
+
+            <a class="lead-row hot" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Maria Vasquez</div>
+                <div class="lead-row-detail">Quoted on carrier site · abandoned at bind · auto + renters</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge digital">Digital</span></div>
+              <div>
+                <span class="lead-line auto">Auto</span>
+              </div>
+              <div class="lead-row-premium">$1,860/yr</div>
+              <div><span class="retention-score high">82</span></div>
+              <div class="lead-row-age">4hr</div>
+              <div><span class="lead-status-badge new">New</span></div>
+              <div class="lead-row-action"><button class="btn btn-primary">Contact</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Robert Chen</div>
+                <div class="lead-row-detail">Marriage event · bundling auto + home</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge event">Life event</span></div>
+              <div>
+                <span class="lead-line auto">Auto</span>
+                <span class="lead-line home">Home</span>
+              </div>
+              <div class="lead-row-premium">$3,600/yr</div>
+              <div><span class="retention-score high">79</span></div>
+              <div class="lead-row-age">3d</div>
+              <div><span class="lead-status-badge contacted">Contacted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Angela Brooks</div>
+                <div class="lead-row-detail">Referral from Dawson, K. · umbrella + life</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge referral">Referral</span></div>
+              <div>
+                <span class="lead-line umbrella">Umbrella</span>
+                <span class="lead-line life">Life</span>
+              </div>
+              <div class="lead-row-premium">$2,100/yr</div>
+              <div><span class="retention-score high">76</span></div>
+              <div class="lead-row-age">5d</div>
+              <div><span class="lead-status-badge contacted">Contacted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+          </div>
+
+          <!-- WARM LEADS -->
+          <div class="leads-group">
+            <div class="leads-group-label">Warm leads <span class="leads-group-count">16 leads · $68K est. premium</span></div>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">David Okafor</div>
+                <div class="lead-row-detail">Website form · comparing auto rates · currently with Geico</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge digital">Digital</span></div>
+              <div><span class="lead-line auto">Auto</span></div>
+              <div class="lead-row-premium">$1,480/yr</div>
+              <div><span class="retention-score med">64</span></div>
+              <div class="lead-row-age">6d</div>
+              <div><span class="lead-status-badge contacted">Contacted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Priya Sharma</div>
+                <div class="lead-row-detail">Baby on the way · life insurance inquiry</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge event">Life event</span></div>
+              <div><span class="lead-line life">Life</span></div>
+              <div class="lead-row-premium">$960/yr</div>
+              <div><span class="retention-score med">68</span></div>
+              <div class="lead-row-age">8d</div>
+              <div><span class="lead-status-badge quoted">Quoted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="bob-row-customer">Apex Fitness Studios</div>
+                <div class="lead-row-detail">New gym opening · GL + property + WC · 8 employees</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge digital">Digital</span></div>
+              <div><span class="lead-line commercial">Commercial</span></div>
+              <div class="lead-row-premium">$14,200/yr</div>
+              <div><span class="retention-score med">62</span></div>
+              <div class="lead-row-age">10d</div>
+              <div><span class="lead-status-badge contacted">Contacted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Kevin Murphy</div>
+                <div class="lead-row-detail">New vehicle purchase · shopping auto rates</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge event">Life event</span></div>
+              <div><span class="lead-line auto">Auto</span></div>
+              <div class="lead-row-premium">$1,640/yr</div>
+              <div><span class="retention-score med">58</span></div>
+              <div class="lead-row-age">12d</div>
+              <div><span class="lead-status-badge contacted">Contacted</span></div>
+              <div class="lead-row-action"><button class="btn">Follow up</button></div>
+            </a>
+          </div>
+
+          <!-- COLD LEADS -->
+          <div class="leads-group">
+            <div class="leads-group-label">Cold leads <span class="leads-group-count">8 leads · $14K est. premium</span></div>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Tyler Grant</div>
+                <div class="lead-row-detail">Website visit only · no form submission</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge digital">Digital</span></div>
+              <div><span class="lead-line auto">Auto</span></div>
+              <div class="lead-row-premium">$1,200/yr</div>
+              <div><span class="retention-score low">32</span></div>
+              <div class="lead-row-age">18d</div>
+              <div><span class="lead-status-badge stale">Stale</span></div>
+              <div class="lead-row-action"><button class="btn">Re-engage</button></div>
+            </a>
+
+            <a class="lead-row" href="/customers">
+              <div class="lead-row-name">
+                <div class="lead-row-customer">Lisa Novak</div>
+                <div class="lead-row-detail">Carrier marketing list · no response to 2 emails</div>
+              </div>
+              <div class="lead-row-source"><span class="lead-source-badge campaign">Campaign</span></div>
+              <div><span class="lead-line home">Home</span></div>
+              <div class="lead-row-premium">$2,400/yr</div>
+              <div><span class="retention-score low">28</span></div>
+              <div class="lead-row-age">22d</div>
+              <div><span class="lead-status-badge stale">Stale</span></div>
+              <div class="lead-row-action"><button class="btn">Re-engage</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- LEAD INTELLIGENCE SIDEBAR -->
+        <div class="leads-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Lead intelligence</span>
+              </div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Sarah Mitchell</strong> is closing on a home May 12 and has no homeowners policy in force. Score 94 — highest-intent lead in your queue right now.</div>
+                <div class="intel-meta">Life event trigger · MLS data · 2 days ago</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Maria Vasquez</strong> completed an auto quote on the carrier site 4 hours ago but abandoned at bind. Quote data is pre-filled and ready for agent handoff.</div>
+                <div class="intel-meta">Digital shopping signal · carrier API</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Referral leads convert at 28%</strong> in your book — nearly double your overall rate. Angela Brooks was referred by a top client. Prioritize accordingly.</div>
+                <div class="intel-meta">Conversion analysis · 12-month lookback</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Lead sources (30d)</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Life events</span><span class="benchmark-percentile">14 leads</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>36.8% of leads</span><span>24% conv.</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Digital</span><span class="benchmark-percentile">11 leads</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 79%;"></div></div>
+                <div class="benchmark-meta"><span>28.9% of leads</span><span>14% conv.</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Referrals</span><span class="benchmark-percentile">8 leads</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 57%;"></div></div>
+                <div class="benchmark-meta"><span>21.1% of leads</span><span>28% conv.</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Campaigns</span><span class="benchmark-percentile">5 leads</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 36%;"></div></div>
+                <div class="benchmark-meta"><span>13.2% of leads</span><span>8% conv.</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="pipeline-summary">
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot green"></span> 14 hot leads (score 70+)</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot amber"></span> 16 warm leads (score 40–69)</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot red"></span> 8 cold leads (score below 40)</div>
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

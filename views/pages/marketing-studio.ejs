@@ -1,0 +1,305 @@
+<%- include('../partials/head', { pageCSS: 'marketing-studio' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Grow' },
+        { label: 'Marketing studio' }
+      ],
+      topbarActions: `
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          New campaign
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Grow · April 2026</div>
+          <h1 class="greeting-title">Marketing <em>studio</em></h1>
+          <div class="greeting-sub">3 active campaigns — 2,840 emails sent this month, 24.1% open rate.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Active campaigns</div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">2 email · 1 direct mail</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Emails sent (MTD)</div>
+          <div class="kpi-value">2,840</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 18%</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Open rate</div>
+          <div class="kpi-value">24.1<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 3.2pt</span><span class="kpi-delta-label">industry avg: 18.4%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Quote conversions</div>
+          <div class="kpi-value">14</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">$42K est. premium</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Audience segmentation uses life-event triggers, cross-sell propensity, and engagement history to target the right message to the right client.</div>
+          <div class="d360-strip-sub">Segmented campaigns convert at 3.4× the rate of bulk sends — and reduce unsubscribe rates by 68%.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">184</div><div class="d360-strip-stat-label">Households</div></div>
+          <div><div class="d360-strip-stat-num">6</div><div class="d360-strip-stat-label">Segments</div></div>
+          <div><div class="d360-strip-stat-num">live</div><div class="d360-strip-stat-label">Updated</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">Campaigns <span class="tab-count">3</span></div>
+        <div class="tab">Templates <span class="tab-count">8</span></div>
+        <div class="tab">Audiences <span class="tab-count">6</span></div>
+        <div class="tab">Analytics</div>
+      </div>
+
+      <div class="mkt-layout">
+
+        <div class="mkt-campaigns">
+
+          <!-- ACTIVE CAMPAIGNS -->
+          <div class="mkt-campaign-card active">
+            <div class="mkt-campaign-header">
+              <div>
+                <div class="mkt-campaign-name">Spring cross-sell — auto → home</div>
+                <div class="mkt-campaign-detail">Targeting 68 single-line auto households with home purchase propensity above 60</div>
+              </div>
+              <span class="mkt-campaign-status active">Active</span>
+            </div>
+            <div class="mkt-campaign-stats">
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">1,420</div>
+                <div class="mkt-stat-label">Sent</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">26.8%</div>
+                <div class="mkt-stat-label">Opened</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">4.2%</div>
+                <div class="mkt-stat-label">Clicked</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">8</div>
+                <div class="mkt-stat-label">Quotes</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">$24K</div>
+                <div class="mkt-stat-label">Est. premium</div>
+              </div>
+            </div>
+            <div class="mkt-campaign-footer">
+              <span class="mkt-campaign-meta">Email · 3-touch drip · started Apr 8</span>
+              <div class="mkt-campaign-d360"><span class="d360-pill">D360 Segments</span></div>
+            </div>
+          </div>
+
+          <div class="mkt-campaign-card active">
+            <div class="mkt-campaign-header">
+              <div>
+                <div class="mkt-campaign-name">Umbrella upsell — existing bundle clients</div>
+                <div class="mkt-campaign-detail">Auto+home bundle households without umbrella coverage · personalized limit recommendations</div>
+              </div>
+              <span class="mkt-campaign-status active">Active</span>
+            </div>
+            <div class="mkt-campaign-stats">
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">840</div>
+                <div class="mkt-stat-label">Sent</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">22.4%</div>
+                <div class="mkt-stat-label">Opened</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">3.8%</div>
+                <div class="mkt-stat-label">Clicked</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">4</div>
+                <div class="mkt-stat-label">Quotes</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">$6K</div>
+                <div class="mkt-stat-label">Est. premium</div>
+              </div>
+            </div>
+            <div class="mkt-campaign-footer">
+              <span class="mkt-campaign-meta">Email · single send · Apr 15</span>
+              <div class="mkt-campaign-d360"><span class="d360-pill">Propensity Model</span></div>
+            </div>
+          </div>
+
+          <div class="mkt-campaign-card active">
+            <div class="mkt-campaign-header">
+              <div>
+                <div class="mkt-campaign-name">Renewal retention — at-risk accounts</div>
+                <div class="mkt-campaign-detail">Direct mail + email to 5 at-risk renewal households with personalized retention offers</div>
+              </div>
+              <span class="mkt-campaign-status active">Active</span>
+            </div>
+            <div class="mkt-campaign-stats">
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">580</div>
+                <div class="mkt-stat-label">Sent</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">31.2%</div>
+                <div class="mkt-stat-label">Opened</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">6.1%</div>
+                <div class="mkt-stat-label">Clicked</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">2</div>
+                <div class="mkt-stat-label">Retained</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">$12K</div>
+                <div class="mkt-stat-label">Saved premium</div>
+              </div>
+            </div>
+            <div class="mkt-campaign-footer">
+              <span class="mkt-campaign-meta">Email + direct mail · started Apr 1</span>
+              <div class="mkt-campaign-d360"><span class="d360-pill">Retention Model</span></div>
+            </div>
+          </div>
+
+          <!-- COMPLETED -->
+          <div class="mkt-campaign-card completed">
+            <div class="mkt-campaign-header">
+              <div>
+                <div class="mkt-campaign-name">Q1 review — annual policy checkup</div>
+                <div class="mkt-campaign-detail">Coverage review invitations to all households with policies older than 2 years</div>
+              </div>
+              <span class="mkt-campaign-status completed">Completed</span>
+            </div>
+            <div class="mkt-campaign-stats">
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">3,200</div>
+                <div class="mkt-stat-label">Sent</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">19.8%</div>
+                <div class="mkt-stat-label">Opened</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">2.4%</div>
+                <div class="mkt-stat-label">Clicked</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">12</div>
+                <div class="mkt-stat-label">Reviews</div>
+              </div>
+              <div class="mkt-stat">
+                <div class="mkt-stat-num">$18K</div>
+                <div class="mkt-stat-label">Upsold</div>
+              </div>
+            </div>
+            <div class="mkt-campaign-footer">
+              <span class="mkt-campaign-meta">Email · 2-touch · Feb 15 – Mar 15</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MARKETING INTELLIGENCE SIDEBAR -->
+        <div class="mkt-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Campaign intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Cross-sell campaign is outperforming</strong> — 26.8% open rate is 8.4 points above your average. Life-event-triggered sends are driving the lift.</div>
+                <div class="intel-meta">Campaign analytics · real-time</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>22 households have life events</strong> detected this month (new home, marriage, baby, new vehicle). Consider a triggered outreach sequence for these high-intent moments.</div>
+                <div class="intel-meta">Life event engine · monthly summary</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Retention campaign</strong> has saved $12K in premium from 2 at-risk accounts. 3 remaining at-risk accounts haven't engaged — consider phone outreach as a follow-up.</div>
+                <div class="intel-meta">Retention model · campaign overlay</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Top audiences</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Single-line HH</span><span class="benchmark-percentile">68</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>Cross-sell target</span><span>24% conv.</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Life event HH</span><span class="benchmark-percentile">22</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 32%;"></div></div>
+                <div class="benchmark-meta"><span>High intent</span><span>31% conv.</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">At-risk renewals</span><span class="benchmark-percentile">5</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 7%;"></div></div>
+                <div class="benchmark-meta"><span>Retention target</span><span>40% save</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">No umbrella</span><span class="benchmark-percentile">42</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 62%;"></div></div>
+                <div class="benchmark-meta"><span>Upsell target</span><span>18% conv.</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

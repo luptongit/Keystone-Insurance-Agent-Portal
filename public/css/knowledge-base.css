@@ -1,0 +1,111 @@
+/* ============================================================
+   Knowledge Base — page-specific styles
+   ============================================================ */
+
+.kb-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.kb-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+/* Category card grid */
+.kb-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.kb-category-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.kb-category-card:hover {
+  border-color: var(--keystone-blue);
+  box-shadow: 0 2px 8px rgba(12, 68, 124, 0.08);
+}
+
+.kb-category-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--keystone-blue);
+  margin-bottom: 12px;
+}
+.kb-category-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.kb-category-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--granite);
+}
+
+.kb-category-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 2px;
+}
+
+.kb-category-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Article rows */
+.kb-article-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+  color: inherit;
+  text-decoration: none;
+}
+.kb-article-row:hover { background: var(--paper); }
+.kb-article-row:last-child { border-bottom: none; }
+
+.kb-article-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.kb-article-icon.new { color: var(--keystone-blue); }
+.kb-article-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.kb-article-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+.kb-article-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.kb-new-badge {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--keystone-blue);
+}

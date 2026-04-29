@@ -1,0 +1,250 @@
+<%- include('../partials/head', { pageCSS: 'knowledge-base' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Resources' },
+        { label: 'Knowledge base' }
+      ]
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Resources · April 2026</div>
+          <h1 class="greeting-title">Knowledge <em>base</em></h1>
+          <div class="greeting-sub">142 articles across 6 categories — 8 updated this week, 3 new carrier bulletins.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Total articles</div>
+          <div class="kpi-value">142</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 8</span><span class="kpi-delta-label">updated this week</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Carrier bulletins</div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">new this month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Your bookmarks</div>
+          <div class="kpi-value">18</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">across 4 categories</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Trending topic</div>
+          <div class="kpi-value" style="font-size: 18px;">Cyber</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">3× search volume this month</span></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All <span class="tab-count">142</span></div>
+        <div class="tab">Product guides <span class="tab-count">38</span></div>
+        <div class="tab">Carrier appetites <span class="tab-count">24</span></div>
+        <div class="tab">UW guidelines <span class="tab-count">32</span></div>
+        <div class="tab">Bulletins <span class="tab-count">18</span></div>
+      </div>
+
+      <div class="kb-layout">
+
+        <div class="kb-main">
+
+          <!-- CATEGORY CARDS -->
+          <div class="kb-categories">
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+              </div>
+              <div class="kb-category-name">Product guides</div>
+              <div class="kb-category-count">38 articles</div>
+              <div class="kb-category-desc">Coverage details, eligibility, limits, and exclusions by line of business</div>
+            </div>
+
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div class="kb-category-name">Carrier appetites</div>
+              <div class="kb-category-count">24 articles</div>
+              <div class="kb-category-desc">Which carriers want which risks — updated monthly by region and class code</div>
+            </div>
+
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              </div>
+              <div class="kb-category-name">UW guidelines</div>
+              <div class="kb-category-count">32 articles</div>
+              <div class="kb-category-desc">Underwriting criteria, acceptable risks, and submission requirements</div>
+            </div>
+
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="kb-category-name">Carrier bulletins</div>
+              <div class="kb-category-count">18 articles</div>
+              <div class="kb-category-desc">Rate changes, new products, underwriting updates, and compliance notices</div>
+            </div>
+
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="kb-category-name">Compliance</div>
+              <div class="kb-category-count">14 articles</div>
+              <div class="kb-category-desc">State regulations, filing requirements, E&O best practices</div>
+            </div>
+
+            <div class="kb-category-card">
+              <div class="kb-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              </div>
+              <div class="kb-category-name">Sales playbooks</div>
+              <div class="kb-category-count">16 articles</div>
+              <div class="kb-category-desc">Objection handling, cross-sell scripts, and competitive positioning</div>
+            </div>
+          </div>
+
+          <!-- RECENTLY UPDATED -->
+          <div class="panel" style="margin-top: 20px;">
+            <div class="panel-header">
+              <span class="panel-title">Recently updated</span>
+            </div>
+
+            <a class="kb-article-row" href="#">
+              <div class="kb-article-icon new">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="kb-article-body">
+                <div class="kb-article-title">Hartford TX cyber liability — new product launch</div>
+                <div class="kb-article-meta">Carrier bulletin · Updated Apr 28 · <span class="kb-new-badge">New</span></div>
+              </div>
+            </a>
+
+            <a class="kb-article-row" href="#">
+              <div class="kb-article-icon new">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              </div>
+              <div class="kb-article-body">
+                <div class="kb-article-title">Workers comp audit process — step-by-step guide</div>
+                <div class="kb-article-meta">UW guidelines · Updated Apr 26 · <span class="kb-new-badge">Updated</span></div>
+              </div>
+            </a>
+
+            <a class="kb-article-row" href="#">
+              <div class="kb-article-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div class="kb-article-body">
+                <div class="kb-article-title">Travelers commercial auto appetite — Q2 2026 update</div>
+                <div class="kb-article-meta">Carrier appetite · Updated Apr 24</div>
+              </div>
+            </a>
+
+            <a class="kb-article-row" href="#">
+              <div class="kb-article-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="kb-article-body">
+                <div class="kb-article-title">TX surplus lines filing requirements — 2026 changes</div>
+                <div class="kb-article-meta">Compliance · Updated Apr 22</div>
+              </div>
+            </a>
+
+            <a class="kb-article-row" href="#">
+              <div class="kb-article-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              </div>
+              <div class="kb-article-body">
+                <div class="kb-article-title">Umbrella coverage — when to recommend $2M+ limits</div>
+                <div class="kb-article-meta">Product guide · Updated Apr 20</div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- KB SIDEBAR -->
+        <div class="kb-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Recommended reading</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Cyber liability product guide</strong> — relevant to your Crestline Bakery cyber add-on endorsement and 3 pipeline prospects in tech-adjacent industries.</div>
+                <div class="intel-meta">Based on your current pipeline</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Teen driver underwriting</strong> — Henderson endorsement is in UW review. This guide covers defensive driving discounts that could expedite approval.</div>
+                <div class="intel-meta">Based on pending endorsements</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>At-risk renewal playbook</strong> — 5 renewals are flagged at-risk. This playbook covers retention offers, re-quoting strategies, and competitive positioning.</div>
+                <div class="intel-meta">Based on renewal pipeline</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Popular this week</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Cyber liability</span><span class="benchmark-percentile">142 views</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Workers comp audit</span><span class="benchmark-percentile">98 views</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 69%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Umbrella limits guide</span><span class="benchmark-percentile">76 views</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 54%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">TX surplus lines</span><span class="benchmark-percentile">64 views</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 45%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

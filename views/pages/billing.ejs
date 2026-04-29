@@ -1,0 +1,288 @@
+<%- include('../partials/head', { pageCSS: 'billing' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Service' },
+        { label: 'Billing' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Service · April 2026</div>
+          <h1 class="greeting-title">Billing & <em>payments</em></h1>
+          <div class="greeting-sub">$178K collected this month — 6 accounts past due, $12.4K outstanding.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Collected (MTD)</div>
+          <div class="kpi-value">$178<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 4.2%</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Outstanding</div>
+          <div class="kpi-value">$12.4<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta-label">6 accounts</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Past due (30d+)</div>
+          <div class="kpi-value">$4.8<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta down">↑ $1.2K</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Auto-pay enrollment</div>
+          <div class="kpi-value">74<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 6pt</span><span class="kpi-delta-label">peer avg: 68%</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Payment behavior scoring predicts lapse risk from billing patterns, payment method changes, and frequency of late payments.</div>
+          <div class="d360-strip-sub">Accounts with 2+ late payments in 12 months lapse at 3.8× the rate of current accounts. Auto-pay enrollment reduces lapse risk by 62%.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">287</div><div class="d360-strip-stat-label">Accounts</div></div>
+          <div><div class="d360-strip-stat-num">74%</div><div class="d360-strip-stat-label">Auto-pay</div></div>
+          <div><div class="d360-strip-stat-num">2.1%</div><div class="d360-strip-stat-label">Lapse rate</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All accounts <span class="tab-count">287</span></div>
+        <div class="tab">Past due <span class="tab-count">6</span></div>
+        <div class="tab">Payment plans <span class="tab-count">12</span></div>
+        <div class="tab">Auto-pay <span class="tab-count">212</span></div>
+      </div>
+
+      <div class="bill-layout">
+
+        <div class="bill-table">
+
+          <div class="bill-table-header">
+            <span>Account</span>
+            <span>Policy</span>
+            <span>Premium</span>
+            <span>Last payment</span>
+            <span>Next due</span>
+            <span>Balance</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- PAST DUE -->
+          <div class="bill-group">
+            <div class="bill-group-label">Past due <span class="bill-group-count">6 accounts · $12,440 outstanding</span></div>
+
+            <a class="bill-row overdue" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Kim, S.</div>
+                <div class="bill-row-detail">Missed April payment · 2nd late in 12mo</div>
+              </div>
+              <div><span class="bill-line auto">Auto</span></div>
+              <div class="bill-row-premium">$1,420/yr</div>
+              <div class="bill-row-date">Mar 1</div>
+              <div class="bill-row-date overdue">Apr 1</div>
+              <div class="bill-row-balance">$355</div>
+              <div><span class="bill-status-badge overdue">30d late</span></div>
+              <div class="bill-row-action"><button class="btn">Contact</button></div>
+            </a>
+
+            <a class="bill-row overdue" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Blackwood Properties</div>
+                <div class="bill-row-detail">Commercial quarterly · payment plan requested</div>
+              </div>
+              <div><span class="bill-line commercial">Commercial</span></div>
+              <div class="bill-row-premium">$8,200/yr</div>
+              <div class="bill-row-date">Jan 15</div>
+              <div class="bill-row-date overdue">Apr 15</div>
+              <div class="bill-row-balance">$4,100</div>
+              <div><span class="bill-status-badge overdue">14d late</span></div>
+              <div class="bill-row-action"><button class="btn">Contact</button></div>
+            </a>
+
+            <a class="bill-row late" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Grant, T.</div>
+                <div class="bill-row-detail">Auto monthly · first late payment</div>
+              </div>
+              <div><span class="bill-line auto">Auto</span></div>
+              <div class="bill-row-premium">$1,200/yr</div>
+              <div class="bill-row-date">Mar 15</div>
+              <div class="bill-row-date late">Apr 15</div>
+              <div class="bill-row-balance">$200</div>
+              <div><span class="bill-status-badge late">7d late</span></div>
+              <div class="bill-row-action"><button class="btn">Remind</button></div>
+            </a>
+
+            <a class="bill-row late" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Novak, L.</div>
+                <div class="bill-row-detail">Home semi-annual · pending bank transfer</div>
+              </div>
+              <div><span class="bill-line home">Home</span></div>
+              <div class="bill-row-premium">$2,400/yr</div>
+              <div class="bill-row-date">Oct 22</div>
+              <div class="bill-row-date late">Apr 22</div>
+              <div class="bill-row-balance">$1,200</div>
+              <div><span class="bill-status-badge late">7d late</span></div>
+              <div class="bill-row-action"><button class="btn">Remind</button></div>
+            </a>
+          </div>
+
+          <!-- UPCOMING -->
+          <div class="bill-group">
+            <div class="bill-group-label">Due this week <span class="bill-group-count">8 accounts · $6,840 expected</span></div>
+
+            <a class="bill-row" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Ramirez household</div>
+                <div class="bill-row-detail">Auto + home monthly · auto-pay enrolled</div>
+              </div>
+              <div>
+                <span class="bill-line auto">Auto</span>
+                <span class="bill-line home">Home</span>
+              </div>
+              <div class="bill-row-premium">$8,640/yr</div>
+              <div class="bill-row-date">Apr 1</div>
+              <div class="bill-row-date">May 1</div>
+              <div class="bill-row-balance">$720</div>
+              <div><span class="bill-status-badge autopay">Auto-pay</span></div>
+              <div class="bill-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bill-row" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Patel household</div>
+                <div class="bill-row-detail">Bundle monthly · auto-pay enrolled</div>
+              </div>
+              <div>
+                <span class="bill-line auto">Auto</span>
+                <span class="bill-line home">Home</span>
+              </div>
+              <div class="bill-row-premium">$3,880/yr</div>
+              <div class="bill-row-date">Apr 2</div>
+              <div class="bill-row-date">May 2</div>
+              <div class="bill-row-balance">$323</div>
+              <div><span class="bill-status-badge autopay">Auto-pay</span></div>
+              <div class="bill-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bill-row" href="/customers">
+              <div class="bill-row-name">
+                <div class="bill-row-customer">Henderson, T.</div>
+                <div class="bill-row-detail">Auto monthly · check payment</div>
+              </div>
+              <div><span class="bill-line auto">Auto</span></div>
+              <div class="bill-row-premium">$1,580/yr</div>
+              <div class="bill-row-date">Apr 3</div>
+              <div class="bill-row-date">May 3</div>
+              <div class="bill-row-balance">$132</div>
+              <div><span class="bill-status-badge current">Current</span></div>
+              <div class="bill-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- BILLING INTELLIGENCE SIDEBAR -->
+        <div class="bill-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Billing intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Kim, S.</strong> has 2 late payments in 12 months — lapse probability is 38%. Combined with shopping signals and an upcoming renewal, this account needs immediate outreach.</div>
+                <div class="intel-meta">Payment behavior model · high risk</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>74 accounts not on auto-pay</strong> could be converted — each conversion reduces lapse risk by 62%. A targeted enrollment campaign would protect an estimated $142K in annual premium.</div>
+                <div class="intel-meta">Auto-pay optimization · segment analysis</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Collection rate is 97.8%</strong> — above peer average of 96.2%. Auto-pay enrollment is the primary driver of your strong performance.</div>
+                <div class="intel-meta">Performance benchmark · Q1 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Payment methods</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Auto-pay (ACH)</span><span class="benchmark-percentile">186</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>65% of accounts</span><span>0.8% lapse</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Auto-pay (card)</span><span class="benchmark-percentile">26</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 14%;"></div></div>
+                <div class="benchmark-meta"><span>9% of accounts</span><span>1.2% lapse</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Manual (check)</span><span class="benchmark-percentile middle">48</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 26%;"></div></div>
+                <div class="benchmark-meta"><span>17% of accounts</span><span>4.8% lapse</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Direct bill</span><span class="benchmark-percentile">27</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 15%;"></div></div>
+                <div class="benchmark-meta"><span>9% of accounts</span><span>3.2% lapse</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

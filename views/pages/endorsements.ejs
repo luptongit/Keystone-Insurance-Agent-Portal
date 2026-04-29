@@ -1,0 +1,284 @@
+<%- include('../partials/head', { pageCSS: 'endorsements' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Service' },
+        { label: 'Endorsements' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          New endorsement
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Service · April 2026</div>
+          <h1 class="greeting-title">Policy <em>endorsements</em></h1>
+          <div class="greeting-sub">4 pending changes — avg turnaround 1.8 days, 62% auto-approved this quarter.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Pending</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">2 in UW review</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Approved (MTD)</div>
+          <div class="kpi-value">18</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 3</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg turnaround</div>
+          <div class="kpi-value">1.8<span class="kpi-value-suffix">d</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↓ 0.4d</span><span class="kpi-delta-label">peer avg: 2.6d</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Auto-approved rate</div>
+          <div class="kpi-value">62<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 8pt</span><span class="kpi-delta-label">vs last quarter</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Smart endorsement routing uses policy history, change type, and risk scoring to auto-approve low-risk changes and fast-track UW review.</div>
+          <div class="d360-strip-sub">Auto-approved endorsements process in under 4 hours vs 2.6 days for manual review — with no increase in loss ratio.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">22</div><div class="d360-strip-stat-label">This month</div></div>
+          <div><div class="d360-strip-stat-num">62%</div><div class="d360-strip-stat-label">Auto</div></div>
+          <div><div class="d360-strip-stat-num">1.8d</div><div class="d360-strip-stat-label">Avg time</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All <span class="tab-count">22</span></div>
+        <div class="tab">Pending <span class="tab-count">4</span></div>
+        <div class="tab">In review <span class="tab-count">2</span></div>
+        <div class="tab">Approved <span class="tab-count">14</span></div>
+        <div class="tab">Declined <span class="tab-count">2</span></div>
+      </div>
+
+      <div class="end-layout">
+
+        <div class="end-table">
+
+          <div class="end-table-header">
+            <span>Insured</span>
+            <span>Policy #</span>
+            <span>Change type</span>
+            <span>Premium impact</span>
+            <span>Submitted</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- PENDING -->
+          <div class="end-group">
+            <div class="end-group-label">Pending <span class="end-group-count">4 endorsements awaiting action</span></div>
+
+            <a class="end-row pending" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Henderson, T.</div>
+                <div class="end-row-detail">Adding teen driver · requires UW review</div>
+              </div>
+              <div class="end-row-num">AUT-2022-08341</div>
+              <div class="end-row-type"><span class="end-type-badge add">Add driver</span></div>
+              <div class="end-row-premium up">+$680/yr</div>
+              <div class="end-row-date">Apr 26</div>
+              <div><span class="end-status-badge uw-review">UW review</span></div>
+              <div class="end-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="end-row pending" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Olsen, R.</div>
+                <div class="end-row-detail">Garage addition · dwelling coverage increase</div>
+              </div>
+              <div class="end-row-num">HOM-2023-02187</div>
+              <div class="end-row-type"><span class="end-type-badge change">Coverage change</span></div>
+              <div class="end-row-premium up">+$240/yr</div>
+              <div class="end-row-date">Apr 25</div>
+              <div><span class="end-status-badge uw-review">UW review</span></div>
+              <div class="end-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Crestline Bakery LLC</div>
+                <div class="end-row-detail">Adding cyber liability coverage</div>
+              </div>
+              <div class="end-row-num">BOP-2020-06442</div>
+              <div class="end-row-type"><span class="end-type-badge add">Add coverage</span></div>
+              <div class="end-row-premium up">+$4,200/yr</div>
+              <div class="end-row-date">Apr 24</div>
+              <div><span class="end-status-badge pending">Pending</span></div>
+              <div class="end-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Ramirez household</div>
+                <div class="end-row-detail">Vehicle replacement · 2024 Honda CR-V</div>
+              </div>
+              <div class="end-row-num">AUT-2019-03156</div>
+              <div class="end-row-type"><span class="end-type-badge change">Vehicle swap</span></div>
+              <div class="end-row-premium up">+$120/yr</div>
+              <div class="end-row-date">Apr 28</div>
+              <div><span class="end-status-badge pending">Pending</span></div>
+              <div class="end-row-action"><button class="btn">Review</button></div>
+            </a>
+          </div>
+
+          <!-- RECENTLY APPROVED -->
+          <div class="end-group">
+            <div class="end-group-label">Recently approved <span class="end-group-count">6 endorsements this week</span></div>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Donovan, M.</div>
+                <div class="end-row-detail">Umbrella limit increase $1M → $2M</div>
+              </div>
+              <div class="end-row-num">UMB-2023-07089</div>
+              <div class="end-row-type"><span class="end-type-badge change">Limit increase</span></div>
+              <div class="end-row-premium up">+$140/yr</div>
+              <div class="end-row-date">Apr 22</div>
+              <div><span class="end-status-badge approved">Approved</span></div>
+              <div class="end-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Torres, A.</div>
+                <div class="end-row-detail">Address change · no premium impact</div>
+              </div>
+              <div class="end-row-num">AUT-2021-05223</div>
+              <div class="end-row-type"><span class="end-type-badge info">Info update</span></div>
+              <div class="end-row-premium flat">$0</div>
+              <div class="end-row-date">Apr 21</div>
+              <div><span class="end-status-badge auto-approved">Auto-approved</span></div>
+              <div class="end-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Patel household</div>
+                <div class="end-row-detail">Deductible change $500 → $1,000</div>
+              </div>
+              <div class="end-row-num">HOM-2020-09312</div>
+              <div class="end-row-type"><span class="end-type-badge change">Deductible</span></div>
+              <div class="end-row-premium down">-$180/yr</div>
+              <div class="end-row-date">Apr 20</div>
+              <div><span class="end-status-badge auto-approved">Auto-approved</span></div>
+              <div class="end-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="end-row" href="/policies">
+              <div class="end-row-name">
+                <div class="end-row-customer">Mercer & Sons</div>
+                <div class="end-row-detail">Additional insured · second location</div>
+              </div>
+              <div class="end-row-num">BOP-2022-11087</div>
+              <div class="end-row-type"><span class="end-type-badge add">Add location</span></div>
+              <div class="end-row-premium up">+$2,800/yr</div>
+              <div class="end-row-date">Apr 19</div>
+              <div><span class="end-status-badge approved">Approved</span></div>
+              <div class="end-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- ENDORSEMENT INTELLIGENCE SIDEBAR -->
+        <div class="end-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Processing intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Henderson teen driver</strong> has been in UW review for 3 days — 67% longer than average. Similar endorsements auto-approve 48% of the time when the driver has completed a defensive driving course.</div>
+                <div class="intel-meta">Processing velocity · peer benchmark</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Auto-approval rate increased 8 points</strong> this quarter after smart routing was enabled. 14 of 22 endorsements this month required no manual review.</div>
+                <div class="intel-meta">Routing model · Q2 2026 performance</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Crestline cyber add-on</strong> is a cross-sell opportunity worth $4,200/yr. TX recently approved the carrier's new cyber product — appetite is favorable for food service businesses under $5M revenue.</div>
+                <div class="intel-meta">Product intelligence · carrier bulletin</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Endorsements by type</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Coverage changes</span><span class="benchmark-percentile">9</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Add coverage/driver</span><span class="benchmark-percentile">6</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 67%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Info updates</span><span class="benchmark-percentile">5</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 56%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Removals</span><span class="benchmark-percentile">2</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 22%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

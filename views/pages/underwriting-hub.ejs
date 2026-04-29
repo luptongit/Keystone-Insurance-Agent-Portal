@@ -1,0 +1,293 @@
+<%- include('../partials/head', { pageCSS: 'underwriting-hub' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Resources' },
+        { label: 'Underwriting hub' }
+      ],
+      topbarActions: `
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          New submission
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Resources · April 2026</div>
+          <h1 class="greeting-title">Underwriting <em>hub</em></h1>
+          <div class="greeting-sub">8 active submissions — avg response time 2.4 days, 68% bound ratio (90d).</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Active submissions</div>
+          <div class="kpi-value">8</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">3 quoted · 5 in review</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg response time</div>
+          <div class="kpi-value">2.4<span class="kpi-value-suffix">d</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↓ 0.8d</span><span class="kpi-delta-label">peer avg: 3.6d</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Bound ratio (90d)</div>
+          <div class="kpi-value">68<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 4pt</span><span class="kpi-delta-label">peer avg: 62%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Declined (90d)</div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">2 risk · 1 appetite</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Submission intelligence matches risks to carriers with the highest appetite scores, reducing declinations and improving response times.</div>
+          <div class="d360-strip-sub">Submissions routed using appetite matching bind at 74% vs 58% for manually-routed submissions.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">6</div><div class="d360-strip-stat-label">Carriers</div></div>
+          <div><div class="d360-strip-stat-num">8</div><div class="d360-strip-stat-label">Active</div></div>
+          <div><div class="d360-strip-stat-num">68%</div><div class="d360-strip-stat-label">Bound</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">Submissions <span class="tab-count">8</span></div>
+        <div class="tab">Appetite guide <span class="tab-count">6</span></div>
+        <div class="tab">Carrier contacts <span class="tab-count">6</span></div>
+        <div class="tab">Analytics</div>
+      </div>
+
+      <div class="uw-layout">
+
+        <div class="uw-table">
+
+          <div class="uw-table-header">
+            <span>Submission</span>
+            <span>Line</span>
+            <span>Carrier</span>
+            <span>Premium est.</span>
+            <span>Submitted</span>
+            <span>Response</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- AWAITING RESPONSE -->
+          <div class="uw-group">
+            <div class="uw-group-label">Awaiting response <span class="uw-group-count">5 submissions in review</span></div>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Nguyen Construction</div>
+                <div class="uw-row-detail">GL + WC · 22 employees · fleet of 8</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Travelers</div>
+              <div class="uw-row-premium">$28,400/yr</div>
+              <div class="uw-row-date">Apr 18</div>
+              <div class="uw-row-response">11d</div>
+              <div><span class="uw-status-badge review">In review</span></div>
+              <div class="uw-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Crestline Bakery LLC</div>
+                <div class="uw-row-detail">Cyber liability add-on · $1M limit</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Hartford</div>
+              <div class="uw-row-premium">$4,200/yr</div>
+              <div class="uw-row-date">Apr 22</div>
+              <div class="uw-row-response">7d</div>
+              <div><span class="uw-status-badge review">In review</span></div>
+              <div class="uw-row-action"><button class="btn">Follow up</button></div>
+            </a>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Apex Fitness Studios</div>
+                <div class="uw-row-detail">New business · GL + property + WC</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Nationwide</div>
+              <div class="uw-row-premium">$14,200/yr</div>
+              <div class="uw-row-date">Apr 24</div>
+              <div class="uw-row-response">5d</div>
+              <div><span class="uw-status-badge review">In review</span></div>
+              <div class="uw-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Thornton, J.</div>
+                <div class="uw-row-detail">New LLC · commercial auto + GL</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Hartford</div>
+              <div class="uw-row-premium">$18,400/yr</div>
+              <div class="uw-row-date">Apr 26</div>
+              <div class="uw-row-response">3d</div>
+              <div><span class="uw-status-badge review">In review</span></div>
+              <div class="uw-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Henderson, T.</div>
+                <div class="uw-row-detail">Teen driver endorsement · defensive driving</div>
+              </div>
+              <div><span class="uw-line auto">Auto</span></div>
+              <div class="uw-row-carrier">Hartford</div>
+              <div class="uw-row-premium">$680/yr</div>
+              <div class="uw-row-date">Apr 26</div>
+              <div class="uw-row-response">3d</div>
+              <div><span class="uw-status-badge review">In review</span></div>
+              <div class="uw-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- QUOTED -->
+          <div class="uw-group">
+            <div class="uw-group-label">Quoted <span class="uw-group-count">3 submissions with active quotes</span></div>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Martinez Auto Group</div>
+                <div class="uw-row-detail">Commercial fleet · 14 vehicles · multi-loc</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Travelers</div>
+              <div class="uw-row-premium">$42,600/yr</div>
+              <div class="uw-row-date">Apr 10</div>
+              <div class="uw-row-response">2d</div>
+              <div><span class="uw-status-badge quoted">Quoted</span></div>
+              <div class="uw-row-action"><button class="btn">Bind</button></div>
+            </a>
+
+            <a class="uw-row" href="/customers">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Greenfield Dental</div>
+                <div class="uw-row-detail">BOP renewal · adding prof liability</div>
+              </div>
+              <div><span class="uw-line commercial">Commercial</span></div>
+              <div class="uw-row-carrier">Nationwide</div>
+              <div class="uw-row-premium">$13,100/yr</div>
+              <div class="uw-row-date">Apr 14</div>
+              <div class="uw-row-response">1d</div>
+              <div><span class="uw-status-badge quoted">Quoted</span></div>
+              <div class="uw-row-action"><button class="btn">Bind</button></div>
+            </a>
+
+            <a class="uw-row" href="/quote/new">
+              <div class="uw-row-name">
+                <div class="uw-row-customer">Mitchell, S.</div>
+                <div class="uw-row-detail">Homeowners · new purchase · closing May 12</div>
+              </div>
+              <div><span class="uw-line home">Home</span></div>
+              <div class="uw-row-carrier">Travelers</div>
+              <div class="uw-row-premium">$2,400/yr</div>
+              <div class="uw-row-date">Apr 28</div>
+              <div class="uw-row-response">1d</div>
+              <div><span class="uw-status-badge quoted">Quoted</span></div>
+              <div class="uw-row-action"><button class="btn">Bind</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- UNDERWRITING INTELLIGENCE SIDEBAR -->
+        <div class="uw-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">UW intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Nguyen Construction</strong> has been in review for 11 days — 4.6× longer than Travelers' avg response time. Consider escalating to your regional UW contact.</div>
+                <div class="intel-meta">Response velocity · carrier benchmark</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Hartford has high appetite</strong> for TX cyber liability — their new product launched Apr 28. Crestline Bakery submission is well within guidelines (food service, under $5M revenue).</div>
+                <div class="intel-meta">Appetite matching · carrier bulletin</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Your bound ratio is 68%</strong> — 6 points above peer average. Appetite-matched submissions are the primary driver. Consider routing Apex Fitness to Travelers as a secondary market.</div>
+                <div class="intel-meta">Submission analytics · 90d lookback</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Carrier response times</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Hartford</span><span class="benchmark-percentile">1.8d avg</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 90%;"></div></div>
+                <div class="benchmark-meta"><span>Fastest</span><span>72% bound</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Travelers</span><span class="benchmark-percentile">2.4d avg</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 75%;"></div></div>
+                <div class="benchmark-meta"><span>Fast</span><span>68% bound</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Nationwide</span><span class="benchmark-percentile middle">3.2d avg</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 56%;"></div></div>
+                <div class="benchmark-meta"><span>Average</span><span>64% bound</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Chubb</span><span class="benchmark-percentile">2.1d avg</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 83%;"></div></div>
+                <div class="benchmark-meta"><span>Fast</span><span>71% bound</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

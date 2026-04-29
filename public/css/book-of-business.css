@@ -1,0 +1,127 @@
+/* ============================================================
+   Book of Business — page-specific styles
+   ============================================================ */
+
+.bob-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.bob-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.bob-table {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bob-table-header {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.8fr 0.5fr 0.5fr 0.6fr 0.6fr 0.4fr;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--limestone);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.bob-group {
+  border-bottom: 1px solid var(--border);
+}
+.bob-group:last-child { border-bottom: none; }
+
+.bob-group-label {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--granite);
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.bob-group-count {
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.bob-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.8fr 0.5fr 0.5fr 0.6fr 0.6fr 0.4fr;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.1s;
+  color: inherit;
+  text-decoration: none;
+}
+.bob-row:hover { background: var(--paper); }
+.bob-row:last-child { border-bottom: none; }
+
+.bob-row-customer {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--granite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bob-row-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.bob-row-premium {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+.bob-row-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--granite);
+}
+
+.bob-row-action .btn {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.bob-line {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  background: var(--limestone);
+  color: var(--granite-soft);
+  display: inline-block;
+}
+.bob-line + .bob-line { margin-left: 3px; }
+
+.bob-line.auto { background: #E6F1FB; color: var(--keystone-blue); }
+.bob-line.home { background: #EAF3DE; color: var(--green); }
+.bob-line.commercial { background: var(--limestone); color: var(--granite); }
+.bob-line.life { background: #FAEEDA; color: var(--bronze); }
+.bob-line.umbrella { background: #EEEDFE; color: #534AB7; }
+.bob-line.bundle { background: #E6F1FB; color: var(--keystone-blue); }

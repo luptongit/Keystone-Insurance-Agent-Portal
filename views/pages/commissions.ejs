@@ -1,0 +1,288 @@
+<%- include('../partials/head', { pageCSS: 'commissions' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Grow' },
+        { label: 'Commissions' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Grow · April 2026</div>
+          <h1 class="greeting-title">Commission <em>tracking</em></h1>
+          <div class="greeting-sub">$128.4K earned YTD — $18.2K this month, $4.6K pending carrier payment.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Earned (YTD)</div>
+          <div class="kpi-value">$128.4<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 11.2%</span><span class="kpi-delta-label">vs prior year</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">This month</div>
+          <div class="kpi-value">$18.2<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ $2.4K</span><span class="kpi-delta-label">vs last month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Pending payment</div>
+          <div class="kpi-value">$4.6<span class="kpi-value-suffix">K</span></div>
+          <div class="kpi-meta"><span class="kpi-delta-label">3 carrier statements due</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Avg commission rate</div>
+          <div class="kpi-value">12.4<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta-label">blended across all lines</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Commission forecasting projects your earnings trajectory based on pipeline, renewal rates, and carrier bonus thresholds.</div>
+          <div class="d360-strip-sub">You're 82% of the way to Hartford's Q2 production bonus ($15K) — 4 more new-business policies would trigger the tier.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">$128K</div><div class="d360-strip-stat-label">YTD</div></div>
+          <div><div class="d360-strip-stat-num">$204K</div><div class="d360-strip-stat-label">Forecast</div></div>
+          <div><div class="d360-strip-stat-num">82%</div><div class="d360-strip-stat-label">Bonus track</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">Summary</div>
+        <div class="tab">By policy <span class="tab-count">287</span></div>
+        <div class="tab">By carrier <span class="tab-count">6</span></div>
+        <div class="tab">Statements <span class="tab-count">4</span></div>
+      </div>
+
+      <div class="comm-layout">
+
+        <div class="comm-table">
+
+          <div class="comm-table-header">
+            <span>Policy / client</span>
+            <span>Line</span>
+            <span>Premium</span>
+            <span>Rate</span>
+            <span>Commission</span>
+            <span>Type</span>
+            <span>Carrier</span>
+            <span>Status</span>
+          </div>
+
+          <!-- NEW BUSINESS COMMISSIONS -->
+          <div class="comm-group">
+            <div class="comm-group-label">New business (April) <span class="comm-group-count">4 policies · $2,840 earned</span></div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Reeves household</div>
+                <div class="comm-row-detail">Auto + home bundle · bound Apr 22</div>
+              </div>
+              <div>
+                <span class="comm-line auto">Auto</span>
+                <span class="comm-line home">Home</span>
+              </div>
+              <div class="comm-row-premium">$3,480/yr</div>
+              <div class="comm-row-rate">15%</div>
+              <div class="comm-row-amount">$522</div>
+              <div><span class="comm-type-badge new">New</span></div>
+              <div class="comm-row-carrier">Hartford</div>
+              <div><span class="comm-status-badge paid">Paid</span></div>
+            </div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Park, J.</div>
+                <div class="comm-row-detail">Homeowners · bound Apr 18</div>
+              </div>
+              <div><span class="comm-line home">Home</span></div>
+              <div class="comm-row-premium">$1,890/yr</div>
+              <div class="comm-row-rate">15%</div>
+              <div class="comm-row-amount">$284</div>
+              <div><span class="comm-type-badge new">New</span></div>
+              <div class="comm-row-carrier">Travelers</div>
+              <div><span class="comm-status-badge paid">Paid</span></div>
+            </div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Donovan, M.</div>
+                <div class="comm-row-detail">Umbrella upsell · bound Apr 15</div>
+              </div>
+              <div><span class="comm-line umbrella">Umbrella</span></div>
+              <div class="comm-row-premium">$380/yr</div>
+              <div class="comm-row-rate">12%</div>
+              <div class="comm-row-amount">$46</div>
+              <div><span class="comm-type-badge new">New</span></div>
+              <div class="comm-row-carrier">Chubb</div>
+              <div><span class="comm-status-badge pending">Pending</span></div>
+            </div>
+          </div>
+
+          <!-- RENEWAL COMMISSIONS -->
+          <div class="comm-group">
+            <div class="comm-group-label">Renewals (April) <span class="comm-group-count">22 policies · $14,280 earned</span></div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Ramirez household</div>
+                <div class="comm-row-detail">Auto + home bundle · 7yr client</div>
+              </div>
+              <div>
+                <span class="comm-line auto">Auto</span>
+                <span class="comm-line home">Home</span>
+              </div>
+              <div class="comm-row-premium">$8,640/yr</div>
+              <div class="comm-row-rate">10%</div>
+              <div class="comm-row-amount">$864</div>
+              <div><span class="comm-type-badge renewal">Renewal</span></div>
+              <div class="comm-row-carrier">Hartford</div>
+              <div><span class="comm-status-badge paid">Paid</span></div>
+            </div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Crestline Bakery LLC</div>
+                <div class="comm-row-detail">Commercial package · BOP + WC</div>
+              </div>
+              <div><span class="comm-line commercial">Commercial</span></div>
+              <div class="comm-row-premium">$46,100/yr</div>
+              <div class="comm-row-rate">12%</div>
+              <div class="comm-row-amount">$5,532</div>
+              <div><span class="comm-type-badge renewal">Renewal</span></div>
+              <div class="comm-row-carrier">Nationwide</div>
+              <div><span class="comm-status-badge pending">Pending</span></div>
+            </div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Patel household</div>
+                <div class="comm-row-detail">Bundle · auto + home + life</div>
+              </div>
+              <div>
+                <span class="comm-line auto">Auto</span>
+                <span class="comm-line home">Home</span>
+              </div>
+              <div class="comm-row-premium">$3,880/yr</div>
+              <div class="comm-row-rate">10%</div>
+              <div class="comm-row-amount">$388</div>
+              <div><span class="comm-type-badge renewal">Renewal</span></div>
+              <div class="comm-row-carrier">Hartford</div>
+              <div><span class="comm-status-badge paid">Paid</span></div>
+            </div>
+
+            <div class="comm-row">
+              <div class="comm-row-name">
+                <div class="comm-row-customer">Martinez Auto Group</div>
+                <div class="comm-row-detail">Commercial fleet · 14 vehicles</div>
+              </div>
+              <div><span class="comm-line commercial">Commercial</span></div>
+              <div class="comm-row-premium">$42,600/yr</div>
+              <div class="comm-row-rate">11%</div>
+              <div class="comm-row-amount">$4,686</div>
+              <div><span class="comm-type-badge renewal">Renewal</span></div>
+              <div class="comm-row-carrier">Travelers</div>
+              <div><span class="comm-status-badge pending">Pending</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COMMISSION INTELLIGENCE SIDEBAR -->
+        <div class="comm-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Commission intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Hartford Q2 bonus:</strong> you're at 82% of the production threshold. 4 more new-business policies before June 30 would trigger a $15K contingency bonus.</div>
+                <div class="intel-meta">Carrier bonus tracker · real-time</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Commercial lines yield 11.8% avg rate</strong> vs 10.2% for personal lines. Your commercial book is growing 14% YoY — the highest-margin growth vector in your portfolio.</div>
+                <div class="intel-meta">Commission optimization · line analysis</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>3 carrier statements are overdue</strong> — Chubb (12d), Nationwide (8d), and Progressive (5d). Total pending: $4,600. Consider following up on outstanding payments.</div>
+                <div class="intel-meta">Payment tracking · statement reconciliation</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Commissions by carrier</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Hartford</span><span class="benchmark-percentile">$48.2K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>38% of total</span><span>10.8% rate</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Travelers</span><span class="benchmark-percentile">$32.1K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 67%;"></div></div>
+                <div class="benchmark-meta"><span>25% of total</span><span>12.1% rate</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Nationwide</span><span class="benchmark-percentile">$22.4K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 46%;"></div></div>
+                <div class="benchmark-meta"><span>17% of total</span><span>12.0% rate</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Others</span><span class="benchmark-percentile">$25.7K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 53%;"></div></div>
+                <div class="benchmark-meta"><span>20% of total</span><span>14.2% rate</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

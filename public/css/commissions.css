@@ -1,0 +1,146 @@
+/* ============================================================
+   Commissions — page-specific styles
+   ============================================================ */
+
+.comm-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.comm-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.comm-table {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.comm-table-header {
+  display: grid;
+  grid-template-columns: 1.3fr 0.6fr 0.7fr 0.4fr 0.6fr 0.5fr 0.6fr 0.5fr;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--limestone);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.comm-group {
+  border-bottom: 1px solid var(--border);
+}
+.comm-group:last-child { border-bottom: none; }
+
+.comm-group-label {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--granite);
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.comm-group-count {
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.comm-row {
+  display: grid;
+  grid-template-columns: 1.3fr 0.6fr 0.7fr 0.4fr 0.6fr 0.5fr 0.6fr 0.5fr;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.comm-row:last-child { border-bottom: none; }
+
+.comm-row-customer {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+.comm-row-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.comm-row-premium,
+.comm-row-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--granite);
+}
+
+.comm-row-amount { color: var(--green); }
+
+.comm-row-rate {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.comm-row-carrier {
+  font-size: 12px;
+  color: var(--granite);
+}
+
+/* Line badges */
+.comm-line {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  background: var(--limestone);
+  display: inline-block;
+}
+.comm-line + .comm-line { margin-left: 3px; }
+.comm-line.auto { background: #E6F1FB; color: var(--keystone-blue); }
+.comm-line.home { background: #EAF3DE; color: var(--green); }
+.comm-line.commercial { background: var(--limestone); color: var(--granite); }
+.comm-line.life { background: #FAEEDA; color: var(--bronze); }
+.comm-line.umbrella { background: #EEEDFE; color: #534AB7; }
+
+/* Type badges */
+.comm-type-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.comm-type-badge.new { background: var(--green-bg); color: var(--green); }
+.comm-type-badge.renewal { background: #E6F1FB; color: var(--keystone-blue); }
+
+/* Status badges */
+.comm-status-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.comm-status-badge.paid { background: var(--green-bg); color: var(--green); }
+.comm-status-badge.pending { background: var(--amber-bg); color: var(--amber); }

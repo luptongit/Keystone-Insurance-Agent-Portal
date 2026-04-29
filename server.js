@@ -95,29 +95,102 @@ app.get('/platform-map', (req, res) => {
   res.render('pages/platform-map', { layout: false });
 });
 
-// ----- Placeholder pages for nav items not yet built -----
-// These render a friendly "coming soon" so navigation never breaks.
-const placeholderRoutes = [
-  { path: '/book-of-business', label: 'Book of business', activeNav: 'book' },
-  { path: '/leads', label: 'Leads', activeNav: 'leads' },
-  { path: '/policies', label: 'Policies', activeNav: 'policies' },
-  { path: '/endorsements', label: 'Endorsements', activeNav: 'endorsements' },
-  { path: '/claims', label: 'Claims (FNOL)', activeNav: 'claims' },
-  { path: '/billing', label: 'Billing', activeNav: 'billing' },
-  { path: '/marketing-studio', label: 'Marketing studio', activeNav: 'marketing' },
-  { path: '/commissions', label: 'Commissions', activeNav: 'commissions' },
-  { path: '/knowledge-base', label: 'Knowledge base', activeNav: 'knowledge' },
-  { path: '/training', label: 'Training & licensing', activeNav: 'training' },
-  { path: '/underwriting-hub', label: 'Underwriting hub', activeNav: 'underwriting' },
-];
+// Book of business
+app.get('/book-of-business', (req, res) => {
+  res.render('pages/book-of-business', {
+    pageTitle: 'Book of business',
+    activeNav: 'book',
+    pageCSS: 'book-of-business',
+  });
+});
 
-placeholderRoutes.forEach(({ path: routePath, label, activeNav }) => {
-  app.get(routePath, (req, res) => {
-    res.render('pages/coming-soon', {
-      pageTitle: label,
-      activeNav,
-      label,
-    });
+// Leads
+app.get('/leads', (req, res) => {
+  res.render('pages/leads', {
+    pageTitle: 'Leads',
+    activeNav: 'leads',
+    pageCSS: 'leads',
+  });
+});
+
+// Policies
+app.get('/policies', (req, res) => {
+  res.render('pages/policies', {
+    pageTitle: 'Policies',
+    activeNav: 'policies',
+    pageCSS: 'policies',
+  });
+});
+
+// Endorsements
+app.get('/endorsements', (req, res) => {
+  res.render('pages/endorsements', {
+    pageTitle: 'Endorsements',
+    activeNav: 'endorsements',
+    pageCSS: 'endorsements',
+  });
+});
+
+// Claims (FNOL)
+app.get('/claims', (req, res) => {
+  res.render('pages/claims', {
+    pageTitle: 'Claims (FNOL)',
+    activeNav: 'claims',
+    pageCSS: 'claims',
+  });
+});
+
+// Billing
+app.get('/billing', (req, res) => {
+  res.render('pages/billing', {
+    pageTitle: 'Billing',
+    activeNav: 'billing',
+    pageCSS: 'billing',
+  });
+});
+
+// Marketing studio
+app.get('/marketing-studio', (req, res) => {
+  res.render('pages/marketing-studio', {
+    pageTitle: 'Marketing studio',
+    activeNav: 'marketing',
+    pageCSS: 'marketing-studio',
+  });
+});
+
+// Commissions
+app.get('/commissions', (req, res) => {
+  res.render('pages/commissions', {
+    pageTitle: 'Commissions',
+    activeNav: 'commissions',
+    pageCSS: 'commissions',
+  });
+});
+
+// Knowledge base
+app.get('/knowledge-base', (req, res) => {
+  res.render('pages/knowledge-base', {
+    pageTitle: 'Knowledge base',
+    activeNav: 'knowledge',
+    pageCSS: 'knowledge-base',
+  });
+});
+
+// Training & licensing
+app.get('/training', (req, res) => {
+  res.render('pages/training', {
+    pageTitle: 'Training & licensing',
+    activeNav: 'training',
+    pageCSS: 'training',
+  });
+});
+
+// Underwriting hub
+app.get('/underwriting-hub', (req, res) => {
+  res.render('pages/underwriting-hub', {
+    pageTitle: 'Underwriting hub',
+    activeNav: 'underwriting',
+    pageCSS: 'underwriting-hub',
   });
 });
 

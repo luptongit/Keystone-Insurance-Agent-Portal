@@ -1,0 +1,302 @@
+<%- include('../partials/head', { pageCSS: 'policies' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Service' },
+        { label: 'Policies' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Service · April 2026</div>
+          <h1 class="greeting-title">Policy <em>management</em></h1>
+          <div class="greeting-sub">287 active policies — 4 pending endorsements, 2 claims open.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Active policies</div>
+          <div class="kpi-value">287</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 8</span><span class="kpi-delta-label">new this month</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Pending endorsements</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">avg 1.8d turnaround</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Open claims</div>
+          <div class="kpi-value">2</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">1 auto · 1 property</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Coverage gap alerts</div>
+          <div class="kpi-value">6</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">policies below recommended limits</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Coverage adequacy scoring compares policy limits against replacement costs, liability exposure, and peer benchmarks to flag under-insured risks.</div>
+          <div class="d360-strip-sub">Policies with coverage gaps have 2.4× higher E&O exposure and 18% lower retention rates.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">287</div><div class="d360-strip-stat-label">Analyzed</div></div>
+          <div><div class="d360-strip-stat-num">6</div><div class="d360-strip-stat-label">Gaps</div></div>
+          <div><div class="d360-strip-stat-num">live</div><div class="d360-strip-stat-label">Updated</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All active <span class="tab-count">287</span></div>
+        <div class="tab">Pending <span class="tab-count">4</span></div>
+        <div class="tab">Recently issued <span class="tab-count">8</span></div>
+        <div class="tab">Cancelled <span class="tab-count">3</span></div>
+      </div>
+
+      <div class="pol-layout">
+
+        <div class="pol-table">
+
+          <div class="pol-table-header">
+            <span>Insured</span>
+            <span>Policy #</span>
+            <span>Line</span>
+            <span>Premium</span>
+            <span>Effective</span>
+            <span>Expires</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- RECENTLY ISSUED -->
+          <div class="pol-group">
+            <div class="pol-group-label">Recently issued <span class="pol-group-count">8 policies this month</span></div>
+
+            <a class="pol-row" href="/customers">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Reeves household</div>
+                <div class="pol-row-detail">Auto + home bundle · new-to-book</div>
+              </div>
+              <div class="pol-row-num">HBL-2026-04182</div>
+              <div>
+                <span class="pol-line auto">Auto</span>
+                <span class="pol-line home">Home</span>
+              </div>
+              <div class="pol-row-premium">$3,480/yr</div>
+              <div class="pol-row-date">Apr 22</div>
+              <div class="pol-row-date">Apr 22, 2027</div>
+              <div><span class="pol-status-badge active">Active</span></div>
+              <div class="pol-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="pol-row" href="/customers">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Park, J.</div>
+                <div class="pol-row-detail">Renters → homeowners conversion</div>
+              </div>
+              <div class="pol-row-num">HOM-2026-04156</div>
+              <div><span class="pol-line home">Home</span></div>
+              <div class="pol-row-premium">$1,890/yr</div>
+              <div class="pol-row-date">Apr 18</div>
+              <div class="pol-row-date">Apr 18, 2027</div>
+              <div><span class="pol-status-badge active">Active</span></div>
+              <div class="pol-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="pol-row" href="/customers">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Donovan, M.</div>
+                <div class="pol-row-detail">Umbrella upsell $1M → $2M</div>
+              </div>
+              <div class="pol-row-num">UMB-2026-04098</div>
+              <div><span class="pol-line umbrella">Umbrella</span></div>
+              <div class="pol-row-premium">$380/yr</div>
+              <div class="pol-row-date">Apr 15</div>
+              <div class="pol-row-date">Apr 15, 2027</div>
+              <div><span class="pol-status-badge active">Active</span></div>
+              <div class="pol-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- PENDING ENDORSEMENTS -->
+          <div class="pol-group">
+            <div class="pol-group-label">Pending endorsements <span class="pol-group-count">4 policies with open changes</span></div>
+
+            <a class="pol-row pending" href="/endorsements">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Henderson, T.</div>
+                <div class="pol-row-detail">Teen driver add · pending UW review</div>
+              </div>
+              <div class="pol-row-num">AUT-2022-08341</div>
+              <div><span class="pol-line auto">Auto</span></div>
+              <div class="pol-row-premium">$1,580/yr</div>
+              <div class="pol-row-date">Aug 12, 2022</div>
+              <div class="pol-row-date">Aug 12, 2026</div>
+              <div><span class="pol-status-badge pending">Pending</span></div>
+              <div class="pol-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="pol-row pending" href="/endorsements">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Olsen, R.</div>
+                <div class="pol-row-detail">Garage addition · coverage increase</div>
+              </div>
+              <div class="pol-row-num">HOM-2023-02187</div>
+              <div><span class="pol-line home">Home</span></div>
+              <div class="pol-row-premium">$2,340/yr</div>
+              <div class="pol-row-date">Feb 8, 2023</div>
+              <div class="pol-row-date">Feb 8, 2027</div>
+              <div><span class="pol-status-badge pending">Pending</span></div>
+              <div class="pol-row-action"><button class="btn">Review</button></div>
+            </a>
+
+            <a class="pol-row pending" href="/endorsements">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Crestline Bakery LLC</div>
+                <div class="pol-row-detail">Cyber liability add-on</div>
+              </div>
+              <div class="pol-row-num">BOP-2020-06442</div>
+              <div><span class="pol-line commercial">Commercial</span></div>
+              <div class="pol-row-premium">$46,100/yr</div>
+              <div class="pol-row-date">Jun 1, 2020</div>
+              <div class="pol-row-date">Jun 1, 2026</div>
+              <div><span class="pol-status-badge pending">Pending</span></div>
+              <div class="pol-row-action"><button class="btn">Review</button></div>
+            </a>
+          </div>
+
+          <!-- ACTIVE CLAIMS -->
+          <div class="pol-group">
+            <div class="pol-group-label">Active claims <span class="pol-group-count">2 policies with open claims</span></div>
+
+            <a class="pol-row claim" href="/claims">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Westbrook, D.</div>
+                <div class="pol-row-detail">Collision claim · rear-end accident Apr 14</div>
+              </div>
+              <div class="pol-row-num">AUT-2024-03089</div>
+              <div><span class="pol-line auto">Auto</span></div>
+              <div class="pol-row-premium">$2,040/yr</div>
+              <div class="pol-row-date">Mar 1, 2024</div>
+              <div class="pol-row-date">Mar 1, 2027</div>
+              <div><span class="pol-status-badge claim">Claim</span></div>
+              <div class="pol-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="pol-row claim" href="/claims">
+              <div class="pol-row-name">
+                <div class="pol-row-customer">Lin household</div>
+                <div class="pol-row-detail">Roof damage · hail event Mar 28</div>
+              </div>
+              <div class="pol-row-num">HOM-2021-11254</div>
+              <div><span class="pol-line home">Home</span></div>
+              <div class="pol-row-premium">$4,200/yr</div>
+              <div class="pol-row-date">Nov 15, 2021</div>
+              <div class="pol-row-date">Nov 15, 2026</div>
+              <div><span class="pol-status-badge claim">Claim</span></div>
+              <div class="pol-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- POLICY INTELLIGENCE SIDEBAR -->
+        <div class="pol-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Coverage intelligence</span>
+              </div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>6 policies have coverage gaps.</strong> Most common: dwelling limits 15%+ below replacement cost estimates. Ramirez and Patel households are the highest-risk.</div>
+                <div class="intel-meta">Coverage adequacy model · updated today</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Henderson teen driver add</strong> has been pending UW review for 3 days. Similar endorsements average 1.8 days — consider following up with underwriting.</div>
+                <div class="intel-meta">Processing velocity · peer benchmark</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>8 new policies bound this month</strong> — $14.2K in new annual premium. Reeves bundle was your largest new-to-book write of the quarter.</div>
+                <div class="intel-meta">Production tracking · MTD</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Policies by status</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Active</span><span class="benchmark-percentile">281</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Pending endorsement</span><span class="benchmark-percentile middle">4</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 5%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Active claim</span><span class="benchmark-percentile middle">2</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 3%;"></div></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Cancelled (YTD)</span><span class="benchmark-percentile">3</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 4%;background: var(--red);"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

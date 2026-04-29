@@ -1,0 +1,283 @@
+<%- include('../partials/head', { pageCSS: 'claims' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Service' },
+        { label: 'Claims (FNOL)' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          File FNOL
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Service · April 2026</div>
+          <h1 class="greeting-title">Claims <em>& FNOL</em></h1>
+          <div class="greeting-sub">7 open claims — 2 new FNOL this week, avg cycle time 18 days.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Open claims</div>
+          <div class="kpi-value">7</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">3 auto · 2 property · 2 liability</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">New FNOL (7d)</div>
+          <div class="kpi-value">2</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">both filed within 24hr</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg cycle time</div>
+          <div class="kpi-value">18<span class="kpi-value-suffix">d</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↓ 4d</span><span class="kpi-delta-label">peer avg: 24d</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Satisfaction score</div>
+          <div class="kpi-value">4.2<span class="kpi-value-suffix">/5</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 0.3</span><span class="kpi-delta-label">vs last quarter</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Claims intelligence tracks severity predictions, adjuster responsiveness, and retention impact to prioritize your follow-up.</div>
+          <div class="d360-strip-sub">Clients contacted by their agent within 48 hours of FNOL retain at 92% vs 71% for those without agent outreach.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">7</div><div class="d360-strip-stat-label">Open</div></div>
+          <div><div class="d360-strip-stat-num">14</div><div class="d360-strip-stat-label">YTD closed</div></div>
+          <div><div class="d360-strip-stat-num">92%</div><div class="d360-strip-stat-label">Contacted</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All open <span class="tab-count">7</span></div>
+        <div class="tab">New FNOL <span class="tab-count">2</span></div>
+        <div class="tab">In review <span class="tab-count">3</span></div>
+        <div class="tab">Settled (YTD) <span class="tab-count">14</span></div>
+        <div class="tab">Denied <span class="tab-count">1</span></div>
+      </div>
+
+      <div class="clm-layout">
+
+        <div class="clm-table">
+
+          <div class="clm-table-header">
+            <span>Claimant</span>
+            <span>Claim #</span>
+            <span>Type</span>
+            <span>Date of loss</span>
+            <span>Severity</span>
+            <span>Reserve</span>
+            <span>Status</span>
+            <span></span>
+          </div>
+
+          <!-- NEW FNOL -->
+          <div class="clm-group">
+            <div class="clm-group-label">New FNOL <span class="clm-group-count">2 claims filed this week</span></div>
+
+            <a class="clm-row new" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Westbrook, D.</div>
+                <div class="clm-row-detail">Rear-end collision · intersection · no injuries reported</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-04-0089</div>
+              <div><span class="clm-type-badge auto">Auto</span></div>
+              <div class="clm-row-date">Apr 26</div>
+              <div><span class="clm-severity med">Medium</span></div>
+              <div class="clm-row-premium">$8,400</div>
+              <div><span class="clm-status-badge fnol">FNOL</span></div>
+              <div class="clm-row-action"><button class="btn btn-primary">Review</button></div>
+            </a>
+
+            <a class="clm-row new" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Greenfield Dental</div>
+                <div class="clm-row-detail">Water damage from burst pipe · office closed 2 days</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-04-0092</div>
+              <div><span class="clm-type-badge property">Property</span></div>
+              <div class="clm-row-date">Apr 27</div>
+              <div><span class="clm-severity high">High</span></div>
+              <div class="clm-row-premium">$24,000</div>
+              <div><span class="clm-status-badge fnol">FNOL</span></div>
+              <div class="clm-row-action"><button class="btn btn-primary">Review</button></div>
+            </a>
+          </div>
+
+          <!-- IN REVIEW -->
+          <div class="clm-group">
+            <div class="clm-group-label">In review <span class="clm-group-count">3 claims with assigned adjusters</span></div>
+
+            <a class="clm-row" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Lin household</div>
+                <div class="clm-row-detail">Hail damage to roof and siding · inspector scheduled May 2</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-03-0071</div>
+              <div><span class="clm-type-badge property">Property</span></div>
+              <div class="clm-row-date">Mar 28</div>
+              <div><span class="clm-severity high">High</span></div>
+              <div class="clm-row-premium">$18,500</div>
+              <div><span class="clm-status-badge review">In review</span></div>
+              <div class="clm-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="clm-row" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Kim, S.</div>
+                <div class="clm-row-detail">Fender bender parking lot · minor damage · no injuries</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-04-0045</div>
+              <div><span class="clm-type-badge auto">Auto</span></div>
+              <div class="clm-row-date">Apr 8</div>
+              <div><span class="clm-severity low">Low</span></div>
+              <div class="clm-row-premium">$2,200</div>
+              <div><span class="clm-status-badge review">In review</span></div>
+              <div class="clm-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="clm-row" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Nguyen Construction</div>
+                <div class="clm-row-detail">Workers comp · employee back injury on job site</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-04-0058</div>
+              <div><span class="clm-type-badge liability">Liability</span></div>
+              <div class="clm-row-date">Apr 12</div>
+              <div><span class="clm-severity med">Medium</span></div>
+              <div class="clm-row-premium">$12,000</div>
+              <div><span class="clm-status-badge review">In review</span></div>
+              <div class="clm-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- PENDING SETTLEMENT -->
+          <div class="clm-group">
+            <div class="clm-group-label">Pending settlement <span class="clm-group-count">2 claims awaiting resolution</span></div>
+
+            <a class="clm-row" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Martinez Auto Group</div>
+                <div class="clm-row-detail">Fleet vehicle theft · recovered with damage · adjuster report complete</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-03-0062</div>
+              <div><span class="clm-type-badge auto">Auto</span></div>
+              <div class="clm-row-date">Mar 18</div>
+              <div><span class="clm-severity med">Medium</span></div>
+              <div class="clm-row-premium">$14,800</div>
+              <div><span class="clm-status-badge settlement">Settlement</span></div>
+              <div class="clm-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="clm-row" href="/customers">
+              <div class="clm-row-name">
+                <div class="clm-row-customer">Blackwood Properties</div>
+                <div class="clm-row-detail">Tenant slip & fall · liability claim · legal review</div>
+              </div>
+              <div class="clm-row-num">CLM-2026-02-0034</div>
+              <div><span class="clm-type-badge liability">Liability</span></div>
+              <div class="clm-row-date">Feb 22</div>
+              <div><span class="clm-severity high">High</span></div>
+              <div class="clm-row-premium">$35,000</div>
+              <div><span class="clm-status-badge settlement">Settlement</span></div>
+              <div class="clm-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- CLAIMS INTELLIGENCE SIDEBAR -->
+        <div class="clm-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Claims intelligence</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Greenfield Dental</strong> water damage claim is estimated high severity — business interruption coverage applies. Proactive outreach recommended within 24 hours to discuss BI claim filing.</div>
+                <div class="intel-meta">Severity model · loss pattern analysis</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Kim, S. has 2 claims in 24 months</strong> — retention score dropped to 58. Combined with a Progressive shopping signal, proactive retention outreach before May 15 renewal is critical.</div>
+                <div class="intel-meta">Retention impact model · cross-referenced</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Your cycle time is 25% faster</strong> than peer average (18d vs 24d). Agent-initiated FNOL contact within 48hr is the primary driver — maintain this pattern.</div>
+                <div class="intel-meta">Performance benchmark · Q1 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Claims by type (YTD)</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Auto</span><span class="benchmark-percentile">9 claims</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>$38.2K reserves</span><span>43%</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Property</span><span class="benchmark-percentile">7 claims</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 78%;"></div></div>
+                <div class="benchmark-meta"><span>$62.4K reserves</span><span>33%</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Liability</span><span class="benchmark-percentile">5 claims</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 56%;"></div></div>
+                <div class="benchmark-meta"><span>$52.8K reserves</span><span>24%</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

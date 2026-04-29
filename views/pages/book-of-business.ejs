@@ -1,0 +1,435 @@
+<%- include('../partials/head', { pageCSS: 'book-of-business' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Book of business' }
+      ],
+      topbarActions: `
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Filter
+        </button>
+        <button class="btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+      `
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Portfolio · April 2026</div>
+          <h1 class="greeting-title">Book of <em>business</em></h1>
+          <div class="greeting-sub">287 active policies across 6 lines — $2.14M total annual premium.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">Active policies</div>
+          <div class="kpi-value">287</div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 12</span><span class="kpi-delta-label">vs last quarter</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Total premium</div>
+          <div class="kpi-value">$2.14<span class="kpi-value-suffix">M</span></div>
+          <div class="kpi-meta"><span class="kpi-delta up">↑ 6.1%</span><span class="kpi-delta-label">YoY growth</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-d360-flag"><span class="d360-pill">D360</span></div>
+          <div class="kpi-label">Avg retention</div>
+          <div class="kpi-value">88.2<span class="kpi-value-suffix">%</span></div>
+          <div class="kpi-meta"><span class="kpi-delta down">↓ 2.8pt</span><span class="kpi-delta-label">peer avg: 91.0%</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Avg policy age</div>
+          <div class="kpi-value">3.4<span class="kpi-value-suffix">yr</span></div>
+          <div class="kpi-meta"><span class="kpi-delta-label">157 policies 2yr+</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Book health scoring combines retention velocity, premium concentration risk, and cross-sell density across your portfolio.</div>
+          <div class="d360-strip-sub">Agencies with 3+ lines per household retain 94% of premium vs 78% for single-line books.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">287</div><div class="d360-strip-stat-label">Policies</div></div>
+          <div><div class="d360-strip-stat-num">184</div><div class="d360-strip-stat-label">Households</div></div>
+          <div><div class="d360-strip-stat-num">1.56</div><div class="d360-strip-stat-label">Lines/HH</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">All lines <span class="tab-count">287</span></div>
+        <div class="tab">Personal <span class="tab-count">198</span></div>
+        <div class="tab">Commercial <span class="tab-count">64</span></div>
+        <div class="tab">Life & health <span class="tab-count">25</span></div>
+      </div>
+
+      <div class="bob-layout">
+
+        <div class="bob-table">
+
+          <div class="bob-table-header">
+            <span>Customer</span>
+            <span>Lines</span>
+            <span>Total premium</span>
+            <span>Policies</span>
+            <span>Tenure</span>
+            <span>Cross-sell</span>
+            <span>Retention</span>
+            <span></span>
+          </div>
+
+          <!-- PERSONAL AUTO -->
+          <div class="bob-group">
+            <div class="bob-group-label">Personal auto <span class="bob-group-count">112 policies · $892K annual premium</span></div>
+
+            <a class="bob-row" href="/customers/ramirez-household">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Ramirez household</div>
+                <div class="bob-row-detail">Carlos & Elena · 5 policies</div>
+              </div>
+              <div>
+                <span class="bob-line auto">Auto</span>
+                <span class="bob-line home">Home</span>
+              </div>
+              <div class="bob-row-premium">$8,640/yr</div>
+              <div class="bob-row-num">5</div>
+              <div class="bob-row-num">7yr</div>
+              <div class="bob-row-score"><span class="retention-score high">92</span></div>
+              <div><span class="retention-score low">62</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Henderson, T.</div>
+                <div class="bob-row-detail">Good driver · teen add pending</div>
+              </div>
+              <div><span class="bob-line auto">Auto</span></div>
+              <div class="bob-row-premium">$1,580/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">4yr</div>
+              <div class="bob-row-score"><span class="retention-score med">68</span></div>
+              <div><span class="retention-score high">87</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Kim, S.</div>
+                <div class="bob-row-detail">2 claims in 24mo · Progressive signal</div>
+              </div>
+              <div><span class="bob-line auto">Auto</span></div>
+              <div class="bob-row-premium">$1,420/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">3yr</div>
+              <div class="bob-row-score"><span class="retention-score low">42</span></div>
+              <div><span class="retention-score low">58</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Torres, A.</div>
+                <div class="bob-row-detail">Clean record · rate hold</div>
+              </div>
+              <div><span class="bob-line auto">Auto</span></div>
+              <div class="bob-row-premium">$1,180/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">5yr</div>
+              <div class="bob-row-score"><span class="retention-score med">55</span></div>
+              <div><span class="retention-score high">93</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Westbrook, D.</div>
+                <div class="bob-row-detail">Active collision claim pending</div>
+              </div>
+              <div><span class="bob-line auto">Auto</span></div>
+              <div class="bob-row-premium">$2,040/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">2yr</div>
+              <div class="bob-row-score"><span class="retention-score low">38</span></div>
+              <div><span class="retention-score med">79</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- HOMEOWNERS -->
+          <div class="bob-group">
+            <div class="bob-group-label">Homeowners <span class="bob-group-count">86 policies · $524K annual premium</span></div>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Patel household</div>
+                <div class="bob-row-detail">Recently re-quoted · bundled</div>
+              </div>
+              <div>
+                <span class="bob-line auto">Auto</span>
+                <span class="bob-line home">Home</span>
+              </div>
+              <div class="bob-row-premium">$3,880/yr</div>
+              <div class="bob-row-num">3</div>
+              <div class="bob-row-num">6yr</div>
+              <div class="bob-row-score"><span class="retention-score high">85</span></div>
+              <div><span class="retention-score high">89</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Reeves household</div>
+                <div class="bob-row-detail">New-to-book · referred by Donovan</div>
+              </div>
+              <div>
+                <span class="bob-line auto">Auto</span>
+                <span class="bob-line home">Home</span>
+              </div>
+              <div class="bob-row-premium">$3,480/yr</div>
+              <div class="bob-row-num">2</div>
+              <div class="bob-row-num">1mo</div>
+              <div class="bob-row-score"><span class="retention-score high">80</span></div>
+              <div><span class="retention-score high">90</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Olsen, R.</div>
+                <div class="bob-row-detail">Garage endorsement processed</div>
+              </div>
+              <div><span class="bob-line home">Home</span></div>
+              <div class="bob-row-premium">$2,340/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">3yr</div>
+              <div class="bob-row-score"><span class="retention-score med">52</span></div>
+              <div><span class="retention-score high">83</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Walsh family</div>
+                <div class="bob-row-detail">First-time homebuyer · new policy</div>
+              </div>
+              <div><span class="bob-line home">Home</span></div>
+              <div class="bob-row-premium">$2,100/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">1yr</div>
+              <div class="bob-row-score"><span class="retention-score low">35</span></div>
+              <div><span class="retention-score high">84</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- COMMERCIAL -->
+          <div class="bob-group">
+            <div class="bob-group-label">Commercial <span class="bob-group-count">64 policies · $548K annual premium</span></div>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Martinez Auto Group</div>
+                <div class="bob-row-detail">Fleet · 14 vehicles · multi-location</div>
+              </div>
+              <div><span class="bob-line commercial">Commercial</span></div>
+              <div class="bob-row-premium">$42,600/yr</div>
+              <div class="bob-row-num">3</div>
+              <div class="bob-row-num">5yr</div>
+              <div class="bob-row-score"><span class="retention-score med">62</span></div>
+              <div><span class="retention-score low">66</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Nguyen Construction</div>
+                <div class="bob-row-detail">GL + workers comp · 22 employees</div>
+              </div>
+              <div><span class="bob-line commercial">Commercial</span></div>
+              <div class="bob-row-premium">$28,400/yr</div>
+              <div class="bob-row-num">2</div>
+              <div class="bob-row-num">4yr</div>
+              <div class="bob-row-score"><span class="retention-score med">58</span></div>
+              <div><span class="retention-score med">76</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Crestline Bakery LLC</div>
+                <div class="bob-row-detail">BOP + WC · cyber add-on quoted</div>
+              </div>
+              <div><span class="bob-line commercial">Commercial</span></div>
+              <div class="bob-row-premium">$46,100/yr</div>
+              <div class="bob-row-num">2</div>
+              <div class="bob-row-num">6yr</div>
+              <div class="bob-row-score"><span class="retention-score med">65</span></div>
+              <div><span class="retention-score med">74</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Greenfield Dental</div>
+                <div class="bob-row-detail">BOP + prof liability · expanding</div>
+              </div>
+              <div><span class="bob-line commercial">Commercial</span></div>
+              <div class="bob-row-premium">$12,400/yr</div>
+              <div class="bob-row-num">2</div>
+              <div class="bob-row-num">3yr</div>
+              <div class="bob-row-score"><span class="retention-score med">58</span></div>
+              <div><span class="retention-score med">71</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+          <!-- LIFE & UMBRELLA -->
+          <div class="bob-group">
+            <div class="bob-group-label">Life & umbrella <span class="bob-group-count">25 policies · $176K annual premium</span></div>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Okonkwo, A.</div>
+                <div class="bob-row-detail">Level term · $500K · 20yr</div>
+              </div>
+              <div><span class="bob-line life">Life</span></div>
+              <div class="bob-row-premium">$840/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">2yr</div>
+              <div class="bob-row-score"><span class="retention-score low">30</span></div>
+              <div><span class="retention-score high">95</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Yamamoto, K.</div>
+                <div class="bob-row-detail">Personal umbrella · $2M limit</div>
+              </div>
+              <div><span class="bob-line umbrella">Umbrella</span></div>
+              <div class="bob-row-premium">$620/yr</div>
+              <div class="bob-row-num">1</div>
+              <div class="bob-row-num">4yr</div>
+              <div class="bob-row-score"><span class="retention-score med">48</span></div>
+              <div><span class="retention-score high">91</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+
+            <a class="bob-row" href="/customers">
+              <div class="bob-row-name">
+                <div class="bob-row-customer">Dawson, K.</div>
+                <div class="bob-row-detail">Auto+home+umbrella · long-term</div>
+              </div>
+              <div><span class="bob-line bundle">Bundle</span></div>
+              <div class="bob-row-premium">$2,800/yr</div>
+              <div class="bob-row-num">3</div>
+              <div class="bob-row-num">8yr</div>
+              <div class="bob-row-score"><span class="retention-score high">92</span></div>
+              <div><span class="retention-score high">85</span></div>
+              <div class="bob-row-action"><button class="btn">View</button></div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- BOOK INTELLIGENCE SIDEBAR -->
+        <div class="bob-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="panel-title">Book intelligence</span>
+              </div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Premium concentration risk:</strong> your top 3 commercial accounts represent 22% of total book premium. Industry benchmark is under 15%.</div>
+                <div class="intel-meta">Portfolio risk model · updated today</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>68 single-line households</strong> have cross-sell propensity scores above 70. Auto → home bundle conversion would add an estimated $184K in annual premium.</div>
+                <div class="intel-meta">Cross-sell model · 184 households scored</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Book growth is 6.1% YoY</strong> — ahead of your region (4.8%) but below top-quartile peers (8.2%). Commercial lines are the primary growth driver.</div>
+                <div class="intel-meta">Benchmarking · Q1 2026 data</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Premium by line</span>
+              <span class="d360-pill">Tableau Semantics</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Personal auto</span><span class="benchmark-percentile">$892K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>112 policies</span><span>42% of book</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Homeowners</span><span class="benchmark-percentile">$524K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 59%;"></div></div>
+                <div class="benchmark-meta"><span>86 policies</span><span>24% of book</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Commercial</span><span class="benchmark-percentile">$548K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 61%;"></div></div>
+                <div class="benchmark-meta"><span>64 policies</span><span>26% of book</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Life & umbrella</span><span class="benchmark-percentile">$176K</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 20%;"></div></div>
+                <div class="benchmark-meta"><span>25 policies</span><span>8% of book</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="pipeline-summary">
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot green"></span> 157 policies 2yr+ tenure</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot amber"></span> 68 cross-sell opportunities</div>
+        <div class="pipeline-summary-item"><span class="pipeline-summary-dot red"></span> 3 concentration-risk accounts</div>
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>

@@ -1,0 +1,239 @@
+<%- include('../partials/head', { pageCSS: 'training' }) %>
+<div class="app">
+  <%- include('../partials/sidebar') %>
+
+  <main class="main">
+    <%- include('../partials/topbar', {
+      breadcrumb: [
+        { label: 'Resources' },
+        { label: 'Training & licensing' }
+      ]
+    }) %>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="greeting-eyebrow">Resources · April 2026</div>
+          <h1 class="greeting-title">Training & <em>licensing</em></h1>
+          <div class="greeting-sub">18 of 24 CE credits earned — 2 licenses expiring within 90 days, 6 carrier appointments active.</div>
+        </div>
+      </div>
+
+      <div class="kpi-row cols-4">
+        <div class="kpi">
+          <div class="kpi-label">CE credits earned</div>
+          <div class="kpi-value">18<span class="kpi-value-suffix">/24</span></div>
+          <div class="kpi-meta"><span class="kpi-delta-label">6 remaining by Dec 31</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Active licenses</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">TX · OK · NM · LA</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Expiring soon</div>
+          <div class="kpi-value">2</div>
+          <div class="kpi-meta"><span class="kpi-delta down">within 90 days</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Carrier appointments</div>
+          <div class="kpi-value">6</div>
+          <div class="kpi-meta"><span class="kpi-delta-label">all active · 0 pending</span></div>
+        </div>
+      </div>
+
+      <div class="d360-strip">
+        <div class="d360-strip-mark"><div class="d360-strip-mark-inner"></div></div>
+        <div class="d360-strip-text">
+          <div class="d360-strip-eyebrow">Powered by Data 360</div>
+          <div class="d360-strip-title">Compliance monitoring tracks license expirations, CE deadlines, and carrier appointment requirements across all states.</div>
+          <div class="d360-strip-sub">Agents who complete CE requirements 60+ days before deadline have 0% compliance lapse rates vs 8% for those completing in the final 30 days.</div>
+        </div>
+        <div class="d360-strip-stats">
+          <div><div class="d360-strip-stat-num">4</div><div class="d360-strip-stat-label">States</div></div>
+          <div><div class="d360-strip-stat-num">75%</div><div class="d360-strip-stat-label">CE done</div></div>
+          <div><div class="d360-strip-stat-num">245d</div><div class="d360-strip-stat-label">Until deadline</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active">My licenses <span class="tab-count">4</span></div>
+        <div class="tab">CE courses <span class="tab-count">12</span></div>
+        <div class="tab">Carrier appointments <span class="tab-count">6</span></div>
+        <div class="tab">Compliance</div>
+      </div>
+
+      <div class="trn-layout">
+
+        <div class="trn-main">
+
+          <!-- LICENSES -->
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Active licenses</span>
+            </div>
+
+            <div class="trn-table-header">
+              <span>State</span>
+              <span>License #</span>
+              <span>Lines of authority</span>
+              <span>Issued</span>
+              <span>Expires</span>
+              <span>Status</span>
+            </div>
+
+            <div class="trn-row expiring">
+              <div class="trn-row-state">Texas</div>
+              <div class="trn-row-num">TX-2847291</div>
+              <div class="trn-row-lines">P&C · Life · Health</div>
+              <div class="trn-row-date">Mar 15, 2024</div>
+              <div class="trn-row-date warn">Jun 15, 2026</div>
+              <div><span class="trn-status-badge expiring">Expiring</span></div>
+            </div>
+
+            <div class="trn-row">
+              <div class="trn-row-state">Oklahoma</div>
+              <div class="trn-row-num">OK-1193847</div>
+              <div class="trn-row-lines">P&C</div>
+              <div class="trn-row-date">Aug 1, 2024</div>
+              <div class="trn-row-date">Aug 1, 2026</div>
+              <div><span class="trn-status-badge active">Active</span></div>
+            </div>
+
+            <div class="trn-row expiring">
+              <div class="trn-row-state">New Mexico</div>
+              <div class="trn-row-num">NM-0482916</div>
+              <div class="trn-row-lines">P&C</div>
+              <div class="trn-row-date">Jul 22, 2024</div>
+              <div class="trn-row-date warn">Jul 22, 2026</div>
+              <div><span class="trn-status-badge expiring">Expiring</span></div>
+            </div>
+
+            <div class="trn-row">
+              <div class="trn-row-state">Louisiana</div>
+              <div class="trn-row-num">LA-3847102</div>
+              <div class="trn-row-lines">P&C · Life</div>
+              <div class="trn-row-date">Nov 10, 2024</div>
+              <div class="trn-row-date">Nov 10, 2026</div>
+              <div><span class="trn-status-badge active">Active</span></div>
+            </div>
+          </div>
+
+          <!-- CE COURSES -->
+          <div class="panel" style="margin-top: 20px;">
+            <div class="panel-header">
+              <span class="panel-title">Available CE courses</span>
+              <span class="d360-pill">Recommended</span>
+            </div>
+
+            <a class="trn-course-row" href="#">
+              <div class="trn-course-body">
+                <div class="trn-course-title">Ethics in Insurance — Annual Requirement</div>
+                <div class="trn-course-meta">3 CE credits · Required · Self-paced · 2hr estimated</div>
+              </div>
+              <span class="trn-course-badge required">Required</span>
+            </a>
+
+            <a class="trn-course-row" href="#">
+              <div class="trn-course-body">
+                <div class="trn-course-title">Cyber Liability Fundamentals</div>
+                <div class="trn-course-meta">2 CE credits · Elective · Self-paced · 1.5hr estimated</div>
+              </div>
+              <span class="trn-course-badge recommended">Recommended</span>
+            </a>
+
+            <a class="trn-course-row" href="#">
+              <div class="trn-course-body">
+                <div class="trn-course-title">Commercial Lines — Workers Comp Deep Dive</div>
+                <div class="trn-course-meta">4 CE credits · Elective · Instructor-led · May 12</div>
+              </div>
+              <span class="trn-course-badge elective">Elective</span>
+            </a>
+
+            <a class="trn-course-row" href="#">
+              <div class="trn-course-body">
+                <div class="trn-course-title">Flood Insurance — NFIP Update 2026</div>
+                <div class="trn-course-meta">2 CE credits · Elective · Self-paced · 1hr estimated</div>
+              </div>
+              <span class="trn-course-badge elective">Elective</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- TRAINING SIDEBAR -->
+        <div class="trn-sidebar">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div><span class="panel-title">Compliance alerts</span></div>
+              <span class="d360-pill">Data 360</span>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>TX license expires Jun 15.</strong> Renewal requires 24 CE credits completed — you have 18 of 24. Complete 6 more credits before May 15 to allow processing time.</div>
+                <div class="intel-meta">License tracker · 47 days remaining</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>Ethics course is required</strong> for TX renewal — 3 credits. Combined with one elective, this would bring you to 23/24 credits. One more elective closes the gap.</div>
+                <div class="intel-meta">CE planning · optimal path</div>
+              </div>
+            </div>
+
+            <div class="intel-item">
+              <div class="intel-icon success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div>
+                <div class="intel-text"><strong>All 6 carrier appointments are current.</strong> No pending renewals or compliance actions required until your next license renewal cycle.</div>
+                <div class="intel-meta">Appointment status · all carriers</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">CE progress</span>
+            </div>
+            <div style="padding: 14px 20px;">
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">P&C credits</span><span class="benchmark-percentile">12/16</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 75%;"></div></div>
+                <div class="benchmark-meta"><span>4 remaining</span><span>75% done</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0;">
+                <div class="benchmark-head"><span class="benchmark-label">Ethics credits</span><span class="benchmark-percentile middle">0/3</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill middle" style="width: 0%;min-width: 3px;"></div></div>
+                <div class="benchmark-meta"><span>3 remaining</span><span>Required</span></div>
+              </div>
+              <div class="benchmark-row" style="padding: 8px 0; border-bottom: none;">
+                <div class="benchmark-head"><span class="benchmark-label">Elective credits</span><span class="benchmark-percentile">6/5</span></div>
+                <div class="benchmark-bar"><div class="benchmark-fill" style="width: 100%;"></div></div>
+                <div class="benchmark-meta"><span>Complete</span><span>100% done</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-footer">
+        <div>Keystone Enterprise · Build 4.2.118</div>
+        <div>SOC 2 Type II · Last sync 9:42 AM CT</div>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('../partials/foot') %>
