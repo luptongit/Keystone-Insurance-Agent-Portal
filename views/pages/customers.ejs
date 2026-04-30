@@ -89,11 +89,17 @@
       </div>
 
       <!-- FULL CUSTOMER LIST -->
+      <div data-filter-scope>
       <div class="tabs" style="margin-top: 28px;">
-        <div class="tab active">All customers <span class="tab-count">184</span></div>
-        <div class="tab">Personal <span class="tab-count">142</span></div>
-        <div class="tab">Commercial <span class="tab-count">32</span></div>
-        <div class="tab">Recently active <span class="tab-count">18</span></div>
+        <div class="tab active" data-filter="all">All customers <span class="tab-count">184</span></div>
+        <div class="tab" data-filter="personal">Personal <span class="tab-count">142</span></div>
+        <div class="tab" data-filter="commercial">Commercial <span class="tab-count">32</span></div>
+        <div class="tab" data-filter="recent">Recently active <span class="tab-count">18</span></div>
+      </div>
+
+      <div class="list-search">
+        <svg class="list-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="list-search-input" placeholder="Search customers..." data-search-scope=".cust-table" />
       </div>
 
       <div class="cust-layout">
@@ -121,11 +127,11 @@
           <% tableGroups.forEach(g => { %>
             <% const rows = groups[g.key] || []; %>
             <% if (rows.length) { %>
-              <div class="cust-group">
+              <div class="cust-group" data-filter-group>
                 <div class="cust-group-label"><%= g.label %> <span class="cust-group-count"><%= g.sub %></span></div>
 
                 <% rows.forEach(cust => { %>
-                  <a class="cust-row" href="/customers/<%= cust.slug %>">
+                  <a class="cust-row" href="/customers/<%= cust.slug %>" data-filter-value="<%= cust.lines.includes('commercial') ? 'commercial' : 'personal' %><%= g.key === 'top_accounts' ? ' recent' : '' %>" data-search-text="<%= cust.name %> <%= cust.detail %>">
                     <div class="cust-row-name">
                       <div class="cust-row-avatar<%= cust.avatar_style ? ' ' + cust.avatar_style : '' %>"><%= cust.initials %></div>
                       <div>
@@ -238,6 +244,7 @@
 
         </div>
 
+      </div>
       </div>
 
       <div class="content-footer">

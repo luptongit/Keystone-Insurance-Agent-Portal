@@ -67,25 +67,31 @@
         </div>
       </div>
 
+      <div data-filter-scope>
       <div class="tabs">
-        <div class="tab active">All lines <span class="tab-count">287</span></div>
-        <div class="tab">Personal <span class="tab-count">198</span></div>
-        <div class="tab">Commercial <span class="tab-count">64</span></div>
-        <div class="tab">Life & health <span class="tab-count">25</span></div>
+        <div class="tab active" data-filter="all">All lines <span class="tab-count">287</span></div>
+        <div class="tab" data-filter="personal">Personal <span class="tab-count">198</span></div>
+        <div class="tab" data-filter="commercial">Commercial <span class="tab-count">64</span></div>
+        <div class="tab" data-filter="life_umbrella">Life & health <span class="tab-count">25</span></div>
+      </div>
+
+      <div class="list-search">
+        <svg class="list-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="list-search-input" placeholder="Search book..." data-search-scope=".bob-table" />
       </div>
 
       <div class="bob-layout">
 
-        <div class="bob-table">
+        <div class="bob-table" data-sort-container>
 
           <div class="bob-table-header">
             <span>Customer</span>
             <span>Lines</span>
-            <span>Total premium</span>
-            <span>Policies</span>
+            <span data-sort="premium" data-sort-type="num">Total premium</span>
+            <span data-sort="policies" data-sort-type="num">Policies</span>
             <span>Tenure</span>
-            <span>Cross-sell</span>
-            <span>Retention</span>
+            <span data-sort="crosssell" data-sort-type="num">Cross-sell</span>
+            <span data-sort="retention" data-sort-type="num">Retention</span>
             <span></span>
           </div>
 
@@ -101,11 +107,11 @@
           <% bobGroups.forEach(g => { %>
             <% const rows = groups[g.key] || []; %>
             <% if (rows.length) { %>
-              <div class="bob-group">
+              <div class="bob-group" data-filter-group data-filter-value="<%= g.key === 'personal_auto' || g.key === 'homeowners' ? 'personal' : g.key %>">
                 <div class="bob-group-label"><%= g.label %> <span class="bob-group-count"><%= g.sub %></span></div>
 
                 <% rows.forEach(row => { %>
-                  <a class="bob-row" href="/customers/<%= row.slug %>">
+                  <a class="bob-row" href="/customers/<%= row.slug %>" data-filter-value="<%= g.key === 'personal_auto' || g.key === 'homeowners' ? 'personal' : g.key %>" data-search-text="<%= row.customer_name %> <%= row.detail %>" data-sort-row data-sort-premium="<%= row.premium %>" data-sort-policies="<%= row.policy_count %>" data-sort-crosssell="<%= row.cross_sell_score %>" data-sort-retention="<%= row.retention_score %>">
                     <div class="bob-row-name">
                       <div class="bob-row-customer"><%= row.customer_name %></div>
                       <div class="bob-row-detail"><%= row.detail %></div>
@@ -202,6 +208,7 @@
 
         </div>
 
+      </div>
       </div>
 
       <div class="pipeline-summary">

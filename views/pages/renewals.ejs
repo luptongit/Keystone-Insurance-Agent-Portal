@@ -77,12 +77,18 @@
         </div>
       </div>
 
+      <div data-filter-scope>
       <div class="tabs">
-        <div class="tab active">All renewals <span class="tab-count">42</span></div>
-        <div class="tab">This week <span class="tab-count"><%= (groups.this_week || []).length %></span></div>
-        <div class="tab">At risk <span class="tab-count">5</span></div>
-        <div class="tab">Auto-renew <span class="tab-count">28</span></div>
-        <div class="tab">Requires review <span class="tab-count">9</span></div>
+        <div class="tab active" data-filter="all">All renewals <span class="tab-count">42</span></div>
+        <div class="tab" data-filter="this_week">This week <span class="tab-count"><%= (groups.this_week || []).length %></span></div>
+        <div class="tab" data-filter="at-risk">At risk <span class="tab-count">5</span></div>
+        <div class="tab" data-filter="auto-renew">Auto-renew <span class="tab-count">28</span></div>
+        <div class="tab" data-filter="review">Requires review <span class="tab-count">9</span></div>
+      </div>
+
+      <div class="list-search">
+        <svg class="list-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="list-search-input" placeholder="Search renewals..." data-search-scope=".renewals-table" />
       </div>
 
       <div class="renewals-layout">
@@ -104,11 +110,11 @@
           <% renewalGroups.forEach(g => { %>
             <% const rows = groups[g.key] || []; %>
             <% if (rows.length) { %>
-              <div class="renewals-group">
+              <div class="renewals-group" data-filter-group>
                 <div class="renewals-group-label"><%= g.label %> <span class="renewals-group-count"><%= g.sub %></span></div>
 
                 <% rows.forEach(row => { %>
-                  <a class="renewal-row<%= row.is_at_risk ? ' at-risk' : '' %>" href="/customers/<%= row.slug %>">
+                  <a class="renewal-row<%= row.is_at_risk ? ' at-risk' : '' %>" href="/customers/<%= row.slug %>" data-filter-value="<%= row.group_key %><%= row.is_at_risk ? ' at-risk' : '' %> <%= row.status %>" data-search-text="<%= row.customer_name %> <%= row.detail %>">
                     <div class="renewal-row-name">
                       <div class="renewal-row-customer"><%= row.customer_name %></div>
                       <div class="renewal-row-detail"><%= row.detail %></div>
@@ -216,6 +222,7 @@
 
         </div>
 
+      </div>
       </div>
 
       <div class="pipeline-summary">

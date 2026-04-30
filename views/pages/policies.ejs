@@ -68,11 +68,17 @@
         </div>
       </div>
 
+      <div data-filter-scope>
       <div class="tabs">
-        <div class="tab active">All active <span class="tab-count">287</span></div>
-        <div class="tab">Pending <span class="tab-count"><%= (groups.pending_endorsements || []).length %></span></div>
-        <div class="tab">Recently issued <span class="tab-count"><%= (groups.recently_issued || []).length %></span></div>
-        <div class="tab">Cancelled <span class="tab-count">3</span></div>
+        <div class="tab active" data-filter="all">All active <span class="tab-count">287</span></div>
+        <div class="tab" data-filter="pending_endorsements">Pending <span class="tab-count"><%= (groups.pending_endorsements || []).length %></span></div>
+        <div class="tab" data-filter="recently_issued">Recently issued <span class="tab-count"><%= (groups.recently_issued || []).length %></span></div>
+        <div class="tab" data-filter="cancelled">Cancelled <span class="tab-count">3</span></div>
+      </div>
+
+      <div class="list-search">
+        <svg class="list-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="list-search-input" placeholder="Search policies..." data-search-scope=".pol-table" />
       </div>
 
       <div class="pol-layout">
@@ -101,11 +107,11 @@
           <% polGroups.forEach(g => { %>
             <% const rows = groups[g.key] || []; %>
             <% if (rows.length) { %>
-              <div class="pol-group">
+              <div class="pol-group" data-filter-group>
                 <div class="pol-group-label"><%= g.label %> <span class="pol-group-count"><%= g.sub %></span></div>
 
                 <% rows.forEach(row => { %>
-                  <a class="pol-row<%= row.row_style ? ' ' + row.row_style : '' %>" href="<%= row.row_style === 'pending' ? '/endorsements' : row.row_style === 'claim' ? '/claims' : '/customers/' + row.slug %>">
+                  <a class="pol-row<%= row.row_style ? ' ' + row.row_style : '' %>" href="<%= row.row_style === 'pending' ? '/endorsements' : row.row_style === 'claim' ? '/claims' : '/customers/' + row.slug %>" data-filter-value="<%= row.group_key %>" data-search-text="<%= row.customer_name %> <%= row.policy_number %> <%= row.detail %>">
                     <div class="pol-row-name">
                       <div class="pol-row-customer"><%= row.customer_name %></div>
                       <div class="pol-row-detail"><%= row.detail %></div>
@@ -197,6 +203,7 @@
 
         </div>
 
+      </div>
       </div>
 
       <div class="content-footer">

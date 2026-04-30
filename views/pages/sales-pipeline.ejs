@@ -73,11 +73,12 @@
         const atRiskCount = allDeals.filter(d => d.is_at_risk).length;
         const wonCount = (stages.won || []).length;
       %>
+      <div data-filter-scope>
       <div class="tabs">
-        <div class="tab active">All deals <span class="tab-count"><%= allDeals.length %></span></div>
-        <div class="tab">This week <span class="tab-count">4</span></div>
-        <div class="tab">At risk <span class="tab-count"><%= atRiskCount %></span></div>
-        <div class="tab">Won (MTD) <span class="tab-count"><%= wonCount %></span></div>
+        <div class="tab active" data-filter="all">All deals <span class="tab-count"><%= allDeals.length %></span></div>
+        <div class="tab" data-filter="all">This week <span class="tab-count">4</span></div>
+        <div class="tab" data-filter="all">At risk <span class="tab-count"><%= atRiskCount %></span></div>
+        <div class="tab" data-filter="all">Won (MTD) <span class="tab-count"><%= wonCount %></span></div>
       </div>
 
       <div class="pipeline-layout">
@@ -212,6 +213,7 @@
 
         </div>
 
+      </div>
       </div>
 
       <div class="pipeline-summary">
