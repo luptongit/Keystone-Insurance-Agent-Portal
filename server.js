@@ -10,6 +10,7 @@ const renewalDb = require('./db/renewals');
 const dashboardDb = require('./db/dashboard');
 const pipelineDb = require('./db/pipeline');
 const bookDb = require('./db/book');
+const searchDb = require('./db/search');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -257,6 +258,18 @@ app.get('/underwriting-hub', (req, res) => {
     activeNav: 'underwriting',
     pageCSS: 'underwriting-hub',
   });
+});
+
+// ----- API -----
+app.get('/api/search', async (req, res, next) => {
+  try {
+    const q = (req.query.q || '').trim();
+    if (q.length < 2) return res.json({ customers: [], policies: [], pipeline: [] });
+    const results = await searchDb.search(q);
+    res.json(results);
+  } catch (err) {
+    next(err);
+  }
 });
 
 // ----- 404 -----
