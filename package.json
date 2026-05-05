@@ -7,15 +7,18 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "migrate": "node db/migrate.js",
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "mcp": "node mcp-server.js"
   },
   "engines": {
     "node": "20.x"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
