@@ -1,0 +1,379 @@
+/* ── Demo Playbook ── */
+
+.demo-overview {
+  background: var(--white);
+  border: 1px solid var(--limestone);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+.demo-overview-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: var(--obsidian);
+}
+
+.demo-overview-text {
+  font-size: 13px;
+  color: var(--graphite);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.demo-overview-text strong {
+  color: var(--obsidian);
+  font-weight: 500;
+}
+
+.demo-quick-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.demo-quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt);
+  background: var(--limestone);
+  border-radius: 6px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.demo-quick-link:hover {
+  background: #e0ded6;
+}
+
+.demo-quick-link .ql-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── Flow card (details/summary) ── */
+
+.demo-flow {
+  background: var(--white);
+  border: 1px solid var(--limestone);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.demo-flow[open] {
+  border-color: #c8c6be;
+}
+
+.demo-flow-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.demo-flow-summary::-webkit-details-marker { display: none; }
+
+.demo-flow-summary:hover {
+  background: var(--limestone);
+}
+
+.demo-flow-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--graphite);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.demo-flow[open] .demo-flow-chevron {
+  transform: rotate(90deg);
+}
+
+.demo-flow-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--obsidian);
+  flex: 1;
+}
+
+.demo-flow-num {
+  font-weight: 400;
+  color: var(--graphite);
+}
+
+.demo-duration {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--graphite);
+  background: var(--limestone);
+  border-radius: 4px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.demo-flow-body {
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--limestone);
+}
+
+/* ── Setup block ── */
+
+.demo-setup {
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--graphite);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--limestone);
+  margin-bottom: 20px;
+}
+
+.demo-setup-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--cobalt);
+  margin-bottom: 6px;
+}
+
+/* ── Step ── */
+
+.demo-step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.demo-step:last-child {
+  margin-bottom: 0;
+}
+
+.demo-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.demo-step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.demo-step-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--obsidian);
+  margin-bottom: 8px;
+}
+
+/* ── Screen reference card ── */
+
+.demo-screen-ref {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f7f4;
+  border: 1px solid var(--limestone);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.demo-screen-ref:hover {
+  border-color: var(--cobalt);
+  box-shadow: 0 0 0 1px var(--cobalt);
+}
+
+.demo-screen-ref-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--limestone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.demo-screen-ref-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--graphite);
+}
+
+.demo-screen-ref-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.demo-screen-ref-page {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--obsidian);
+}
+
+.demo-screen-ref-hint {
+  font-size: 11px;
+  color: var(--graphite);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.demo-screen-ref-arrow {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Talking point callout ── */
+
+.demo-talk {
+  border-left: 3px solid var(--cobalt);
+  padding: 10px 14px;
+  margin: 10px 0 0;
+  background: #f0f4f9;
+  border-radius: 0 6px 6px 0;
+}
+
+.demo-talk-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cobalt);
+  margin-bottom: 4px;
+}
+
+.demo-talk-text {
+  font-size: 12.5px;
+  color: var(--obsidian);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ── Contrast callout ── */
+
+.demo-contrast {
+  background: var(--obsidian);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 24px;
+}
+
+.demo-contrast-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #a8a6a0;
+  margin-bottom: 8px;
+}
+
+.demo-contrast-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #e8e6e0;
+}
+
+/* ── Closing section ── */
+
+.demo-closing {
+  background: var(--white);
+  border: 2px solid var(--cobalt);
+  border-radius: 8px;
+  padding: 24px 28px;
+}
+
+.demo-closing-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--cobalt);
+  margin-bottom: 8px;
+}
+
+.demo-closing-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--obsidian);
+  margin-bottom: 10px;
+}
+
+.demo-closing-text {
+  font-size: 13px;
+  color: var(--graphite);
+  line-height: 1.6;
+}
+
+.demo-closing-text strong {
+  color: var(--obsidian);
+  font-weight: 500;
+}
+
+.demo-closing-text kbd {
+  display: inline-block;
+  background: var(--limestone);
+  border: 1px solid #c8c6be;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--obsidian);
+}
+
+/* ── Opening line highlight ── */
+
+.demo-opening {
+  background: linear-gradient(135deg, #1a365d 0%, var(--cobalt) 100%);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.demo-opening-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+  font-style: normal;
+}

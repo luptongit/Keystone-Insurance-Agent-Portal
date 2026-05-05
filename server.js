@@ -260,6 +260,15 @@ app.get('/underwriting-hub', (req, res) => {
   });
 });
 
+// Demo playbook (SE tools)
+app.get('/demo-guide', (req, res) => {
+  res.render('pages/demo-guide', {
+    pageTitle: 'Demo playbook',
+    activeNav: 'demo-guide',
+    pageCSS: 'demo-guide',
+  });
+});
+
 // ----- API -----
 app.get('/api/search', async (req, res, next) => {
   try {

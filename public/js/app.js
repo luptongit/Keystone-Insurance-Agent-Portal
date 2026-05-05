@@ -286,4 +286,21 @@
       }
     });
   }
+
+  // ── C360 TAB SWITCHING ──
+  var c360Scope = document.querySelector('[data-c360-tabs]');
+  if (c360Scope) {
+    var c360Tabs = c360Scope.querySelectorAll('.tab');
+    var c360Sections = document.querySelectorAll('[data-c360-section]');
+    c360Tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        c360Tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var target = tab.getAttribute('data-c360-tab');
+        c360Sections.forEach(function (s) {
+          s.style.display = s.getAttribute('data-c360-section') === target ? '' : 'none';
+        });
+      });
+    });
+  }
 })();

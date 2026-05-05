@@ -48,19 +48,55 @@ async function getOpportunities(customerId) {
   return rows;
 }
 
+async function getClaims(customerId) {
+  const { rows } = await pool.query(
+    'SELECT * FROM customer_claims WHERE customer_id = $1 ORDER BY sort_order',
+    [customerId]
+  );
+  return rows;
+}
+
+async function getBilling(customerId) {
+  const { rows } = await pool.query(
+    'SELECT * FROM customer_billing WHERE customer_id = $1 ORDER BY sort_order',
+    [customerId]
+  );
+  return rows;
+}
+
+async function getDocuments(customerId) {
+  const { rows } = await pool.query(
+    'SELECT * FROM customer_documents WHERE customer_id = $1 ORDER BY sort_order',
+    [customerId]
+  );
+  return rows;
+}
+
+async function getNotes(customerId) {
+  const { rows } = await pool.query(
+    'SELECT * FROM customer_notes WHERE customer_id = $1 ORDER BY sort_order',
+    [customerId]
+  );
+  return rows;
+}
+
 async function getFullProfile(slug) {
   const customer = await getCustomerBySlug(slug);
   if (!customer) return null;
 
-  const [policies, members, events, factors, opportunities] = await Promise.all([
+  const [policies, members, events, factors, opportunities, claims, billing, documents, notes] = await Promise.all([
     getPolicies(customer.id),
     getHouseholdMembers(customer.id),
     getTimelineEvents(customer.id),
     getRetentionFactors(customer.id),
     getOpportunities(customer.id),
+    getClaims(customer.id),
+    getBilling(customer.id),
+    getDocuments(customer.id),
+    getNotes(customer.id),
   ]);
 
-  return { customer, policies, members, events, factors, opportunities };
+  return { customer, policies, members, events, factors, opportunities, claims, billing, documents, notes };
 }
 
 module.exports = { getCustomerBySlug, getFullProfile };

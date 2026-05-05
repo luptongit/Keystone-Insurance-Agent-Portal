@@ -1,5 +1,5 @@
 <%
-  const { customer: c, policies: pols, members, events, factors, opportunities } = profile;
+  const { customer: c, policies: pols, members, events, factors, opportunities, claims, billing, documents, notes } = profile;
   const iconSvg = {
     auto: '<path d="M3 13l2-7h14l2 7M5 13h14M5 13v5a1 1 0 001 1h2a1 1 0 001-1v-1M15 18v-1M15 18a1 1 0 001 1h2a1 1 0 001-1v-5"/>',
     home: '<path d="M3 12l9-9 9 9M5 10v10h14V10"/>',
@@ -92,17 +92,17 @@
       </div>
 
       <!-- TABS -->
-      <div class="tabs">
-        <div class="tab active">Overview</div>
-        <div class="tab">Policies <span class="tab-count"><%= pols.length %></span></div>
-        <div class="tab">Claims <span class="tab-count">2</span></div>
-        <div class="tab">Billing</div>
-        <div class="tab">Documents <span class="tab-count">28</span></div>
-        <div class="tab">Notes <span class="tab-count">14</span></div>
+      <div class="tabs" data-c360-tabs>
+        <div class="tab active" data-c360-tab="overview">Overview</div>
+        <div class="tab" data-c360-tab="policies">Policies <span class="tab-count"><%= pols.length %></span></div>
+        <div class="tab" data-c360-tab="claims">Claims <span class="tab-count"><%= claims.length %></span></div>
+        <div class="tab" data-c360-tab="billing">Billing <span class="tab-count"><%= billing.length %></span></div>
+        <div class="tab" data-c360-tab="documents">Documents <span class="tab-count"><%= documents.length %></span></div>
+        <div class="tab" data-c360-tab="notes">Notes <span class="tab-count"><%= notes.length %></span></div>
       </div>
 
-      <!-- GRID -->
-      <div class="grid-360">
+      <!-- GRID — overview tab -->
+      <div class="grid-360" data-c360-section="overview">
 
         <div class="col-stack">
 
@@ -340,6 +340,145 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- POLICIES TAB -->
+      <div data-c360-section="policies" style="display:none;">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="panel-title">Active policies</span>
+              <span class="panel-title-meta"><%= pols.length %> policies · <%= [...new Set(pols.map(p => p.line_type))].join(', ') %></span>
+            </div>
+          </div>
+          <% pols.forEach(pol => { %>
+            <div class="policy-row">
+              <div class="policy-icon <%= pol.line_type %>">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><%- iconSvg[pol.line_type] || iconSvg.auto %></svg>
+              </div>
+              <div>
+                <div class="policy-title"><%= pol.title %></div>
+                <div class="policy-sub"><%= pol.subtitle %></div>
+              </div>
+              <div class="policy-num"><%= pol.policy_number %></div>
+              <div>
+                <div class="policy-premium">$<%= pol.premium.toLocaleString() %>/yr</div>
+                <div class="policy-premium-sub"><%= pol.payment_freq %></div>
+              </div>
+              <span class="status <%= pol.status %>"><%= pol.status_label %></span>
+            </div>
+          <% }) %>
+          <% if (!pols.length) { %>
+            <div class="c360-empty">No policies on file.</div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- CLAIMS TAB -->
+      <div data-c360-section="claims" style="display:none;">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="panel-title">Claims history</span>
+              <span class="panel-title-meta"><%= claims.length %> claims</span>
+            </div>
+          </div>
+          <div class="c360-table-head c360-claims-row">
+            <span>Claim #</span><span>Date</span><span>Type</span><span>Description</span><span>Amount</span><span>Adjuster</span><span>Status</span>
+          </div>
+          <% claims.forEach(cl => { %>
+            <div class="c360-table-row c360-claims-row">
+              <span class="mono"><%= cl.claim_number %></span>
+              <span><%= cl.claim_date %></span>
+              <span><%= cl.claim_type %></span>
+              <span class="text-muted"><%= cl.description || '—' %></span>
+              <span class="mono"><%= cl.amount ? '$' + cl.amount.toLocaleString() : '—' %></span>
+              <span class="text-muted"><%= cl.adjuster || '—' %></span>
+              <span><span class="status <%= cl.status === 'closed' ? 'active' : cl.status === 'open' ? 'renewal' : 'pending' %>"><%= cl.status %></span></span>
+            </div>
+          <% }) %>
+          <% if (!claims.length) { %>
+            <div class="c360-empty">No claims on file.</div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- BILLING TAB -->
+      <div data-c360-section="billing" style="display:none;">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="panel-title">Billing & payments</span>
+              <span class="panel-title-meta"><%= billing.length %> transactions</span>
+            </div>
+          </div>
+          <div class="c360-table-head c360-billing-row">
+            <span>Date</span><span>Description</span><span>Amount</span><span>Method</span><span>Status</span>
+          </div>
+          <% billing.forEach(txn => { %>
+            <div class="c360-table-row c360-billing-row">
+              <span><%= txn.txn_date %></span>
+              <span><%= txn.description %></span>
+              <span class="mono <%= txn.txn_type === 'refund' ? 'text-green' : '' %>"><%= txn.txn_type === 'refund' ? '+' : '' %>$<%= (txn.amount / 100).toLocaleString(undefined, { minimumFractionDigits: 2 }) %></span>
+              <span class="text-muted"><%= txn.method || '—' %></span>
+              <span><span class="status <%= txn.status === 'completed' ? 'active' : txn.status === 'pending' ? 'pending' : 'renewal' %>"><%= txn.status %></span></span>
+            </div>
+          <% }) %>
+          <% if (!billing.length) { %>
+            <div class="c360-empty">No billing records.</div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- DOCUMENTS TAB -->
+      <div data-c360-section="documents" style="display:none;">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="panel-title">Documents</span>
+              <span class="panel-title-meta"><%= documents.length %> files</span>
+            </div>
+          </div>
+          <div class="c360-table-head c360-docs-row">
+            <span>Type</span><span>Title</span><span>Date</span><span>Size</span>
+          </div>
+          <% documents.forEach(doc => { %>
+            <div class="c360-table-row c360-docs-row">
+              <span class="c360-doc-type"><%= doc.doc_type %></span>
+              <span class="c360-doc-title"><%= doc.title %></span>
+              <span class="text-muted"><%= doc.doc_date %></span>
+              <span class="mono text-muted"><%= doc.file_size || '—' %></span>
+            </div>
+          <% }) %>
+          <% if (!documents.length) { %>
+            <div class="c360-empty">No documents on file.</div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- NOTES TAB -->
+      <div data-c360-section="notes" style="display:none;">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="panel-title">Notes & activity</span>
+              <span class="panel-title-meta"><%= notes.length %> entries</span>
+            </div>
+          </div>
+          <% notes.forEach(note => { %>
+            <div class="c360-note">
+              <div class="c360-note-head">
+                <span class="c360-note-author"><%= note.author %></span>
+                <span class="c360-note-date"><%= note.note_date %></span>
+                <span class="status <%= note.note_type === 'system' ? 'pending' : 'active' %>"><%= note.note_type %></span>
+              </div>
+              <div class="c360-note-body"><%= note.content %></div>
+            </div>
+          <% }) %>
+          <% if (!notes.length) { %>
+            <div class="c360-empty">No notes on file.</div>
+          <% } %>
         </div>
       </div>
 
