@@ -231,41 +231,6 @@
 /* Pipeline intelligence sidebar */
 .pipeline-sidebar { display: flex; flex-direction: column; gap: 20px; }
 
-.intel-item {
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.intel-item:last-child { border-bottom: none; }
-
-.intel-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 5px;
-  background: var(--d360-bg);
-  color: var(--d360-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.intel-icon svg { width: 13px; height: 13px; stroke-width: 1.8; }
-.intel-icon.warn { background: var(--red-bg); color: var(--red); }
-.intel-icon.success { background: var(--green-bg); color: var(--green); }
-
-.intel-text { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
-.intel-text strong { font-weight: 500; color: var(--granite); }
-.intel-meta {
-  font-size: 10px;
-  color: var(--d360-deep);
-  font-weight: 500;
-  margin-top: 6px;
-}
-
 /* Pipeline summary row at bottom of board */
 .pipeline-summary {
   display: flex;
